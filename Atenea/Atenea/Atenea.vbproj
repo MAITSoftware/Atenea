@@ -92,13 +92,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Libro.Designer.vb">
+      <DependentUpon>Libro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Libro.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Libro.resx">
+      <DependentUpon>Libro.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +124,33 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pintando.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\degradado_nodisponible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadro_disponible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadro_nodisponible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portada_ejemplo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tymon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sombra_titulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sombra_titulo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoproyecto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
