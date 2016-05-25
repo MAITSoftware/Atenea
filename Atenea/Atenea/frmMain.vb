@@ -1,10 +1,10 @@
 ﻿Imports System.Threading
-Public Class frmAtenea
+Public Class frmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim rng As New Random()
-        For y As Integer = 1 To 8
+        For y As Integer = 1 To 20
 
             panelLibros.Controls.Remove(lblNoDisponibles)
             panelLibros.Controls.Remove(btnAgregar_temporal)
@@ -16,6 +16,7 @@ Public Class frmAtenea
             comboGenero.Items.Add(y)
         Next
 
+        Me.Cursor = System.Windows.Forms.Cursors.Arrow
     End Sub
 
     Private Sub x(sender As Object, e As EventArgs) Handles radioGenero.CheckedChanged

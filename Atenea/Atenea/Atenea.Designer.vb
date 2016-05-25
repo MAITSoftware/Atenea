@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmLogin
+Partial Class Atenea
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -235,7 +235,7 @@ Partial Class frmLogin
         Me.btnCancelar.UseVisualStyleBackColor = False
         Me.btnCancelar.Visible = False
         '
-        'frmLogin
+        'Atenea
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
@@ -257,8 +257,9 @@ Partial Class frmLogin
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmLogin"
+        Me.Name = "Atenea"
         Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingreso - Atenea"
         Me.ResumeLayout(False)
         Me.PerformLayout()

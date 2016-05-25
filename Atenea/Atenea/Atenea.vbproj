@@ -70,17 +70,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAtenea.vb">
+    <Compile Include="frmMain.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAtenea.Designer.vb">
-      <DependentUpon>frmAtenea.vb</DependentUpon>
-      <SubType>Form</SubType>
+    <Compile Include="Atenea.Designer.vb">
+      <DependentUpon>Atenea.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.Designer.vb">
-      <DependentUpon>frmLogin.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLogin.vb">
+    <Compile Include="Atenea.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -106,11 +106,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmAtenea.resx">
-      <DependentUpon>frmAtenea.vb</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.vb</DependentUpon>
+    <EmbeddedResource Include="Atenea.resx">
+      <DependentUpon>Atenea.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

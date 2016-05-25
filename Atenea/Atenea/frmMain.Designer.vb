@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmAtenea
-    Inherits System.Windows.Forms.Form
+Partial Class frmMain
+    Inherits System.Windows.Forms.UserControl
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -312,12 +312,11 @@ Partial Class frmAtenea
         Me.lblBienvenida.TabIndex = 22
         Me.lblBienvenida.Text = "Bienvenido, usuario"
         '
-        'frmAtenea
+        'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(1264, 661)
         Me.Controls.Add(Me.lblBienvenida)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnSalir)
@@ -334,13 +333,8 @@ Partial Class frmAtenea
         Me.Controls.Add(Me.panelLibros)
         Me.Controls.Add(Me.groupVista)
         Me.DoubleBuffered = True
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "frmAtenea"
-        Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Atenea"
+        Me.Name = "frmMain"
+        Me.Size = New System.Drawing.Size(1264, 661)
         Me.groupVista.ResumeLayout(False)
         Me.groupVista.PerformLayout()
         Me.panelLibros.ResumeLayout(False)

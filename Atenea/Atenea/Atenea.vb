@@ -1,8 +1,8 @@
-﻿Public Class frmLogin
+﻿Public Class Atenea
 
     Dim tipoUsuario As String
     Dim registrando As Boolean = False
-    Dim atenea As frmAtenea
+    Dim atenea As frmMain
 
     Private Sub btnTipo_Click(sender As Object, e As EventArgs) Handles btnFuncionario.Click, btnUsuario.Click
 
@@ -83,9 +83,22 @@
     End Sub
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
-        Me.Hide()
-        atenea = New frmAtenea()
-        atenea.Closed += (s, args) => me.Close()
-        atenea.Show()
+        agregarAtenea()
     End Sub
+
+    Private Sub agregarAtenea()
+        Me.Controls.Clear()
+        Me.Text = "Atenea"
+
+        atenea = New frmMain()
+
+        Me.Width = 1280
+        Me.Height = 700
+        Me.Left = (Screen.PrimaryScreen.Bounds.Width - atenea.Width) / 2
+        Me.Top = (Screen.PrimaryScreen.Bounds.Height - atenea.Height) / 2
+        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
+        Me.Controls.Add(atenea)
+        Me.Cursor = System.Windows.Forms.Cursors.Arrow
+    End Sub
+
 End Class

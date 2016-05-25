@@ -7,9 +7,9 @@
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' 
         ' Redimensiona la portada.
-        Dim bmpPortada As New Bitmap(Atenea.My.Resources.Resources.tymon())
+        Dim bmpPortada As New Bitmap(My.Resources.Resources.tymon())
         If estaDisponible Then
-            bmpPortada = New Bitmap(Atenea.My.Resources.Resources.ignacio())
+            bmpPortada = New Bitmap(My.Resources.Resources.ignacio())
             imgNoDisponible.BackgroundImage = Nothing
             imgBorde.Cursor = Cursors.Hand
         End If
