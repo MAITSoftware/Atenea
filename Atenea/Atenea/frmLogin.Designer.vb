@@ -36,6 +36,7 @@ Partial Class frmLogin
         Me.btnFuncionario = New System.Windows.Forms.Button()
         Me.btnUsuario = New System.Windows.Forms.Button()
         Me.lblBienvenido = New System.Windows.Forms.Label()
+        Me.lblInfo = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnCancelar
@@ -61,6 +62,7 @@ Partial Class frmLogin
         '
         Me.btnEntrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEntrar.Enabled = False
         Me.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnEntrar.FlatAppearance.BorderSize = 2
         Me.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -123,7 +125,6 @@ Partial Class frmLogin
         Me.txtContra.Margin = New System.Windows.Forms.Padding(0)
         Me.txtContra.MaxLength = 20
         Me.txtContra.Name = "txtContra"
-        Me.txtContra.PasswordChar = Global.Microsoft.VisualBasic.ChrW(45)
         Me.txtContra.Size = New System.Drawing.Size(130, 26)
         Me.txtContra.TabIndex = 41
         Me.txtContra.UseSystemPasswordChar = True
@@ -236,11 +237,27 @@ Partial Class frmLogin
         Me.lblBienvenido.Text = "Bienvenido a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Atenea"
         Me.lblBienvenido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lblInfo
+        '
+        Me.lblInfo.AutoSize = True
+        Me.lblInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfo.ForeColor = System.Drawing.Color.White
+        Me.lblInfo.Location = New System.Drawing.Point(0, 76)
+        Me.lblInfo.MinimumSize = New System.Drawing.Size(399, 20)
+        Me.lblInfo.Name = "lblInfo"
+        Me.lblInfo.Size = New System.Drawing.Size(399, 20)
+        Me.lblInfo.TabIndex = 47
+        Me.lblInfo.Text = "-- Datos incorrectos --"
+        Me.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblInfo.Visible = False
+        '
         'frmLogin
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnEntrar)
         Me.Controls.Add(Me.btnRegistro)
@@ -275,5 +292,6 @@ Partial Class frmLogin
     Friend WithEvents btnFuncionario As System.Windows.Forms.Button
     Friend WithEvents btnUsuario As System.Windows.Forms.Button
     Friend WithEvents lblBienvenido As System.Windows.Forms.Label
+    Friend WithEvents lblInfo As System.Windows.Forms.Label
 
 End Class

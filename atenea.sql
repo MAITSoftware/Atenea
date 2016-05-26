@@ -14,3 +14,4 @@ create table `libros` (
     `categoría` INT default 0,
     `id` VARCHAR(20) PRIMARY KEY NOT NULL);
     
+    

@@ -1,5 +1,6 @@
 ﻿Public Class frmLogin
     Friend tipoUsuario As String
+    Dim registrando As Boolean
 
     Private Sub btnTipo_Click(sender As Object, e As EventArgs) Handles btnFuncionario.Click, btnUsuario.Click
         tipoUsuario = "usuario"
@@ -11,8 +12,8 @@
         pedirDatosRegistro()
     End Sub
 
-
     Private Sub preguntarTipoCuenta(sender As Object, e As EventArgs) Handles btnRegistro.Click
+        registrando = True
         Atenea.Text = "Registro · Atenea"
         lblBienvenido.Text = "Registro de"
 
@@ -29,6 +30,7 @@
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        registrando = False
         reestablecerVentana()
     End Sub
 
@@ -53,6 +55,9 @@
         lblCedula.Visible = True
         txtContra.Visible = True
         lblContra.Visible = True
+
+        txtCedula.Text = Nothing
+        txtContra.Text = Nothing
 
         btnRegistro.Visible = False
         btnCancelar.Visible = True
@@ -81,6 +86,9 @@
         lblContra.Visible = True
         txtContra.Visible = True
 
+        txtCedula.Text = Nothing
+        txtContra.Text = Nothing
+
         btnEntrar.Text = "Entrar"
 
         lblBienvenido.Text = "Bienvenido a" & ControlChars.NewLine & "Atenea"
@@ -94,7 +102,21 @@
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
         Me.Dispose()
+
         Atenea.agregarAtenea()
     End Sub
+
+    Function checkLogin() As Boolean
+
+        Return False
+    End Function
+
+    Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtCedula.TextChanged, txtContra.TextChanged, txtNombre.TextChanged, txtApellido.TextChanged
+        btnEntrar.Enabled = Not (String.IsNullOrWhiteSpace(txtCedula.Text) Or String.IsNullOrWhiteSpace(txtContra.Text) Or String.IsNullOrWhiteSpace(txtNombre.Text) Or String.IsNullOrEmpty(txtApellido.Text))
+        If Not registrando Then
+            btnEntrar.Enabled = Not (String.IsNullOrWhiteSpace(txtCedula.Text) Or String.IsNullOrEmpty(txtContra.Text))
+        End If
+    End Sub
+
 
 End Class

@@ -1,9 +1,20 @@
-﻿Public Class Atenea
+﻿Imports MySql.Data.MySqlClient
+Public Class Atenea
 
     Dim atenea As frmMain
     Dim login As frmLogin
 
+    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
+
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            conexion.Open()
+        Catch ex As Exception
+            System.Console.WriteLine(ex)
+            MsgBox("Error al establecer la conexión con el servidor", MsgBoxStyle.Critical)
+            Environment.Exit(0)
+        End Try
+
         agregarLogin()
     End Sub
 

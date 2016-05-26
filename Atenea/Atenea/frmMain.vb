@@ -1,5 +1,4 @@
-﻿Imports System.Threading
-Public Class frmMain
+﻿Public Class frmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
