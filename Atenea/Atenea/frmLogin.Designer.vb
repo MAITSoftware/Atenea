@@ -121,7 +121,9 @@ Partial Class frmLogin
         Me.txtContra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContra.Location = New System.Drawing.Point(134, 183)
         Me.txtContra.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtContra.MaxLength = 20
         Me.txtContra.Name = "txtContra"
+        Me.txtContra.PasswordChar = Global.Microsoft.VisualBasic.ChrW(45)
         Me.txtContra.Size = New System.Drawing.Size(130, 26)
         Me.txtContra.TabIndex = 41
         Me.txtContra.UseSystemPasswordChar = True
@@ -131,6 +133,7 @@ Partial Class frmLogin
         Me.txtApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApellido.Location = New System.Drawing.Point(217, 133)
         Me.txtApellido.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtApellido.MaxLength = 10
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(130, 26)
         Me.txtApellido.TabIndex = 40
@@ -164,6 +167,7 @@ Partial Class frmLogin
         Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCedula.Location = New System.Drawing.Point(134, 128)
         Me.txtCedula.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtCedula.MaxLength = 20
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(130, 26)
         Me.txtCedula.TabIndex = 37
@@ -173,6 +177,7 @@ Partial Class frmLogin
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(43, 133)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtNombre.MaxLength = 10
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(130, 26)
         Me.txtNombre.TabIndex = 36

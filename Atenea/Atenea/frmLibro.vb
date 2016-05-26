@@ -7,11 +7,16 @@
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' 
         ' Redimensiona la portada.
-        Dim bmpPortada As New Bitmap(My.Resources.Resources.tymon())
+        Dim bmpPortada As New Bitmap(My.Resources.Resources.Pintando())
         If estaDisponible Then
             bmpPortada = New Bitmap(My.Resources.Resources.ignacio())
             imgNoDisponible.BackgroundImage = Nothing
             imgBorde.Cursor = Cursors.Hand
+        End If
+
+        Dim string_disponible As String = "Disponible"
+        If Not estaDisponible Then
+            string_disponible = "No disponible"
         End If
 
         imgPortada.BackgroundImage = bmpPortada
@@ -21,7 +26,7 @@
         tooltip.SetToolTip(imgNoDisponible, "Título: Pepe" & ControlChars.NewLine &
                                             "Autor: Peposo" & ControlChars.NewLine &
                                             "Categoría: Novela" & ControlChars.NewLine &
-                                            "ID: 2837asd")
+                                            "ID: 2837asd" & ControlChars.NewLine & string_disponible)
     End Sub
 
 
@@ -29,14 +34,6 @@
         InitializeComponent()
         estaDisponible = disponible
         Me.llaveLibro = llaveLibro
-    End Sub
-
-    Private Sub imgBordeTooltip_Mostrar(ByVal sender As Object, ByVal e As EventArgs) Handles imgBorde.MouseHover
-        tooltip.Show("the message", Me)
-    End Sub
-
-    Private Sub imgBordeTooltip_Ocultar(ByVal sender As Object, ByVal e As EventArgs) Handles imgBorde.MouseLeave
-        tooltip.Hide(Me)
     End Sub
 
 
