@@ -4,7 +4,8 @@ create table `usuarios` (
 	`ci` VARCHAR(8) NOT NULL PRIMARY KEY,
     `nombre` VARCHAR(10) NOT NULL,
     `apellido` VARCHAR(10) NOT NULL,
-    `contraseña` VARCHAR(20) NOT NULL
+    `contraseña` VARCHAR(20) NOT NULL,
+    `tipo` VARCHAR(11) NOT NULL
 );
 
 create table `libros` (

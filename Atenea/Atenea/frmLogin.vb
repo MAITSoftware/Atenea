@@ -1,4 +1,5 @@
-﻿Public Class frmLogin
+﻿Imports MySql.Data.MySqlClient
+Public Class frmLogin
     Friend tipoUsuario As String
     Dim registrando As Boolean
 
@@ -101,14 +102,52 @@
     End Sub
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
-        Me.Dispose()
+        If Not registrando Then
+            If Not checkLogin() Then
+                lblInfo.Text = "-- Datos incorrectos --"
+                lblInfo.Visible = True
+                Return
+            End If
+        Else
+            If Not agregarUsuario() Then
+                lblInfo.Text = "-- Datos incorrectos --"
+                lblInfo.Visible = True
+                Return
+            End If
+        End If
 
+        Me.Dispose()
         Atenea.agregarAtenea()
     End Sub
 
     Function checkLogin() As Boolean
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("SELECT * FROM `usuarios` WHERE CI='{0}' AND Contraseña='{1}';", txtCedula.Text, txtContra.Text), Atenea.conexion)
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+        Dim correcto As Boolean = False
 
-        Return False
+        While reader.Read()
+            reader.Read()
+            reader.GetString(0)
+            correcto = True
+        End While
+
+        reader.Close()
+
+        Return correcto
+    End Function
+
+    Function agregarUsuario() As Boolean
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuarios` VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');", txtCedula.Text, txtNombre.Text, txtApellido.Text, txtContra.Text, tipoUsuario), Atenea.conexion)
+        Dim registro = True
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Console.Write(ex.ToString())
+            lblInfo.Text = "-- El usuario ya existe --"
+            registro = False
+        End Try
+
+        Return registro
     End Function
 
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtCedula.TextChanged, txtContra.TextChanged, txtNombre.TextChanged, txtApellido.TextChanged
@@ -116,7 +155,16 @@
         If Not registrando Then
             btnEntrar.Enabled = Not (String.IsNullOrWhiteSpace(txtCedula.Text) Or String.IsNullOrEmpty(txtContra.Text))
         End If
+
+        lblInfo.Visible = False
     End Sub
 
+    Private Sub accionClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtCedula.KeyDown, txtContra.KeyDown, txtNombre.KeyDown, txtApellido.KeyDown
+        If e.KeyCode.Equals(Keys.Enter) Then
+            If btnEntrar.Enabled Then
+                btnEntrar.PerformClick()
+            End If
+        End If
+    End Sub
 
 End Class
