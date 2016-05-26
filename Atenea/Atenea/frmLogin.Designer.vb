@@ -74,7 +74,6 @@ Partial Class frmLogin
         Me.btnEntrar.TabIndex = 45
         Me.btnEntrar.Text = "Entrar"
         Me.btnEntrar.UseVisualStyleBackColor = False
-        Me.btnEntrar.Visible = False
         '
         'btnRegistro
         '
@@ -93,7 +92,6 @@ Partial Class frmLogin
         Me.btnRegistro.TabIndex = 44
         Me.btnRegistro.Text = "Registrar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.btnRegistro.UseVisualStyleBackColor = False
-        Me.btnRegistro.Visible = False
         '
         'lblContra
         '
@@ -105,7 +103,6 @@ Partial Class frmLogin
         Me.lblContra.Size = New System.Drawing.Size(92, 20)
         Me.lblContra.TabIndex = 43
         Me.lblContra.Text = "Contraseña"
-        Me.lblContra.Visible = False
         '
         'lblApellido
         '
@@ -128,7 +125,6 @@ Partial Class frmLogin
         Me.txtContra.Size = New System.Drawing.Size(130, 26)
         Me.txtContra.TabIndex = 41
         Me.txtContra.UseSystemPasswordChar = True
-        Me.txtContra.Visible = False
         '
         'txtApellido
         '
@@ -150,7 +146,6 @@ Partial Class frmLogin
         Me.lblCedula.Size = New System.Drawing.Size(125, 20)
         Me.lblCedula.TabIndex = 39
         Me.lblCedula.Text = "Cédula (usuario)"
-        Me.lblCedula.Visible = False
         '
         'lblNombre
         '
@@ -172,7 +167,6 @@ Partial Class frmLogin
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(130, 26)
         Me.txtCedula.TabIndex = 37
-        Me.txtCedula.Visible = False
         '
         'txtNombre
         '
@@ -201,6 +195,7 @@ Partial Class frmLogin
         Me.btnFuncionario.TabIndex = 34
         Me.btnFuncionario.Text = "¿ Funcionario ?"
         Me.btnFuncionario.UseVisualStyleBackColor = False
+        Me.btnFuncionario.Visible = False
         '
         'btnUsuario
         '
@@ -219,6 +214,7 @@ Partial Class frmLogin
         Me.btnUsuario.TabIndex = 33
         Me.btnUsuario.Text = "¿ Usuario ?"
         Me.btnUsuario.UseVisualStyleBackColor = False
+        Me.btnUsuario.Visible = False
         '
         'lblBienvenido
         '
