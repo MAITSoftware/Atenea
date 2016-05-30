@@ -18,6 +18,8 @@ Public Class frmLogin
         Atenea.Text = "Registro · Atenea"
         lblBienvenido.Text = "Registro de"
 
+        lblInfo.Visible = False
+
         btnUsuario.Visible = True
         btnFuncionario.Visible = True
         btnRegistro.Visible = False
