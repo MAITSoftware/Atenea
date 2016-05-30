@@ -33,7 +33,7 @@
     Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click
    
         Dim frm As New frmAgregarLibro()
-        frm.Show()
+        frm.ShowDialog(Me)
     End Sub
 
 End Class

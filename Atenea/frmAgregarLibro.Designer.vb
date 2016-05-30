@@ -33,35 +33,31 @@ Partial Class frmAgregarLibro
         Me.btnCambiarPortada = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtAutor
         '
         Me.txtAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAutor.Location = New System.Drawing.Point(734, 138)
-        Me.txtAutor.Multiline = True
+        Me.txtAutor.Location = New System.Drawing.Point(268, 116)
         Me.txtAutor.Name = "txtAutor"
-        Me.txtAutor.Size = New System.Drawing.Size(261, 34)
-        Me.txtAutor.TabIndex = 0
+        Me.txtAutor.Size = New System.Drawing.Size(193, 26)
+        Me.txtAutor.TabIndex = 1
         '
         'txtNombre
         '
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(734, 73)
-        Me.txtNombre.Multiline = True
+        Me.txtNombre.Location = New System.Drawing.Point(268, 49)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(261, 34)
+        Me.txtNombre.Size = New System.Drawing.Size(193, 26)
         Me.txtNombre.TabIndex = 0
         '
         'txtID
         '
         Me.txtID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(734, 276)
-        Me.txtID.Multiline = True
+        Me.txtID.Location = New System.Drawing.Point(268, 247)
         Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(261, 34)
-        Me.txtID.TabIndex = 0
+        Me.txtID.Size = New System.Drawing.Size(194, 26)
+        Me.txtID.TabIndex = 3
         '
         'cboxCategoria
         '
@@ -69,93 +65,114 @@ Partial Class frmAgregarLibro
         Me.cboxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cboxCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboxCategoria.FormattingEnabled = True
-        Me.cboxCategoria.Location = New System.Drawing.Point(734, 209)
+        Me.cboxCategoria.Location = New System.Drawing.Point(268, 179)
         Me.cboxCategoria.Name = "cboxCategoria"
-        Me.cboxCategoria.Size = New System.Drawing.Size(261, 28)
-        Me.cboxCategoria.TabIndex = 1
+        Me.cboxCategoria.Size = New System.Drawing.Size(194, 28)
+        Me.cboxCategoria.TabIndex = 2
         '
         'lblNombreLibro
         '
         Me.lblNombreLibro.AutoSize = True
-        Me.lblNombreLibro.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.lblNombreLibro.Location = New System.Drawing.Point(513, 73)
+        Me.lblNombreLibro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblNombreLibro.ForeColor = System.Drawing.Color.White
+        Me.lblNombreLibro.Location = New System.Drawing.Point(268, 22)
         Me.lblNombreLibro.Name = "lblNombreLibro"
-        Me.lblNombreLibro.Size = New System.Drawing.Size(169, 25)
+        Me.lblNombreLibro.Size = New System.Drawing.Size(123, 20)
         Me.lblNombreLibro.TabIndex = 2
         Me.lblNombreLibro.Text = "Nombre del libro"
         '
         'lblAutor
         '
         Me.lblAutor.AutoSize = True
-        Me.lblAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.lblAutor.Location = New System.Drawing.Point(513, 138)
+        Me.lblAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAutor.ForeColor = System.Drawing.Color.White
+        Me.lblAutor.Location = New System.Drawing.Point(268, 93)
         Me.lblAutor.Name = "lblAutor"
-        Me.lblAutor.Size = New System.Drawing.Size(63, 25)
+        Me.lblAutor.Size = New System.Drawing.Size(48, 20)
         Me.lblAutor.TabIndex = 2
         Me.lblAutor.Text = "Autor"
         '
         'lblCategoria
         '
         Me.lblCategoria.AutoSize = True
-        Me.lblCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.lblCategoria.Location = New System.Drawing.Point(513, 208)
+        Me.lblCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblCategoria.ForeColor = System.Drawing.Color.White
+        Me.lblCategoria.Location = New System.Drawing.Point(268, 155)
         Me.lblCategoria.Name = "lblCategoria"
-        Me.lblCategoria.Size = New System.Drawing.Size(105, 25)
+        Me.lblCategoria.Size = New System.Drawing.Size(78, 20)
         Me.lblCategoria.TabIndex = 2
         Me.lblCategoria.Text = "Categoría"
         '
         'lblID
         '
         Me.lblID.AutoSize = True
-        Me.lblID.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblID.Location = New System.Drawing.Point(513, 285)
+        Me.lblID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblID.ForeColor = System.Drawing.Color.White
+        Me.lblID.Location = New System.Drawing.Point(268, 224)
         Me.lblID.Name = "lblID"
-        Me.lblID.Size = New System.Drawing.Size(114, 25)
+        Me.lblID.Size = New System.Drawing.Size(84, 20)
         Me.lblID.TabIndex = 2
         Me.lblID.Text = "ID del libro"
         '
         'btnCambiarPortada
         '
-        Me.btnCambiarPortada.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCambiarPortada.Location = New System.Drawing.Point(150, 348)
+        Me.btnCambiarPortada.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.btnCambiarPortada.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCambiarPortada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCambiarPortada.FlatAppearance.BorderSize = 2
+        Me.btnCambiarPortada.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.btnCambiarPortada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCambiarPortada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCambiarPortada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCambiarPortada.ForeColor = System.Drawing.Color.White
+        Me.btnCambiarPortada.Location = New System.Drawing.Point(28, 212)
         Me.btnCambiarPortada.Name = "btnCambiarPortada"
-        Me.btnCambiarPortada.Size = New System.Drawing.Size(129, 62)
-        Me.btnCambiarPortada.TabIndex = 3
+        Me.btnCambiarPortada.Size = New System.Drawing.Size(150, 33)
+        Me.btnCambiarPortada.TabIndex = 4
         Me.btnCambiarPortada.Text = "Cambiar portada"
-        Me.btnCambiarPortada.UseVisualStyleBackColor = True
+        Me.btnCambiarPortada.UseVisualStyleBackColor = False
         '
         'btnAgregar
         '
-        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.btnAgregar.Location = New System.Drawing.Point(597, 395)
+        Me.btnAgregar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnAgregar.FlatAppearance.BorderSize = 2
+        Me.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregar.ForeColor = System.Drawing.Color.White
+        Me.btnAgregar.Location = New System.Drawing.Point(288, 308)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(129, 52)
-        Me.btnAgregar.TabIndex = 3
+        Me.btnAgregar.Size = New System.Drawing.Size(84, 33)
+        Me.btnAgregar.TabIndex = 5
         Me.btnAgregar.Text = "Agregar"
-        Me.btnAgregar.UseVisualStyleBackColor = True
+        Me.btnAgregar.UseVisualStyleBackColor = False
         '
         'btnCancelar
         '
-        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.btnCancelar.Location = New System.Drawing.Point(802, 395)
+        Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCancelar.FlatAppearance.BorderSize = 2
+        Me.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.Location = New System.Drawing.Point(378, 308)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(129, 52)
-        Me.btnCancelar.TabIndex = 3
+        Me.btnCancelar.Size = New System.Drawing.Size(84, 33)
+        Me.btnCancelar.TabIndex = 6
         Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = True
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(82, 92)
-        Me.TextBox4.Multiline = True
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(261, 231)
-        Me.TextBox4.TabIndex = 0
+        Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'frmAgregarLibro
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
-        Me.ClientSize = New System.Drawing.Size(1084, 485)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(493, 365)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.btnCambiarPortada)
@@ -165,13 +182,14 @@ Partial Class frmAgregarLibro
         Me.Controls.Add(Me.lblNombreLibro)
         Me.Controls.Add(Me.cboxCategoria)
         Me.Controls.Add(Me.txtID)
-        Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtAutor)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmAgregarLibro"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Agregar Libro"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "Agregar Libro · Atenea"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -187,5 +205,4 @@ Partial Class frmAgregarLibro
     Friend WithEvents btnCambiarPortada As System.Windows.Forms.Button
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
 End Class
