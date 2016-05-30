@@ -33,6 +33,7 @@ Partial Class frmAgregarLibro
         Me.btnCambiarPortada = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.chkHabilitado = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'txtAutor
@@ -125,7 +126,7 @@ Partial Class frmAgregarLibro
         Me.btnCambiarPortada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCambiarPortada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCambiarPortada.ForeColor = System.Drawing.Color.White
-        Me.btnCambiarPortada.Location = New System.Drawing.Point(28, 212)
+        Me.btnCambiarPortada.Location = New System.Drawing.Point(29, 213)
         Me.btnCambiarPortada.Name = "btnCambiarPortada"
         Me.btnCambiarPortada.Size = New System.Drawing.Size(150, 33)
         Me.btnCambiarPortada.TabIndex = 4
@@ -143,7 +144,7 @@ Partial Class frmAgregarLibro
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(288, 308)
+        Me.btnAgregar.Location = New System.Drawing.Point(288, 296)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(84, 33)
         Me.btnAgregar.TabIndex = 5
@@ -161,18 +162,33 @@ Partial Class frmAgregarLibro
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(378, 308)
+        Me.btnCancelar.Location = New System.Drawing.Point(378, 296)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(84, 33)
         Me.btnCancelar.TabIndex = 6
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
+        'chkHabilitado
+        '
+        Me.chkHabilitado.AutoSize = True
+        Me.chkHabilitado.Checked = True
+        Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkHabilitado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.chkHabilitado.ForeColor = System.Drawing.Color.White
+        Me.chkHabilitado.Location = New System.Drawing.Point(29, 186)
+        Me.chkHabilitado.Name = "chkHabilitado"
+        Me.chkHabilitado.Size = New System.Drawing.Size(93, 21)
+        Me.chkHabilitado.TabIndex = 7
+        Me.chkHabilitado.Text = "Disponible"
+        Me.chkHabilitado.UseVisualStyleBackColor = True
+        '
         'frmAgregarLibro
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(493, 365)
+        Me.ClientSize = New System.Drawing.Size(483, 340)
+        Me.Controls.Add(Me.chkHabilitado)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.btnCambiarPortada)
@@ -205,4 +221,5 @@ Partial Class frmAgregarLibro
     Friend WithEvents btnCambiarPortada As System.Windows.Forms.Button
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
+    Friend WithEvents chkHabilitado As System.Windows.Forms.CheckBox
 End Class
