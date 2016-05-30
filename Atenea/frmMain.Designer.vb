@@ -232,7 +232,7 @@ Partial Class frmMain
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.PictureBox1.BackgroundImage = Global.Atenea.My.Resources.Resources.logoVectorizado_blanco
+        Me.PictureBox1.BackgroundImage = Global.Atenea.My.Resources.Resources.logoproyecto_blanco
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Location = New System.Drawing.Point(17, 474)
         Me.PictureBox1.Name = "PictureBox1"
