@@ -71,6 +71,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\frmAgregarLibro.Designer.vb">
+      <DependentUpon>frmAgregarLibro.vb</DependentUpon>
+      <Link>frmAgregarLibro.Designer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\frmAgregarLibro.vb">
+      <SubType>Form</SubType>
+      <Link>frmAgregarLibro.vb</Link>
+    </Compile>
     <Compile Include="frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -113,6 +121,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\frmAgregarLibro.resx">
+      <DependentUpon>frmAgregarLibro.vb</DependentUpon>
+      <Link>frmAgregarLibro.resx</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>

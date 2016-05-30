@@ -21,7 +21,6 @@
         comboGenero.Enabled = radioGenero.Checked
     End Sub
 
-
     Private Sub btnAgregar_temporal_Click(sender As Object, e As EventArgs) Handles btnAgregar_temporal.Click
         btnAgregarLibro.PerformClick()
     End Sub
@@ -30,4 +29,11 @@
         Me.Dispose()
         Atenea.agregarLogin()
     End Sub
+
+    Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click
+   
+        Dim frm As New frmAgregarLibro()
+        frm.Show()
+    End Sub
+
 End Class
