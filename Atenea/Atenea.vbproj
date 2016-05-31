@@ -126,6 +126,18 @@
     <Compile Include="frmLibro.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="frmNewLogin.Designer.vb">
+      <DependentUpon>frmNewLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewLogin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmNewRegistro.Designer.vb">
+      <DependentUpon>frmNewRegistro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewRegistro.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmPrestamos.resx">
@@ -151,6 +163,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLibro.resx">
       <DependentUpon>frmLibro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewLogin.resx">
+      <DependentUpon>frmNewLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewRegistro.resx">
+      <DependentUpon>frmNewRegistro.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoproyecto_blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
