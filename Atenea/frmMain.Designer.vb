@@ -35,12 +35,12 @@ Partial Class frmMain
         Me.radioGenero = New System.Windows.Forms.RadioButton()
         Me.radioID = New System.Windows.Forms.RadioButton()
         Me.comboGenero = New System.Windows.Forms.ComboBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnPrestamos = New System.Windows.Forms.Button()
         Me.lblBuscar = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblBienvenida = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.groupVista.SuspendLayout()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,17 +229,6 @@ Partial Class frmMain
         Me.comboGenero.Size = New System.Drawing.Size(161, 24)
         Me.comboGenero.TabIndex = 16
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.PictureBox1.BackgroundImage = Global.Atenea.My.Resources.Resources.logoproyecto_blanco
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(17, 474)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(175, 175)
-        Me.PictureBox1.TabIndex = 17
-        Me.PictureBox1.TabStop = False
-        '
         'btnPrestamos
         '
         Me.btnPrestamos.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
@@ -311,6 +300,17 @@ Partial Class frmMain
         Me.lblBienvenida.Size = New System.Drawing.Size(147, 20)
         Me.lblBienvenida.TabIndex = 22
         Me.lblBienvenida.Text = "Bienvenido, usuario"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.PictureBox1.BackgroundImage = Global.Atenea.My.Resources.Resources.Logo
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(17, 474)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(175, 175)
+        Me.PictureBox1.TabIndex = 17
+        Me.PictureBox1.TabStop = False
         '
         'frmMain
         '
