@@ -22,19 +22,11 @@ Partial Class frmPrestamos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrestamos))
         Me.btnCambiarFecha = New System.Windows.Forms.Button()
         Me.btnLibroDevuelto = New System.Windows.Forms.Button()
         Me.btnImprimir = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.clmnUsuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmnFuncionario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmnNombreLibro = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmnID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmnFechaPrestamo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clmnFechaDevolucion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.planilla = New System.Windows.Forms.ListView()
         Me.SuspendLayout()
         '
         'btnCambiarFecha
@@ -91,67 +83,21 @@ Partial Class frmPrestamos
         Me.btnImprimir.Text = "Imprimir detalles de préstamo"
         Me.btnImprimir.UseVisualStyleBackColor = False
         '
-        'DataGridView1
+        'planilla
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GrayText
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clmnUsuario, Me.clmnFuncionario, Me.clmnNombreLibro, Me.clmnID, Me.clmnFechaPrestamo, Me.clmnFechaDevolucion})
-        Me.DataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.DataGridView1.Location = New System.Drawing.Point(277, 12)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        Me.DataGridView1.Size = New System.Drawing.Size(629, 412)
-        Me.DataGridView1.TabIndex = 8
-        '
-        'clmnUsuario
-        '
-        Me.clmnUsuario.HeaderText = "Usuario"
-        Me.clmnUsuario.Name = "clmnUsuario"
-        Me.clmnUsuario.ReadOnly = True
-        Me.clmnUsuario.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'clmnFuncionario
-        '
-        Me.clmnFuncionario.HeaderText = "Funcionario"
-        Me.clmnFuncionario.Name = "clmnFuncionario"
-        Me.clmnFuncionario.ReadOnly = True
-        '
-        'clmnNombreLibro
-        '
-        Me.clmnNombreLibro.HeaderText = "Nombre del Libro"
-        Me.clmnNombreLibro.Name = "clmnNombreLibro"
-        Me.clmnNombreLibro.ReadOnly = True
-        '
-        'clmnID
-        '
-        Me.clmnID.HeaderText = "ID del Libro"
-        Me.clmnID.Name = "clmnID"
-        Me.clmnID.ReadOnly = True
-        '
-        'clmnFechaPrestamo
-        '
-        Me.clmnFechaPrestamo.HeaderText = "Fecha de Préstamo"
-        Me.clmnFechaPrestamo.Name = "clmnFechaPrestamo"
-        Me.clmnFechaPrestamo.ReadOnly = True
-        Me.clmnFechaPrestamo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'clmnFechaDevolucion
-        '
-        Me.clmnFechaDevolucion.DividerWidth = 10
-        Me.clmnFechaDevolucion.HeaderText = "Fecha de Devolución"
-        Me.clmnFechaDevolucion.Name = "clmnFechaDevolucion"
-        Me.clmnFechaDevolucion.ReadOnly = True
-        Me.clmnFechaDevolucion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.planilla.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.planilla.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.planilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.planilla.ForeColor = System.Drawing.Color.White
+        Me.planilla.FullRowSelect = True
+        Me.planilla.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.planilla.Location = New System.Drawing.Point(263, 12)
+        Me.planilla.Margin = New System.Windows.Forms.Padding(0)
+        Me.planilla.MultiSelect = False
+        Me.planilla.Name = "planilla"
+        Me.planilla.Size = New System.Drawing.Size(643, 412)
+        Me.planilla.TabIndex = 9
+        Me.planilla.UseCompatibleStateImageBehavior = False
         '
         'frmPrestamos
         '
@@ -159,7 +105,7 @@ Partial Class frmPrestamos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(918, 436)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.planilla)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.btnLibroDevuelto)
         Me.Controls.Add(Me.btnCambiarFecha)
@@ -168,18 +114,11 @@ Partial Class frmPrestamos
         Me.Name = "frmPrestamos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Préstamos en curso · Atenea"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents btnCambiarFecha As System.Windows.Forms.Button
     Friend WithEvents btnLibroDevuelto As System.Windows.Forms.Button
     Friend WithEvents btnImprimir As System.Windows.Forms.Button
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents clmnUsuario As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmnFuncionario As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmnNombreLibro As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmnID As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmnFechaPrestamo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents clmnFechaDevolucion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents planilla As System.Windows.Forms.ListView
 End Class

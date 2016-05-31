@@ -8,6 +8,10 @@
         panelLibros.Controls.Add(x)
 
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
+
+        Dim ventanaNick As frmNickUsuario = New frmNickUsuario()
+        ventanaNick.ShowDialog(Me)
+
     End Sub
 
     Private Sub x(sender As Object, e As EventArgs) Handles radioGenero.CheckedChanged

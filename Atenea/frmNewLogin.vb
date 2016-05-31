@@ -26,4 +26,8 @@
     Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
         Atenea.agregarRegistro()
     End Sub
+
+    Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
+        Atenea.agregarAtenea()
+    End Sub
 End Class
