@@ -35,6 +35,8 @@ Partial Class frmAgregarLibro
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.chkHabilitado = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'txtAutor
@@ -127,7 +129,7 @@ Partial Class frmAgregarLibro
         Me.btnCambiarPortada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCambiarPortada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCambiarPortada.ForeColor = System.Drawing.Color.White
-        Me.btnCambiarPortada.Location = New System.Drawing.Point(29, 213)
+        Me.btnCambiarPortada.Location = New System.Drawing.Point(35, 251)
         Me.btnCambiarPortada.Name = "btnCambiarPortada"
         Me.btnCambiarPortada.Size = New System.Drawing.Size(150, 33)
         Me.btnCambiarPortada.TabIndex = 4
@@ -145,7 +147,7 @@ Partial Class frmAgregarLibro
         Me.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar.Location = New System.Drawing.Point(288, 296)
+        Me.btnAgregar.Location = New System.Drawing.Point(288, 359)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(84, 33)
         Me.btnAgregar.TabIndex = 5
@@ -163,7 +165,7 @@ Partial Class frmAgregarLibro
         Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
-        Me.btnCancelar.Location = New System.Drawing.Point(378, 296)
+        Me.btnCancelar.Location = New System.Drawing.Point(377, 359)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(84, 33)
         Me.btnCancelar.TabIndex = 6
@@ -177,18 +179,43 @@ Partial Class frmAgregarLibro
         Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkHabilitado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.chkHabilitado.ForeColor = System.Drawing.Color.White
-        Me.chkHabilitado.Location = New System.Drawing.Point(29, 186)
+        Me.chkHabilitado.Location = New System.Drawing.Point(64, 230)
         Me.chkHabilitado.Name = "chkHabilitado"
         Me.chkHabilitado.Size = New System.Drawing.Size(93, 21)
         Me.chkHabilitado.TabIndex = 7
         Me.chkHabilitado.Text = "Disponible"
         Me.chkHabilitado.UseVisualStyleBackColor = True
+        Me.chkHabilitado.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(268, 285)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(118, 20)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "Estado del libro"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownWidth = 140
+        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(268, 309)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(194, 28)
+        Me.ComboBox1.TabIndex = 9
         '
         'frmAgregarLibro
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(483, 340)
+        Me.ClientSize = New System.Drawing.Size(486, 404)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.chkHabilitado)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
@@ -224,4 +251,6 @@ Partial Class frmAgregarLibro
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents chkHabilitado As System.Windows.Forms.CheckBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
 End Class
