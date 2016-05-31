@@ -48,7 +48,7 @@ Partial Class frmPrestamos
         Me.btnCambiarFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCambiarFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCambiarFecha.ForeColor = System.Drawing.Color.White
-        Me.btnCambiarFecha.Location = New System.Drawing.Point(29, 308)
+        Me.btnCambiarFecha.Location = New System.Drawing.Point(21, 304)
         Me.btnCambiarFecha.Name = "btnCambiarFecha"
         Me.btnCambiarFecha.Size = New System.Drawing.Size(230, 44)
         Me.btnCambiarFecha.TabIndex = 5
@@ -66,7 +66,7 @@ Partial Class frmPrestamos
         Me.btnLibroDevuelto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLibroDevuelto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLibroDevuelto.ForeColor = System.Drawing.Color.White
-        Me.btnLibroDevuelto.Location = New System.Drawing.Point(29, 245)
+        Me.btnLibroDevuelto.Location = New System.Drawing.Point(21, 241)
         Me.btnLibroDevuelto.Name = "btnLibroDevuelto"
         Me.btnLibroDevuelto.Size = New System.Drawing.Size(230, 44)
         Me.btnLibroDevuelto.TabIndex = 6
@@ -84,7 +84,7 @@ Partial Class frmPrestamos
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImprimir.ForeColor = System.Drawing.Color.White
-        Me.btnImprimir.Location = New System.Drawing.Point(29, 367)
+        Me.btnImprimir.Location = New System.Drawing.Point(21, 363)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(230, 45)
         Me.btnImprimir.TabIndex = 7

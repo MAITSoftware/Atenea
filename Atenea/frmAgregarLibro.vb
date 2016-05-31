@@ -2,7 +2,7 @@
 
     Dim previewLibro As New Libro("Preview", True)
     Private Sub frmAgregarLibro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        previewLibro.Location = New Point(35, 60)
+        previewLibro.Location = New Point(28, 10)
         Me.Controls.Add(previewLibro)
     End Sub
 
@@ -18,4 +18,7 @@
         previewLibro.imgNoDisponible_Click(previewLibro.imgNoDisponible, Nothing)
     End Sub
 
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+
+    End Sub
 End Class
