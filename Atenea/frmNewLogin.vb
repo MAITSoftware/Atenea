@@ -23,4 +23,7 @@
         End If
     End Sub
 
+    Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
+        Atenea.agregarRegistro()
+    End Sub
 End Class

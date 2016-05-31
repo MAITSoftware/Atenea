@@ -113,11 +113,11 @@ Partial Class frmNewLogin
         Me.lblNuevoUsuario.AutoSize = True
         Me.lblNuevoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.lblNuevoUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblNuevoUsuario.Location = New System.Drawing.Point(322, 335)
+        Me.lblNuevoUsuario.Location = New System.Drawing.Point(296, 335)
         Me.lblNuevoUsuario.Name = "lblNuevoUsuario"
-        Me.lblNuevoUsuario.Size = New System.Drawing.Size(128, 20)
+        Me.lblNuevoUsuario.Size = New System.Drawing.Size(154, 20)
         Me.lblNuevoUsuario.TabIndex = 1
-        Me.lblNuevoUsuario.Text = "¿Nuevo usuario?"
+        Me.lblNuevoUsuario.Text = "¿Nuevo funcionario?"
         Me.lblNuevoUsuario.Visible = False
         '
         'btnRegistrarse

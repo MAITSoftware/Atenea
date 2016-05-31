@@ -31,8 +31,9 @@ Partial Class frmNewRegistro
         Me.lblCI = New System.Windows.Forms.Label()
         Me.txtContrasenia = New System.Windows.Forms.TextBox()
         Me.lblContrasenia = New System.Windows.Forms.Label()
-        Me.btnRegistrarse = New System.Windows.Forms.Button()
         Me.imgLogo = New System.Windows.Forms.PictureBox()
+        Me.btnRegistrarse = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,7 +42,7 @@ Partial Class frmNewRegistro
         Me.lblRegistro.AutoSize = True
         Me.lblRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRegistro.ForeColor = System.Drawing.Color.White
-        Me.lblRegistro.Location = New System.Drawing.Point(157, 23)
+        Me.lblRegistro.Location = New System.Drawing.Point(148, 23)
         Me.lblRegistro.Name = "lblRegistro"
         Me.lblRegistro.Size = New System.Drawing.Size(304, 33)
         Me.lblRegistro.TabIndex = 1
@@ -52,7 +53,7 @@ Partial Class frmNewRegistro
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.White
-        Me.lblNombre.Location = New System.Drawing.Point(329, 117)
+        Me.lblNombre.Location = New System.Drawing.Point(356, 74)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(79, 24)
         Me.lblNombre.TabIndex = 5
@@ -61,19 +62,19 @@ Partial Class frmNewRegistro
         'txtNombre
         '
         Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtNombre.Location = New System.Drawing.Point(459, 113)
-        Me.txtNombre.Multiline = True
+        Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombre.Location = New System.Drawing.Point(356, 102)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(158, 28)
+        Me.txtNombre.Size = New System.Drawing.Size(158, 24)
         Me.txtNombre.TabIndex = 6
         '
         'txtApellido
         '
         Me.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtApellido.Location = New System.Drawing.Point(459, 179)
-        Me.txtApellido.Multiline = True
+        Me.txtApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtApellido.Location = New System.Drawing.Point(356, 158)
         Me.txtApellido.Name = "txtApellido"
-        Me.txtApellido.Size = New System.Drawing.Size(158, 28)
+        Me.txtApellido.Size = New System.Drawing.Size(158, 24)
         Me.txtApellido.TabIndex = 8
         '
         'lblApellido
@@ -81,7 +82,7 @@ Partial Class frmNewRegistro
         Me.lblApellido.AutoSize = True
         Me.lblApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApellido.ForeColor = System.Drawing.Color.White
-        Me.lblApellido.Location = New System.Drawing.Point(329, 183)
+        Me.lblApellido.Location = New System.Drawing.Point(356, 130)
         Me.lblApellido.Name = "lblApellido"
         Me.lblApellido.Size = New System.Drawing.Size(79, 24)
         Me.lblApellido.TabIndex = 7
@@ -90,10 +91,10 @@ Partial Class frmNewRegistro
         'txtCI
         '
         Me.txtCI.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtCI.Location = New System.Drawing.Point(459, 248)
-        Me.txtCI.Multiline = True
+        Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCI.Location = New System.Drawing.Point(356, 214)
         Me.txtCI.Name = "txtCI"
-        Me.txtCI.Size = New System.Drawing.Size(158, 28)
+        Me.txtCI.Size = New System.Drawing.Size(158, 24)
         Me.txtCI.TabIndex = 10
         '
         'lblCI
@@ -101,7 +102,7 @@ Partial Class frmNewRegistro
         Me.lblCI.AutoSize = True
         Me.lblCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCI.ForeColor = System.Drawing.Color.White
-        Me.lblCI.Location = New System.Drawing.Point(329, 252)
+        Me.lblCI.Location = New System.Drawing.Point(356, 186)
         Me.lblCI.Name = "lblCI"
         Me.lblCI.Size = New System.Drawing.Size(27, 24)
         Me.lblCI.TabIndex = 9
@@ -110,22 +111,34 @@ Partial Class frmNewRegistro
         'txtContrasenia
         '
         Me.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtContrasenia.Location = New System.Drawing.Point(459, 310)
-        Me.txtContrasenia.Multiline = True
+        Me.txtContrasenia.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContrasenia.Location = New System.Drawing.Point(356, 270)
         Me.txtContrasenia.Name = "txtContrasenia"
-        Me.txtContrasenia.Size = New System.Drawing.Size(158, 28)
+        Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
         Me.txtContrasenia.TabIndex = 12
+        Me.txtContrasenia.UseSystemPasswordChar = True
         '
         'lblContrasenia
         '
         Me.lblContrasenia.AutoSize = True
         Me.lblContrasenia.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblContrasenia.ForeColor = System.Drawing.Color.White
-        Me.lblContrasenia.Location = New System.Drawing.Point(329, 314)
+        Me.lblContrasenia.Location = New System.Drawing.Point(356, 242)
         Me.lblContrasenia.Name = "lblContrasenia"
         Me.lblContrasenia.Size = New System.Drawing.Size(106, 24)
         Me.lblContrasenia.TabIndex = 11
         Me.lblContrasenia.Text = "Contraseña"
+        '
+        'imgLogo
+        '
+        Me.imgLogo.Image = Global.Atenea.My.Resources.Resources.Logo
+        Me.imgLogo.Location = New System.Drawing.Point(32, 84)
+        Me.imgLogo.Margin = New System.Windows.Forms.Padding(0)
+        Me.imgLogo.Name = "imgLogo"
+        Me.imgLogo.Size = New System.Drawing.Size(250, 250)
+        Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.imgLogo.TabIndex = 4
+        Me.imgLogo.TabStop = False
         '
         'btnRegistrarse
         '
@@ -136,32 +149,38 @@ Partial Class frmNewRegistro
         Me.btnRegistrarse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.btnRegistrarse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRegistrarse.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegistrarse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.btnRegistrarse.ForeColor = System.Drawing.Color.White
-        Me.btnRegistrarse.Location = New System.Drawing.Point(395, 369)
+        Me.btnRegistrarse.Location = New System.Drawing.Point(310, 310)
         Me.btnRegistrarse.Name = "btnRegistrarse"
-        Me.btnRegistrarse.Size = New System.Drawing.Size(118, 38)
-        Me.btnRegistrarse.TabIndex = 13
+        Me.btnRegistrarse.Size = New System.Drawing.Size(116, 32)
+        Me.btnRegistrarse.TabIndex = 15
         Me.btnRegistrarse.Text = "Registrarse"
         Me.btnRegistrarse.UseVisualStyleBackColor = False
         '
-        'imgLogo
+        'btnCancelar
         '
-        Me.imgLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.imgLogo.Image = Global.Atenea.My.Resources.Resources.Logo
-        Me.imgLogo.Location = New System.Drawing.Point(20, 92)
-        Me.imgLogo.Margin = New System.Windows.Forms.Padding(0)
-        Me.imgLogo.Name = "imgLogo"
-        Me.imgLogo.Size = New System.Drawing.Size(287, 298)
-        Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.imgLogo.TabIndex = 4
-        Me.imgLogo.TabStop = False
+        Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCancelar.FlatAppearance.BorderSize = 2
+        Me.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.Location = New System.Drawing.Point(444, 310)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(116, 32)
+        Me.btnCancelar.TabIndex = 16
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'frmNewRegistro
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.BackColor = System.Drawing.Color.Transparent
+        Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnRegistrarse)
         Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.lblContrasenia)
@@ -174,7 +193,7 @@ Partial Class frmNewRegistro
         Me.Controls.Add(Me.imgLogo)
         Me.Controls.Add(Me.lblRegistro)
         Me.Name = "frmNewRegistro"
-        Me.Size = New System.Drawing.Size(630, 430)
+        Me.Size = New System.Drawing.Size(600, 380)
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -191,5 +210,6 @@ Partial Class frmNewRegistro
     Friend WithEvents txtContrasenia As System.Windows.Forms.TextBox
     Friend WithEvents lblContrasenia As System.Windows.Forms.Label
     Friend WithEvents btnRegistrarse As System.Windows.Forms.Button
+    Friend WithEvents btnCancelar As System.Windows.Forms.Button
 
 End Class
