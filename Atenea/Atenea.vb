@@ -2,7 +2,7 @@
 Public Class Atenea
 
     Dim atenea As frmMain
-    Dim login As frmLogin
+    Dim login As frmNewLogin
 
     Friend conexion As New MySqlConnection("server=kuckuck.treehouse.su;uid=agustina;password=agustina;database=Atenea")
 
@@ -20,10 +20,10 @@ Public Class Atenea
 
     Public Sub agregarLogin()
         Me.Controls.Clear()
-        Me.Width = 410
-        Me.Height = 383
+        Me.Width = 610
+        Me.Height = 420
         Centrar()
-        login = New frmLogin()
+        login = New frmNewLogin()
         Me.Controls.Add(login)
 
     End Sub

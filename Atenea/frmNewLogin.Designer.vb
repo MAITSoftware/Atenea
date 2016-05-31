@@ -39,9 +39,10 @@ Partial Class frmNewLogin
         'lblBienvenido
         '
         Me.lblBienvenido.AutoSize = True
+        Me.lblBienvenido.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.lblBienvenido.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBienvenido.ForeColor = System.Drawing.Color.White
-        Me.lblBienvenido.Location = New System.Drawing.Point(157, 23)
+        Me.lblBienvenido.Location = New System.Drawing.Point(155, 23)
         Me.lblBienvenido.Name = "lblBienvenido"
         Me.lblBienvenido.Size = New System.Drawing.Size(282, 33)
         Me.lblBienvenido.TabIndex = 0
@@ -52,7 +53,7 @@ Partial Class frmNewLogin
         Me.lblCI.AutoSize = True
         Me.lblCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCI.ForeColor = System.Drawing.Color.White
-        Me.lblCI.Location = New System.Drawing.Point(403, 152)
+        Me.lblCI.Location = New System.Drawing.Point(391, 149)
         Me.lblCI.Name = "lblCI"
         Me.lblCI.Size = New System.Drawing.Size(120, 24)
         Me.lblCI.TabIndex = 1
@@ -61,10 +62,10 @@ Partial Class frmNewLogin
         'txtICI
         '
         Me.txtICI.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtICI.Location = New System.Drawing.Point(386, 188)
-        Me.txtICI.Multiline = True
+        Me.txtICI.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtICI.Location = New System.Drawing.Point(372, 176)
         Me.txtICI.Name = "txtICI"
-        Me.txtICI.Size = New System.Drawing.Size(158, 28)
+        Me.txtICI.Size = New System.Drawing.Size(158, 24)
         Me.txtICI.TabIndex = 2
         '
         'lblContrasenia
@@ -72,20 +73,22 @@ Partial Class frmNewLogin
         Me.lblContrasenia.AutoSize = True
         Me.lblContrasenia.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblContrasenia.ForeColor = System.Drawing.Color.White
-        Me.lblContrasenia.Location = New System.Drawing.Point(368, 231)
+        Me.lblContrasenia.Location = New System.Drawing.Point(353, 201)
         Me.lblContrasenia.Name = "lblContrasenia"
         Me.lblContrasenia.Size = New System.Drawing.Size(196, 24)
         Me.lblContrasenia.TabIndex = 1
         Me.lblContrasenia.Text = "Ingrese su contraseña"
+        Me.lblContrasenia.Visible = False
         '
         'txtContrasenia
         '
         Me.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtContrasenia.Location = New System.Drawing.Point(386, 267)
-        Me.txtContrasenia.Multiline = True
+        Me.txtContrasenia.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContrasenia.Location = New System.Drawing.Point(372, 228)
         Me.txtContrasenia.Name = "txtContrasenia"
-        Me.txtContrasenia.Size = New System.Drawing.Size(158, 28)
+        Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
         Me.txtContrasenia.TabIndex = 2
+        Me.txtContrasenia.Visible = False
         '
         'btnEntrar
         '
@@ -98,7 +101,7 @@ Partial Class frmNewLogin
         Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEntrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.White
-        Me.btnEntrar.Location = New System.Drawing.Point(407, 313)
+        Me.btnEntrar.Location = New System.Drawing.Point(393, 232)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(116, 32)
         Me.btnEntrar.TabIndex = 7
@@ -108,11 +111,11 @@ Partial Class frmNewLogin
         'lblNuevoUsuario
         '
         Me.lblNuevoUsuario.AutoSize = True
-        Me.lblNuevoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNuevoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.lblNuevoUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblNuevoUsuario.Location = New System.Drawing.Point(319, 377)
+        Me.lblNuevoUsuario.Location = New System.Drawing.Point(322, 335)
         Me.lblNuevoUsuario.Name = "lblNuevoUsuario"
-        Me.lblNuevoUsuario.Size = New System.Drawing.Size(153, 24)
+        Me.lblNuevoUsuario.Size = New System.Drawing.Size(128, 20)
         Me.lblNuevoUsuario.TabIndex = 1
         Me.lblNuevoUsuario.Text = "¿Nuevo usuario?"
         Me.lblNuevoUsuario.Visible = False
@@ -126,21 +129,22 @@ Partial Class frmNewLogin
         Me.btnRegistrarse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.btnRegistrarse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRegistrarse.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegistrarse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.btnRegistrarse.ForeColor = System.Drawing.Color.White
-        Me.btnRegistrarse.Location = New System.Drawing.Point(491, 374)
+        Me.btnRegistrarse.Location = New System.Drawing.Point(456, 329)
         Me.btnRegistrarse.Name = "btnRegistrarse"
         Me.btnRegistrarse.Size = New System.Drawing.Size(116, 32)
         Me.btnRegistrarse.TabIndex = 7
         Me.btnRegistrarse.Text = "Registrarse"
         Me.btnRegistrarse.UseVisualStyleBackColor = False
+        Me.btnRegistrarse.Visible = False
         '
         'rbtnFuncionario
         '
         Me.rbtnFuncionario.AutoSize = True
         Me.rbtnFuncionario.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rbtnFuncionario.ForeColor = System.Drawing.Color.White
-        Me.rbtnFuncionario.Location = New System.Drawing.Point(478, 92)
+        Me.rbtnFuncionario.Location = New System.Drawing.Point(443, 84)
         Me.rbtnFuncionario.Name = "rbtnFuncionario"
         Me.rbtnFuncionario.Size = New System.Drawing.Size(129, 28)
         Me.rbtnFuncionario.TabIndex = 8
@@ -153,7 +157,7 @@ Partial Class frmNewLogin
         Me.rbtnUsuario.Checked = True
         Me.rbtnUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rbtnUsuario.ForeColor = System.Drawing.Color.White
-        Me.rbtnUsuario.Location = New System.Drawing.Point(358, 92)
+        Me.rbtnUsuario.Location = New System.Drawing.Point(326, 84)
         Me.rbtnUsuario.Name = "rbtnUsuario"
         Me.rbtnUsuario.Size = New System.Drawing.Size(92, 28)
         Me.rbtnUsuario.TabIndex = 8
@@ -163,21 +167,19 @@ Partial Class frmNewLogin
         '
         'imgLogo
         '
-        Me.imgLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.imgLogo.Image = Global.Atenea.My.Resources.Resources.Logo
-        Me.imgLogo.Location = New System.Drawing.Point(20, 92)
+        Me.imgLogo.Location = New System.Drawing.Point(32, 84)
         Me.imgLogo.Margin = New System.Windows.Forms.Padding(0)
         Me.imgLogo.Name = "imgLogo"
-        Me.imgLogo.Size = New System.Drawing.Size(287, 298)
+        Me.imgLogo.Size = New System.Drawing.Size(250, 250)
         Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.imgLogo.TabIndex = 3
         Me.imgLogo.TabStop = False
         '
         'frmNewLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.BackColor = System.Drawing.Color.Transparent
         Me.Controls.Add(Me.rbtnUsuario)
         Me.Controls.Add(Me.rbtnFuncionario)
         Me.Controls.Add(Me.btnRegistrarse)
@@ -190,7 +192,7 @@ Partial Class frmNewLogin
         Me.Controls.Add(Me.lblCI)
         Me.Controls.Add(Me.lblBienvenido)
         Me.Name = "frmNewLogin"
-        Me.Size = New System.Drawing.Size(630, 430)
+        Me.Size = New System.Drawing.Size(600, 380)
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

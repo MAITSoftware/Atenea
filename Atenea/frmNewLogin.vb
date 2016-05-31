@@ -1,42 +1,26 @@
 ﻿Public Class frmNewLogin
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblBienvenido.Click
-
-    End Sub
-
-    Private Sub lblContrasenia_Click(sender As Object, e As EventArgs) Handles lblContrasenia.Click, lblNuevoUsuario.Click
-
-    End Sub
-
-    Private Sub rbtnUsuario_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnUsuario.CheckedChanged
-    
-    End Sub
-
     Private Sub rbtnFuncionario_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnFuncionario.CheckedChanged
         If rbtnFuncionario.Checked Then
             lblContrasenia.Visible = True
             txtContrasenia.Visible = True
-            btnEntrar.Visible = True
             lblNuevoUsuario.Visible = True
+            btnRegistrarse.Visible = True
+
+            lblCI.Location = New Point(391, 128)
+            txtICI.Location = New Point(372, 155)
+            btnEntrar.Location = New Point(393, 284)
         Else
             lblContrasenia.Visible = False
             txtContrasenia.Visible = False
-            btnEntrar.Visible = False
             lblNuevoUsuario.Visible = False
+            btnRegistrarse.Visible = False
+
+            lblCI.Location = New Point(391, 149)
+            txtICI.Location = New Point(372, 176)
+            btnEntrar.Location = New Point(393, 232)
+
         End If
     End Sub
-
-    Private Sub txtICI_TextChanged(sender As Object, e As EventArgs) Handles txtICI.TextChanged
-
-    End Sub
-
-    Private Sub txtContrasenia_TextChanged(sender As Object, e As EventArgs) Handles txtContrasenia.TextChanged
-
-    End Sub
-
-    Private Sub user_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
 
 End Class
