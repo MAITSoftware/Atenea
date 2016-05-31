@@ -4,7 +4,7 @@ Public Class Atenea
     Dim atenea As frmMain
     Dim login As frmLogin
 
-    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
+    Friend conexion As New MySqlConnection("server=kuckuck.treehouse.su;uid=agustina;password=agustina;database=Atenea")
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try

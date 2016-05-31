@@ -18,6 +18,9 @@
 
     Private Sub btnAgregar_temporal_Click(sender As Object, e As EventArgs) Handles btnAgregar_temporal.Click
         btnAgregarLibro.PerformClick()
+        Dim frm As New frmAgregarLibro()
+        frm.ShowDialog(Me)
+
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -31,4 +34,8 @@
         frm.ShowDialog(Me)
     End Sub
 
+    Private Sub btnPrestamos_Click(sender As Object, e As EventArgs) Handles btnPrestamos.Click
+        Dim frm As New frmPrestamos()
+        frm.ShowDialog(Me)
+    End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class frmAgregarLibro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarLibro))
         Me.txtAutor = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
@@ -200,7 +201,8 @@ Partial Class frmAgregarLibro
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtAutor)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAgregarLibro"

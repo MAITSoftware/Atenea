@@ -169,4 +169,7 @@ Public Class frmLogin
         End If
     End Sub
 
+    Private Sub lblBienvenido_Click(sender As Object, e As EventArgs) Handles lblBienvenido.Click
+
+    End Sub
 End Class

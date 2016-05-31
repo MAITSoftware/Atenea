@@ -46,11 +46,14 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -71,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmPrestamos.Designer.vb">
+      <DependentUpon>frmPrestamos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestamos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAgregarLibro.Designer.vb">
       <DependentUpon>frmAgregarLibro.vb</DependentUpon>
     </Compile>
@@ -119,6 +128,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmPrestamos.resx">
+      <DependentUpon>frmPrestamos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarLibro.resx">
       <DependentUpon>frmAgregarLibro.vb</DependentUpon>
     </EmbeddedResource>
