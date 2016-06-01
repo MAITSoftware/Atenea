@@ -5,7 +5,8 @@ Public Class Atenea
     Dim login As frmNewLogin
     Dim registro As frmNewRegistro
 
-    Friend conexion As New MySqlConnection("server=kuckuck.treehouse.su;uid=agustina;password=agustina;database=Atenea")
+    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
+    Friend reader As MySqlDataReader
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -41,8 +42,7 @@ Public Class Atenea
         Me.Controls.Add(registro)
     End Sub
 
-    Public Sub agregarAtenea()
-
+    Public Sub agregarAtenea(ByVal CI As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal funcionario As Boolean = False)
         Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.Controls.Clear()
         Me.Text = "Atenea"
@@ -50,7 +50,8 @@ Public Class Atenea
         Me.Height = 700
         Centrar()
 
-        atenea = New frmMain()
+        atenea = New frmMain(CI, primeraVez, funcionario)
+
         Me.Controls.Add(atenea)
 
         Me.Cursor = System.Windows.Forms.Cursors.Arrow

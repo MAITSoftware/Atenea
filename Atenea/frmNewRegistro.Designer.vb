@@ -34,6 +34,7 @@ Partial Class frmNewRegistro
         Me.imgLogo = New System.Windows.Forms.PictureBox()
         Me.btnRegistrarse = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.lblInfo = New System.Windows.Forms.Label()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -144,6 +145,7 @@ Partial Class frmNewRegistro
         '
         Me.btnRegistrarse.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnRegistrarse.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRegistrarse.Enabled = False
         Me.btnRegistrarse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnRegistrarse.FlatAppearance.BorderSize = 2
         Me.btnRegistrarse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -176,10 +178,23 @@ Partial Class frmNewRegistro
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
+        'lblInfo
+        '
+        Me.lblInfo.AutoSize = True
+        Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfo.ForeColor = System.Drawing.Color.Red
+        Me.lblInfo.Location = New System.Drawing.Point(394, 186)
+        Me.lblInfo.Name = "lblInfo"
+        Me.lblInfo.Size = New System.Drawing.Size(104, 24)
+        Me.lblInfo.TabIndex = 17
+        Me.lblInfo.Text = "-- En uso --"
+        Me.lblInfo.Visible = False
+        '
         'frmNewRegistro
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Transparent
+        Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnRegistrarse)
         Me.Controls.Add(Me.txtContrasenia)
@@ -211,5 +226,6 @@ Partial Class frmNewRegistro
     Friend WithEvents lblContrasenia As System.Windows.Forms.Label
     Friend WithEvents btnRegistrarse As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
+    Friend WithEvents lblInfo As System.Windows.Forms.Label
 
 End Class
