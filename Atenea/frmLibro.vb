@@ -31,6 +31,7 @@ Public Class Libro
         Atenea.reader = cmd.ExecuteReader()
 
         While Atenea.reader.Read()
+            lblTitulo.Text = Atenea.reader.GetString(0)
             tooltip.SetToolTip(imgNoDisponible, "Título: " & Atenea.reader.GetString(0) & ControlChars.NewLine &
                                                 "Autor: " & Atenea.reader.GetString(1) & ControlChars.NewLine &
                                                 "Género: " & Atenea.reader.GetString(3) & ControlChars.NewLine &
