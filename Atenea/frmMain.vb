@@ -1,14 +1,12 @@
-﻿Public Class frmMain
+﻿Imports MySql.Data.MySqlClient
+Public Class frmMain
 
     Dim pedirNick As Boolean
     Dim interfazFuncionario As Boolean
     Dim CI As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' panelLibros.Controls.Remove(lblNoDisponibles)
-        ' panelLibros.Controls.Remove(btnAgregar_temporal)
-        ' Dim x As New Libro("book123", False)
-        ' panelLibros.Controls.Add(x)
+        cargarLibros()
 
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
 
@@ -21,6 +19,29 @@
             btnAgregarLibro.Visible = False
             btnAgregar_temporal.Visible = False
         End If
+
+    End Sub
+
+    Public Sub cargarLibros()
+        Dim sentencia As String = "SELECT `ID` FROM `libro`;"
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
+
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion)
+        Atenea.reader = cmd.ExecuteReader()
+
+        While Atenea.reader.Read()
+            panelLibros.Controls.Remove(lblNoDisponibles)
+            panelLibros.Controls.Remove(btnAgregar_temporal)
+            Dim x As New Libro(Atenea.reader.GetString(0), False)
+            panelLibros.Controls.Add(x)
+        End While
+
+        For Each Libro In panelLibros.Controls
+            Libro.actualizarDatos()
+        Next
 
     End Sub
 
