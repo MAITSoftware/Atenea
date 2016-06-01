@@ -75,4 +75,12 @@ Public Class Libro
             imgPortada.BackgroundImage = portada
         End If
     End Sub
+
+    Private Sub imgBorde_Enter(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseLeave
+        imgBorde.BackgroundImage = My.Resources.borde()
+    End Sub
+
+    Private Sub imgBorde_Leave(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseEnter
+        imgBorde.BackgroundImage = My.Resources.borde_hover()
+    End Sub
 End Class
