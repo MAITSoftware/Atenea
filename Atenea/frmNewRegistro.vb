@@ -6,6 +6,11 @@ Public Class frmNewRegistro
     End Sub
 
     Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
+
         Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` VALUES ('{0}', '{1}', '{2}', '{3}', 'Funcionario');", txtCI.Text, txtNombre.Text, txtApellido.Text, txtContrasenia.Text), Atenea.conexion)
 
         Try
