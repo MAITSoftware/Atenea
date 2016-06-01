@@ -1,4 +1,5 @@
-﻿Public Class Libro
+﻿Imports MySql.Data.MySqlClient
+Public Class Libro
 
     Dim estaDisponible As Boolean = True
     Dim llaveLibro As String
@@ -8,33 +9,38 @@
     Dim fc As OpenFileDialog = New OpenFileDialog()
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        actualizarDatos()
         fc.Title = "Seleccionar portada"
         fc.Filter = "Archivos de mapa de bits (*.bmp, *.dib)|*.BMP;*.DIB;*.RLE|JPEG (*.jpg, *.jpeg, *.jpeg, *.jfif)|*.JPG;*.JPEG;*.JPE;*.JFIF|GIF (*.gif)|*.GIF|TIFF (*.tif, *.tiff)|*.TIF;*.TIFF|PNG (*.png)|*.PNG|Todos los archivos|*.*|Todos los archivos de imagen|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG"
         fc.FilterIndex = 7
         fc.RestoreDirectory = True
+
+        imgNoDisponible.BackgroundImage = Nothing
+        imgBorde.Cursor = Cursors.Hand
+        imgPortada.Parent = imgBorde
+        imgNoDisponible.Parent = imgPortada
     End Sub
 
     Public Sub actualizarDatos()
-        Dim bmpPortada As New Bitmap(My.Resources.Resources.Logo())
-        If estaDisponible Then
-            imgNoDisponible.BackgroundImage = Nothing
-            imgBorde.Cursor = Cursors.Hand
-        End If
+        Dim sentencia As String = String.Format("SELECT * FROM `libro` WHERE ID='{0}';", llaveLibro)
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
 
-        Dim string_disponible As String = "Disponible"
-        If Not estaDisponible Then
-            string_disponible = "No disponible"
-        End If
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion)
+        Atenea.reader = cmd.ExecuteReader()
 
-        imgPortada.BackgroundImage = bmpPortada
-        imgPortada.Parent = imgBorde
-        imgNoDisponible.Parent = imgPortada
+        While Atenea.reader.Read()
+            tooltip.SetToolTip(imgNoDisponible, "Título: " & Atenea.reader.GetString(0) & ControlChars.NewLine &
+                                                "Autor: " & Atenea.reader.GetString(1) & ControlChars.NewLine &
+                                                "Género: " & Atenea.reader.GetString(3) & ControlChars.NewLine &
+                                                "Condición: " & Atenea.reader.GetString(4) & ControlChars.NewLine &
+                                                "ID: " & Atenea.reader.GetString(5))
 
-        tooltip.SetToolTip(imgNoDisponible, "Título: Pepe" & ControlChars.NewLine &
-                                            "Autor: Peposo" & ControlChars.NewLine &
-                                            "Categoría: Novela" & ControlChars.NewLine &
-                                            "ID: 2837asd" & ControlChars.NewLine & string_disponible)
+            Dim byteImage() As Byte = Atenea.reader("Portada")
+            Dim foto As New System.IO.MemoryStream(byteImage)
+            imgPortada.BackgroundImage = Image.FromStream(foto)
+        End While
 
     End Sub
 
