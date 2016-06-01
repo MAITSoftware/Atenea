@@ -33,6 +33,7 @@ Partial Class frmNewLogin
         Me.rbtnFuncionario = New System.Windows.Forms.RadioButton()
         Me.rbtnUsuario = New System.Windows.Forms.RadioButton()
         Me.imgLogo = New System.Windows.Forms.PictureBox()
+        Me.lblInfo = New System.Windows.Forms.Label()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,12 +89,14 @@ Partial Class frmNewLogin
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
         Me.txtContrasenia.TabIndex = 2
+        Me.txtContrasenia.UseSystemPasswordChar = True
         Me.txtContrasenia.Visible = False
         '
         'btnEntrar
         '
         Me.btnEntrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEntrar.Enabled = False
         Me.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnEntrar.FlatAppearance.BorderSize = 2
         Me.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -176,10 +179,24 @@ Partial Class frmNewLogin
         Me.imgLogo.TabIndex = 3
         Me.imgLogo.TabStop = False
         '
+        'lblInfo
+        '
+        Me.lblInfo.AutoSize = True
+        Me.lblInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblInfo.ForeColor = System.Drawing.Color.White
+        Me.lblInfo.Location = New System.Drawing.Point(359, 259)
+        Me.lblInfo.Name = "lblInfo"
+        Me.lblInfo.Size = New System.Drawing.Size(184, 22)
+        Me.lblInfo.TabIndex = 9
+        Me.lblInfo.Text = "-- Datos incorrectos --"
+        Me.lblInfo.Visible = False
+        '
         'frmNewLogin
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Transparent
+        Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.rbtnUsuario)
         Me.Controls.Add(Me.rbtnFuncionario)
         Me.Controls.Add(Me.btnRegistrarse)
@@ -209,5 +226,6 @@ Partial Class frmNewLogin
     Friend WithEvents btnRegistrarse As System.Windows.Forms.Button
     Friend WithEvents rbtnFuncionario As System.Windows.Forms.RadioButton
     Friend WithEvents rbtnUsuario As System.Windows.Forms.RadioButton
+    Friend WithEvents lblInfo As System.Windows.Forms.Label
 
 End Class

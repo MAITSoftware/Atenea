@@ -1,7 +1,10 @@
 ﻿Public Class frmMain
 
+    Dim pedirNick As Boolean
+    Dim interfazFuncionario As Boolean
+    Dim CI As String
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        
         panelLibros.Controls.Remove(lblNoDisponibles)
         panelLibros.Controls.Remove(btnAgregar_temporal)
         Dim x As New Libro("book123", False)
@@ -9,8 +12,10 @@
 
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
 
-        Dim ventanaNick As frmNickUsuario = New frmNickUsuario()
-        ventanaNick.ShowDialog(Me)
+        If pedirNick Then
+            Dim ventanaNick As frmNickUsuario = New frmNickUsuario(CI)
+            ventanaNick.ShowDialog(Me)
+        End If
 
     End Sub
 
@@ -33,7 +38,6 @@
     End Sub
 
     Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click
-   
         Dim frm As New frmAgregarLibro()
         frm.ShowDialog(Me)
     End Sub
@@ -41,5 +45,12 @@
     Private Sub btnPrestamos_Click(sender As Object, e As EventArgs) Handles btnPrestamos.Click
         Dim frm As New frmPrestamos()
         frm.ShowDialog(Me)
+    End Sub
+
+    Public Sub New(ByVal ci_ As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal funcionario As Boolean = False)
+        InitializeComponent()
+        pedirNick = primeraVez
+        interfazFuncionario = funcionario
+        CI = ci_
     End Sub
 End Class
