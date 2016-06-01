@@ -24,6 +24,11 @@ Public Class frmMain
 
     Public Sub cargarLibros()
         Dim sentencia As String = "SELECT `ID` FROM `libro`;"
+
+        panelLibros.Controls.Clear()
+        panelLibros.Controls.Add(lblNoDisponibles)
+        panelLibros.Controls.Add(btnAgregar_temporal)
+
         Try
             Atenea.reader.Close()
         Catch ex As Exception
@@ -40,8 +45,13 @@ Public Class frmMain
         End While
 
         For Each Libro In panelLibros.Controls
-            Libro.actualizarDatos()
+            Try
+                Libro.actualizarDatos()
+            Catch ex As Exception
+            End Try
         Next
+
+        Atenea.reader.Close()
 
     End Sub
 

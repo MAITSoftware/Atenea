@@ -43,6 +43,7 @@ Partial Class Libro
         '
         'imgPortada
         '
+        Me.imgPortada.BackgroundImage = Global.Atenea.My.Resources.Resources.Logo
         Me.imgPortada.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.imgPortada.Location = New System.Drawing.Point(3, 2)
         Me.imgPortada.Margin = New System.Windows.Forms.Padding(0)
