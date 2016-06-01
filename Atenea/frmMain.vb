@@ -4,11 +4,14 @@ Public Class frmMain
     Dim pedirNick As Boolean
     Dim interfazFuncionario As Boolean
     Dim CI As String
+    Dim buscando As Boolean
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarLibros()
 
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
+
+        cboxGenero.SelectedIndex = 0
 
         If pedirNick Then
             Dim ventanaNick As frmNickUsuario = New frmNickUsuario(CI)
@@ -24,8 +27,24 @@ Public Class frmMain
 
     Public Sub cargarLibros()
         Dim sentencia As String = "SELECT `ID` FROM `libro`;"
+        If buscando Then
+            If radioNombre.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text)
+            ElseIf radioAutor.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text)
+            ElseIf radioID.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text)
+            End If
 
+            If chkGenero.Checked Then
+                sentencia += String.Format(" AND Genero='{0}';", cboxGenero.Text)
+            Else
+                sentencia += ";"
+            End If
+
+        End If
         panelLibros.Controls.Clear()
+        lblNoDisponibles.Text = "No hay libros disponibles"
         panelLibros.Controls.Add(lblNoDisponibles)
         panelLibros.Controls.Add(btnAgregar_temporal)
 
@@ -55,10 +74,13 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub x(sender As Object, e As EventArgs) Handles radioGenero.CheckedChanged
-        txtBusqueda.Text = "..."
-        txtBusqueda.Enabled = Not radioGenero.Checked
-        comboGenero.Enabled = radioGenero.Checked
+    Private Sub x(sender As Object, e As EventArgs) Handles chkGenero.CheckedChanged
+        cboxGenero.Enabled = chkGenero.Checked
+        cargarLibros()
+    End Sub
+
+    Private Sub y(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged
+        cargarLibros()
     End Sub
 
     Private Sub btnAgregar_temporal_Click(sender As Object, e As EventArgs) Handles btnAgregar_temporal.Click
@@ -85,5 +107,19 @@ Public Class frmMain
         pedirNick = primeraVez
         interfazFuncionario = funcionario
         CI = ci_
+    End Sub
+
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
+        buscando = True
+        If (String.IsNullOrWhiteSpace(txtBusqueda.Text) And Not chkGenero.Checked) Then
+            buscando = False
+        End If
+
+        cargarLibros()
+    End Sub
+
+    Private Sub cboxGenero_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxGenero.SelectedIndexChanged
+        buscando = True
+        cargarLibros()
     End Sub
 End Class
