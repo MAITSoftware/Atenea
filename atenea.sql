@@ -16,6 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Database `atenea`
+--
+DROP DATABASE IF EXISTS `atenea`;
+CREATE DATABASE `atenea`;
+USE `atenea`;
+
+--
 -- Table structure for table `libro`
 --
 
