@@ -43,6 +43,18 @@ Public Class Libro
             imgPortada.BackgroundImage = Image.FromStream(foto)
         End While
 
+        Atenea.reader.Close()
+
+        sentencia = String.Format("SELECT ID FROM Prestamo WHERE ID='{0}';", llaveLibro)
+        cmd = New MySqlCommand(sentencia, Atenea.conexion)
+        Atenea.reader = cmd.ExecuteReader()
+
+        While Atenea.reader.Read()
+            imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
+        End While
+
+        Atenea.reader.Close()
+
     End Sub
 
     Public Sub New(ByVal llaveLibro As String, ByVal preview_ As Boolean)
