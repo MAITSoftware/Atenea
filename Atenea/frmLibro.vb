@@ -16,9 +16,8 @@
     End Sub
 
     Public Sub actualizarDatos()
-        Dim bmpPortada As New Bitmap(My.Resources.Resources.Pintando())
+        Dim bmpPortada As New Bitmap(My.Resources.Resources.Logo())
         If estaDisponible Then
-            bmpPortada = New Bitmap(My.Resources.Resources.ignacio())
             imgNoDisponible.BackgroundImage = Nothing
             imgBorde.Cursor = Cursors.Hand
         End If

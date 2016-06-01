@@ -26,17 +26,17 @@ Partial Class frmAgregarLibro
         Me.txtAutor = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
-        Me.cboxCategoria = New System.Windows.Forms.ComboBox()
+        Me.cboxGenero = New System.Windows.Forms.ComboBox()
         Me.lblNombreLibro = New System.Windows.Forms.Label()
         Me.lblAutor = New System.Windows.Forms.Label()
-        Me.lblCategoria = New System.Windows.Forms.Label()
+        Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblID = New System.Windows.Forms.Label()
         Me.btnCambiarPortada = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.chkHabilitado = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.lblInfo = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtAutor
@@ -63,16 +63,19 @@ Partial Class frmAgregarLibro
         Me.txtID.Size = New System.Drawing.Size(194, 26)
         Me.txtID.TabIndex = 3
         '
-        'cboxCategoria
+        'cboxGenero
         '
-        Me.cboxCategoria.DropDownWidth = 140
-        Me.cboxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cboxCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboxCategoria.FormattingEnabled = True
-        Me.cboxCategoria.Location = New System.Drawing.Point(268, 179)
-        Me.cboxCategoria.Name = "cboxCategoria"
-        Me.cboxCategoria.Size = New System.Drawing.Size(194, 28)
-        Me.cboxCategoria.TabIndex = 2
+        Me.cboxGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxGenero.DropDownWidth = 140
+        Me.cboxGenero.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cboxGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxGenero.FormattingEnabled = True
+        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Ciencia", "Cuento", "Historia", "Moda", "Novela"})
+        Me.cboxGenero.Location = New System.Drawing.Point(268, 179)
+        Me.cboxGenero.Name = "cboxGenero"
+        Me.cboxGenero.Size = New System.Drawing.Size(194, 28)
+        Me.cboxGenero.Sorted = True
+        Me.cboxGenero.TabIndex = 2
         '
         'lblNombreLibro
         '
@@ -96,16 +99,16 @@ Partial Class frmAgregarLibro
         Me.lblAutor.TabIndex = 2
         Me.lblAutor.Text = "Autor"
         '
-        'lblCategoria
+        'lblGenero
         '
-        Me.lblCategoria.AutoSize = True
-        Me.lblCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblCategoria.ForeColor = System.Drawing.Color.White
-        Me.lblCategoria.Location = New System.Drawing.Point(268, 155)
-        Me.lblCategoria.Name = "lblCategoria"
-        Me.lblCategoria.Size = New System.Drawing.Size(78, 20)
-        Me.lblCategoria.TabIndex = 2
-        Me.lblCategoria.Text = "Categoría"
+        Me.lblGenero.AutoSize = True
+        Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblGenero.ForeColor = System.Drawing.Color.White
+        Me.lblGenero.Location = New System.Drawing.Point(268, 155)
+        Me.lblGenero.Name = "lblGenero"
+        Me.lblGenero.Size = New System.Drawing.Size(63, 20)
+        Me.lblGenero.TabIndex = 2
+        Me.lblGenero.Text = "Género"
         '
         'lblID
         '
@@ -140,6 +143,7 @@ Partial Class frmAgregarLibro
         '
         Me.btnAgregar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAgregar.Enabled = False
         Me.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnAgregar.FlatAppearance.BorderSize = 2
         Me.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -172,21 +176,6 @@ Partial Class frmAgregarLibro
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
-        'chkHabilitado
-        '
-        Me.chkHabilitado.AutoSize = True
-        Me.chkHabilitado.Checked = True
-        Me.chkHabilitado.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkHabilitado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.chkHabilitado.ForeColor = System.Drawing.Color.White
-        Me.chkHabilitado.Location = New System.Drawing.Point(64, 230)
-        Me.chkHabilitado.Name = "chkHabilitado"
-        Me.chkHabilitado.Size = New System.Drawing.Size(93, 21)
-        Me.chkHabilitado.TabIndex = 7
-        Me.chkHabilitado.Text = "Disponible"
-        Me.chkHabilitado.UseVisualStyleBackColor = True
-        Me.chkHabilitado.Visible = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -200,31 +189,45 @@ Partial Class frmAgregarLibro
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.DropDownWidth = 140
         Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Buen estado", "Regular", "Mal estado"})
         Me.ComboBox1.Location = New System.Drawing.Point(268, 309)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(194, 28)
         Me.ComboBox1.TabIndex = 9
+        '
+        'lblInfo
+        '
+        Me.lblInfo.AutoSize = True
+        Me.lblInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblInfo.ForeColor = System.Drawing.Color.Red
+        Me.lblInfo.Location = New System.Drawing.Point(357, 224)
+        Me.lblInfo.Name = "lblInfo"
+        Me.lblInfo.Size = New System.Drawing.Size(99, 20)
+        Me.lblInfo.TabIndex = 18
+        Me.lblInfo.Text = "-- En uso --"
+        Me.lblInfo.Visible = False
         '
         'frmAgregarLibro
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(486, 404)
+        Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.chkHabilitado)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.btnCambiarPortada)
         Me.Controls.Add(Me.lblID)
-        Me.Controls.Add(Me.lblCategoria)
+        Me.Controls.Add(Me.lblGenero)
         Me.Controls.Add(Me.lblAutor)
         Me.Controls.Add(Me.lblNombreLibro)
-        Me.Controls.Add(Me.cboxCategoria)
+        Me.Controls.Add(Me.cboxGenero)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtAutor)
@@ -234,7 +237,7 @@ Partial Class frmAgregarLibro
         Me.MinimizeBox = False
         Me.Name = "frmAgregarLibro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Agregar Libro · Atenea"
+        Me.Text = "Agregar libro · Atenea"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -242,15 +245,15 @@ Partial Class frmAgregarLibro
     Friend WithEvents txtAutor As System.Windows.Forms.TextBox
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
-    Friend WithEvents cboxCategoria As System.Windows.Forms.ComboBox
+    Friend WithEvents cboxGenero As System.Windows.Forms.ComboBox
     Friend WithEvents lblNombreLibro As System.Windows.Forms.Label
     Friend WithEvents lblAutor As System.Windows.Forms.Label
-    Friend WithEvents lblCategoria As System.Windows.Forms.Label
+    Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents btnCambiarPortada As System.Windows.Forms.Button
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
-    Friend WithEvents chkHabilitado As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents lblInfo As System.Windows.Forms.Label
 End Class

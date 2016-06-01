@@ -83,7 +83,7 @@ Partial Class Libro
         Me.Controls.Add(Me.imgNoDisponible)
         Me.Controls.Add(Me.imgPortada)
         Me.Controls.Add(Me.imgBorde)
-        Me.Margin = New System.Windows.Forms.Padding(10, 10, 10, 10)
+        Me.Margin = New System.Windows.Forms.Padding(10)
         Me.Name = "Libro"
         Me.Size = New System.Drawing.Size(150, 170)
         CType(Me.imgNoDisponible, System.ComponentModel.ISupportInitialize).EndInit()
@@ -93,8 +93,8 @@ Partial Class Libro
 
     End Sub
     Friend WithEvents imgBorde As System.Windows.Forms.PictureBox
-    Private WithEvents imgPortada As System.Windows.Forms.PictureBox
     Friend WithEvents imgNoDisponible As System.Windows.Forms.PictureBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
+    Friend WithEvents imgPortada As System.Windows.Forms.PictureBox
 
 End Class
