@@ -32,15 +32,15 @@ Partial Class frmMain
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
         Me.radioNombre = New System.Windows.Forms.RadioButton()
         Me.radioAutor = New System.Windows.Forms.RadioButton()
-        Me.radioGenero = New System.Windows.Forms.RadioButton()
         Me.radioID = New System.Windows.Forms.RadioButton()
-        Me.comboGenero = New System.Windows.Forms.ComboBox()
         Me.btnPrestamos = New System.Windows.Forms.Button()
         Me.lblBuscar = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblBienvenida = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.cboxGenero = New System.Windows.Forms.ComboBox()
+        Me.chkGenero = New System.Windows.Forms.CheckBox()
         Me.groupVista.SuspendLayout()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -191,20 +191,6 @@ Partial Class frmMain
         Me.radioAutor.Text = "Autor"
         Me.radioAutor.UseVisualStyleBackColor = False
         '
-        'radioGenero
-        '
-        Me.radioGenero.AutoSize = True
-        Me.radioGenero.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.radioGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioGenero.ForeColor = System.Drawing.Color.White
-        Me.radioGenero.Location = New System.Drawing.Point(15, 226)
-        Me.radioGenero.Name = "radioGenero"
-        Me.radioGenero.Size = New System.Drawing.Size(71, 20)
-        Me.radioGenero.TabIndex = 14
-        Me.radioGenero.TabStop = True
-        Me.radioGenero.Text = "Género"
-        Me.radioGenero.UseVisualStyleBackColor = False
-        '
         'radioID
         '
         Me.radioID.AutoSize = True
@@ -218,16 +204,6 @@ Partial Class frmMain
         Me.radioID.TabStop = True
         Me.radioID.Text = "ID"
         Me.radioID.UseVisualStyleBackColor = False
-        '
-        'comboGenero
-        '
-        Me.comboGenero.Enabled = False
-        Me.comboGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.comboGenero.FormattingEnabled = True
-        Me.comboGenero.Location = New System.Drawing.Point(15, 252)
-        Me.comboGenero.Name = "comboGenero"
-        Me.comboGenero.Size = New System.Drawing.Size(161, 24)
-        Me.comboGenero.TabIndex = 16
         '
         'btnPrestamos
         '
@@ -312,20 +288,47 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 17
         Me.PictureBox1.TabStop = False
         '
+        'cboxGenero
+        '
+        Me.cboxGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxGenero.DropDownWidth = 140
+        Me.cboxGenero.Enabled = False
+        Me.cboxGenero.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cboxGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.cboxGenero.FormattingEnabled = True
+        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Ciencia", "Cuento", "Historia", "Moda", "Novela"})
+        Me.cboxGenero.Location = New System.Drawing.Point(14, 252)
+        Me.cboxGenero.Name = "cboxGenero"
+        Me.cboxGenero.Size = New System.Drawing.Size(162, 24)
+        Me.cboxGenero.Sorted = True
+        Me.cboxGenero.TabIndex = 23
+        '
+        'chkGenero
+        '
+        Me.chkGenero.AutoSize = True
+        Me.chkGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.chkGenero.ForeColor = System.Drawing.Color.White
+        Me.chkGenero.Location = New System.Drawing.Point(16, 226)
+        Me.chkGenero.Name = "chkGenero"
+        Me.chkGenero.Size = New System.Drawing.Size(72, 20)
+        Me.chkGenero.TabIndex = 24
+        Me.chkGenero.Text = "Género"
+        Me.chkGenero.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Controls.Add(Me.chkGenero)
+        Me.Controls.Add(Me.cboxGenero)
         Me.Controls.Add(Me.lblBienvenida)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.lblBuscar)
         Me.Controls.Add(Me.btnPrestamos)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.comboGenero)
         Me.Controls.Add(Me.radioID)
-        Me.Controls.Add(Me.radioGenero)
         Me.Controls.Add(Me.radioAutor)
         Me.Controls.Add(Me.radioNombre)
         Me.Controls.Add(Me.txtBusqueda)
@@ -352,9 +355,7 @@ Partial Class frmMain
     Friend WithEvents txtBusqueda As System.Windows.Forms.TextBox
     Friend WithEvents radioNombre As System.Windows.Forms.RadioButton
     Friend WithEvents radioAutor As System.Windows.Forms.RadioButton
-    Friend WithEvents radioGenero As System.Windows.Forms.RadioButton
     Friend WithEvents radioID As System.Windows.Forms.RadioButton
-    Friend WithEvents comboGenero As System.Windows.Forms.ComboBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents btnPrestamos As System.Windows.Forms.Button
     Friend WithEvents lblBuscar As System.Windows.Forms.Label
@@ -363,5 +364,7 @@ Partial Class frmMain
     Friend WithEvents lblBienvenida As System.Windows.Forms.Label
     Friend WithEvents lblNoDisponibles As System.Windows.Forms.Label
     Friend WithEvents btnAgregar_temporal As System.Windows.Forms.Button
+    Friend WithEvents cboxGenero As System.Windows.Forms.ComboBox
+    Friend WithEvents chkGenero As System.Windows.Forms.CheckBox
 
 End Class
