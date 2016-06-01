@@ -35,7 +35,7 @@ CREATE TABLE `libro` (
   `Portada` longblob,
   `Genero` varchar(25) DEFAULT NULL,
   `Condicion` set('Buen estado','Regular','Mal estado') NOT NULL,
-  `ID` int(11) NOT NULL,
+  `ID` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
