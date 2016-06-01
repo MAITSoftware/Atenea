@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Atenea
 
-    Dim atenea As frmMain
+    Friend atenea As frmMain
     Dim login As frmNewLogin
     Dim registro As frmNewRegistro
 

@@ -19,6 +19,7 @@ Public Class frmAgregarLibro
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Atenea.atenea.cargarLibros()
         Me.Dispose()
     End Sub
 
@@ -32,7 +33,7 @@ Public Class frmAgregarLibro
         cmd.Parameters.AddWithValue("@estado", ComboBox1.Text)
 
         Dim mstream As New System.IO.MemoryStream()
-        previewLibro.imgPortada.BackgroundImage.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
+        previewLibro.imgPortada.BackgroundImage.Save(mstream, System.Drawing.Imaging.ImageFormat.Png)
         Dim arrImage() As Byte = mstream.GetBuffer()
         mstream.Close()
 
@@ -44,5 +45,7 @@ Public Class frmAgregarLibro
         Catch ex As Exception
             lblInfo.Visible = True
         End Try
+
+        Atenea.atenea.cargarLibros()
     End Sub
 End Class
