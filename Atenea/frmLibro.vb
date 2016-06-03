@@ -3,7 +3,7 @@ Public Class Libro
 
     Dim estaDisponible As Boolean = True
     Dim llaveLibro As String
-    Dim tooltip As New ToolTip()
+    Dim previewEditable As Boolean = False
     Dim preview As Boolean = False
     Dim pathPortada As String
     Dim fc As OpenFileDialog = New OpenFileDialog()
@@ -24,7 +24,7 @@ Public Class Libro
         Call New ToolTip().SetToolTip(btnEditar, "Editar libro")
         Call New ToolTip().SetToolTip(btnEliminar, "Eliminar libro")
 
-        If Not Atenea.funcionario Then
+        If Not Atenea.funcionario Or preview Or previewEditable Then
             btnEditar.Visible = False
             btnEliminar.Visible = False
         End If
@@ -42,7 +42,7 @@ Public Class Libro
 
         While Atenea.reader.Read()
             lblTitulo.Text = Atenea.reader.GetString(0)
-            tooltip.SetToolTip(imgNoDisponible, "Título: " & Atenea.reader.GetString(0) & ControlChars.NewLine &
+            Call New ToolTip().SetToolTip(imgNoDisponible, "Título: " & Atenea.reader.GetString(0) & ControlChars.NewLine &
                                                 "Autor: " & Atenea.reader.GetString(1) & ControlChars.NewLine &
                                                 "Género: " & Atenea.reader.GetString(3) & ControlChars.NewLine &
                                                 "Condición: " & Atenea.reader.GetString(4) & ControlChars.NewLine &
@@ -67,21 +67,28 @@ Public Class Libro
 
     End Sub
 
-    Public Sub New(ByVal llaveLibro As String, ByVal preview_ As Boolean)
+    Public Sub New(ByVal llaveLibro As String, ByVal previewE As Boolean, Optional ByVal prev As Boolean = False)
         InitializeComponent()
-        preview = preview_
+        previewEditable = previewE
+        preview = prev
         Me.llaveLibro = llaveLibro
     End Sub
 
     Public Sub imgNoDisponible_Click(sender As Object, e As EventArgs) Handles imgNoDisponible.Click
-        If Not preview Then
-            Return
+
+
+        If Atenea.funcionario And Not preview Or previewEditable Then
+            Dim frm As New frmConfPrestamo()
+            frm.ShowDialog(Me.ParentForm)
         End If
 
+        If Not previewEditable Then
+            Return
+        End If
         If fc.ShowDialog(Me.ParentForm) = DialogResult.OK Then
             pathPortada = fc.FileName
 
-            Dim portada As Bitmap = New Bitmap(pathPortada)
+    Dim portada As Bitmap = New Bitmap(pathPortada)
             imgPortada.BackgroundImage = portada
         End If
     End Sub
@@ -91,6 +98,9 @@ Public Class Libro
     End Sub
 
     Private Sub imgBorde_Leave(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseEnter
+        If preview Or previewEditable Then
+            Return
+        End If
         imgBorde.BackgroundImage = My.Resources.borde_hover()
     End Sub
 

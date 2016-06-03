@@ -67,8 +67,6 @@ Public Class frmNewLogin
             While Atenea.reader.Read()
                 Atenea.reader.Read()
                 Atenea.reader.GetString(0)
-                Console.WriteLine("Hola")
-                Console.WriteLine(Atenea.reader.GetString(1))
                 If Atenea.reader.GetString(1) = "Funcionario" Then
                     rbtnFuncionario.Checked = True
 
