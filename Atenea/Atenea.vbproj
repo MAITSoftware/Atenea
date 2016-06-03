@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConfPrestamo.Designer.vb">
+      <DependentUpon>frmConfPrestamo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfPrestamo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmNickUsuario.Designer.vb">
       <DependentUpon>frmNickUsuario.vb</DependentUpon>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmConfPrestamo.resx">
+      <DependentUpon>frmConfPrestamo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNickUsuario.resx">
       <DependentUpon>frmNickUsuario.vb</DependentUpon>
     </EmbeddedResource>

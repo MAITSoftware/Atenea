@@ -27,4 +27,11 @@
         Next
 
     End Sub
+
+    Private Sub btnLibroDevuelto_Click(sender As Object, e As EventArgs) Handles btnLibroDevuelto.Click
+        Dim frm As New frmConfPrestamo()
+        frm.ShowDialog(Me)
+    End Sub
+
+
 End Class
