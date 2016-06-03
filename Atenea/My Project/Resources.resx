@@ -121,6 +121,12 @@
   <data name="portada_ejemplo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\portada_ejemplo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pintando" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pintando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="borde_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\borde_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ignacio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ignacio.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,13 +136,19 @@
   <data name="borde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pintando" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pintando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="borde_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\borde_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editarLibro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editarLibro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editarLibro_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editarLibro_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eliminarLibro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eliminarLibro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eliminarLibro_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eliminarLibro_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

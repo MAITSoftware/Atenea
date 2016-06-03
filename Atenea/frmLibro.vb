@@ -18,6 +18,16 @@ Public Class Libro
         imgBorde.Cursor = Cursors.Hand
         imgPortada.Parent = imgBorde
         imgNoDisponible.Parent = imgPortada
+        btnEditar.Parent = imgNoDisponible
+        btnEliminar.Parent = imgNoDisponible
+
+        Call New ToolTip().SetToolTip(btnEditar, "Editar libro")
+        Call New ToolTip().SetToolTip(btnEliminar, "Eliminar libro")
+
+        If Not Atenea.funcionario Then
+            btnEditar.Visible = False
+            btnEliminar.Visible = False
+        End If
     End Sub
 
     Public Sub actualizarDatos()
@@ -82,5 +92,20 @@ Public Class Libro
 
     Private Sub imgBorde_Leave(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseEnter
         imgBorde.BackgroundImage = My.Resources.borde_hover()
+    End Sub
+
+    Private Sub btnEditar_Leave(sender As Object, e As EventArgs) Handles btnEditar.MouseLeave
+        btnEditar.BackgroundImage = My.Resources.editarLibro()
+    End Sub
+
+    Private Sub btnEditar_Enter(sender As Object, e As EventArgs) Handles btnEditar.MouseEnter
+        btnEditar.BackgroundImage = My.Resources.editarLibro_()
+    End Sub
+    Private Sub btnEliminar_Leave(sender As Object, e As EventArgs) Handles btnEliminar.MouseLeave
+        btnEliminar.BackgroundImage = My.Resources.eliminarLibro()
+    End Sub
+
+    Private Sub btnEliminar_Enter(sender As Object, e As EventArgs) Handles btnEliminar.MouseEnter
+        btnEliminar.BackgroundImage = My.Resources.eliminarLibro_()
     End Sub
 End Class

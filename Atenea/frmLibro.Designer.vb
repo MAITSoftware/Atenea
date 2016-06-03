@@ -22,14 +22,40 @@ Partial Class Libro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.btnEditar = New System.Windows.Forms.PictureBox()
         Me.imgNoDisponible = New System.Windows.Forms.PictureBox()
         Me.imgPortada = New System.Windows.Forms.PictureBox()
         Me.imgBorde = New System.Windows.Forms.PictureBox()
-        Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.btnEliminar = New System.Windows.Forms.PictureBox()
+        CType(Me.btnEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgNoDisponible, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgPortada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgBorde, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'lblTitulo
+        '
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(0, 0)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(150, 20)
+        Me.lblTitulo.TabIndex = 4
+        Me.lblTitulo.Text = "Preview"
+        Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnEditar
+        '
+        Me.btnEditar.BackgroundImage = Global.Atenea.My.Resources.Resources.editarLibro
+        Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEditar.Location = New System.Drawing.Point(100, 0)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnEditar.Name = "btnEditar"
+        Me.btnEditar.Size = New System.Drawing.Size(20, 20)
+        Me.btnEditar.TabIndex = 5
+        Me.btnEditar.TabStop = False
         '
         'imgNoDisponible
         '
@@ -64,22 +90,24 @@ Partial Class Libro
         Me.imgBorde.TabIndex = 1
         Me.imgBorde.TabStop = False
         '
-        'lblTitulo
+        'btnEliminar
         '
-        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(0, 0)
-        Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(150, 20)
-        Me.lblTitulo.TabIndex = 4
-        Me.lblTitulo.Text = "Preview"
-        Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnEliminar.BackgroundImage = Global.Atenea.My.Resources.Resources.eliminarLibro
+        Me.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEliminar.Location = New System.Drawing.Point(125, 0)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(20, 20)
+        Me.btnEliminar.TabIndex = 6
+        Me.btnEliminar.TabStop = False
         '
         'Libro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Transparent
+        Me.Controls.Add(Me.btnEliminar)
+        Me.Controls.Add(Me.btnEditar)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.imgNoDisponible)
         Me.Controls.Add(Me.imgPortada)
@@ -87,9 +115,11 @@ Partial Class Libro
         Me.Margin = New System.Windows.Forms.Padding(10)
         Me.Name = "Libro"
         Me.Size = New System.Drawing.Size(150, 170)
+        CType(Me.btnEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgNoDisponible, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgPortada, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgBorde, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -97,5 +127,7 @@ Partial Class Libro
     Friend WithEvents imgNoDisponible As System.Windows.Forms.PictureBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents imgPortada As System.Windows.Forms.PictureBox
+    Friend WithEvents btnEditar As System.Windows.Forms.PictureBox
+    Friend WithEvents btnEliminar As System.Windows.Forms.PictureBox
 
 End Class

@@ -4,6 +4,7 @@ Public Class Atenea
     Friend atenea As frmMain
     Dim login As frmNewLogin
     Dim registro As frmNewRegistro
+    Friend funcionario As Boolean = False
 
     Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
     Friend reader As MySqlDataReader
@@ -42,13 +43,15 @@ Public Class Atenea
         Me.Controls.Add(registro)
     End Sub
 
-    Public Sub agregarAtenea(ByVal CI As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal funcionario As Boolean = False)
+    Public Sub agregarAtenea(ByVal CI As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal f As Boolean = False)
         Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.Controls.Clear()
         Me.Text = "Atenea"
         Me.Width = 1280
         Me.Height = 700
         Centrar()
+
+        funcionario = f
 
         atenea = New frmMain(CI, primeraVez, funcionario)
 
