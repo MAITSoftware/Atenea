@@ -97,4 +97,6 @@ Public Class frmConfPrestamo
         End Try
 
     End Sub
+
+  
 End Class

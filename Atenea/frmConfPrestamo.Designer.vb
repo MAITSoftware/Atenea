@@ -28,10 +28,10 @@ Partial Class frmConfPrestamo
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.calendario = New System.Windows.Forms.MonthCalendar()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblAutor = New System.Windows.Forms.Label()
-        Me.lblGenero = New System.Windows.Forms.Label()
-        Me.lblID = New System.Windows.Forms.Label()
         Me.lblCondicion = New System.Windows.Forms.Label()
+        Me.lblID = New System.Windows.Forms.Label()
+        Me.lblGenero = New System.Windows.Forms.Label()
+        Me.lblAutor = New System.Windows.Forms.Label()
         Me.comboUsuario = New System.Windows.Forms.ComboBox()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.btnPrestar = New System.Windows.Forms.Button()
@@ -93,27 +93,16 @@ Partial Class frmConfPrestamo
         Me.Panel1.Size = New System.Drawing.Size(266, 380)
         Me.Panel1.TabIndex = 40
         '
-        'lblAutor
+        'lblCondicion
         '
-        Me.lblAutor.AutoSize = True
-        Me.lblAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAutor.ForeColor = System.Drawing.Color.White
-        Me.lblAutor.Location = New System.Drawing.Point(58, 223)
-        Me.lblAutor.Name = "lblAutor"
-        Me.lblAutor.Size = New System.Drawing.Size(56, 20)
-        Me.lblAutor.TabIndex = 0
-        Me.lblAutor.Text = "Autor: "
-        '
-        'lblGenero
-        '
-        Me.lblGenero.AutoSize = True
-        Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGenero.ForeColor = System.Drawing.Color.White
-        Me.lblGenero.Location = New System.Drawing.Point(58, 248)
-        Me.lblGenero.Name = "lblGenero"
-        Me.lblGenero.Size = New System.Drawing.Size(67, 20)
-        Me.lblGenero.TabIndex = 1
-        Me.lblGenero.Text = "Género:"
+        Me.lblCondicion.AutoSize = True
+        Me.lblCondicion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCondicion.ForeColor = System.Drawing.Color.White
+        Me.lblCondicion.Location = New System.Drawing.Point(58, 298)
+        Me.lblCondicion.Name = "lblCondicion"
+        Me.lblCondicion.Size = New System.Drawing.Size(83, 20)
+        Me.lblCondicion.TabIndex = 3
+        Me.lblCondicion.Text = "Condición:"
         '
         'lblID
         '
@@ -126,16 +115,27 @@ Partial Class frmConfPrestamo
         Me.lblID.TabIndex = 2
         Me.lblID.Text = "ID:"
         '
-        'lblCondicion
+        'lblGenero
         '
-        Me.lblCondicion.AutoSize = True
-        Me.lblCondicion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCondicion.ForeColor = System.Drawing.Color.White
-        Me.lblCondicion.Location = New System.Drawing.Point(58, 298)
-        Me.lblCondicion.Name = "lblCondicion"
-        Me.lblCondicion.Size = New System.Drawing.Size(83, 20)
-        Me.lblCondicion.TabIndex = 3
-        Me.lblCondicion.Text = "Condición:"
+        Me.lblGenero.AutoSize = True
+        Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGenero.ForeColor = System.Drawing.Color.White
+        Me.lblGenero.Location = New System.Drawing.Point(58, 248)
+        Me.lblGenero.Name = "lblGenero"
+        Me.lblGenero.Size = New System.Drawing.Size(67, 20)
+        Me.lblGenero.TabIndex = 1
+        Me.lblGenero.Text = "Género:"
+        '
+        'lblAutor
+        '
+        Me.lblAutor.AutoSize = True
+        Me.lblAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAutor.ForeColor = System.Drawing.Color.White
+        Me.lblAutor.Location = New System.Drawing.Point(58, 223)
+        Me.lblAutor.Name = "lblAutor"
+        Me.lblAutor.Size = New System.Drawing.Size(56, 20)
+        Me.lblAutor.TabIndex = 0
+        Me.lblAutor.Text = "Autor: "
         '
         'comboUsuario
         '

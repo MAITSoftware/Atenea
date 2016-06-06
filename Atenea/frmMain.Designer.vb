@@ -41,6 +41,7 @@ Partial Class frmMain
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cboxGenero = New System.Windows.Forms.ComboBox()
         Me.chkGenero = New System.Windows.Forms.CheckBox()
+        Me.listview_lista = New System.Windows.Forms.ListView()
         Me.groupVista.SuspendLayout()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,6 +112,7 @@ Partial Class frmMain
         '
         Me.panelLibros.AutoScroll = True
         Me.panelLibros.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.panelLibros.Controls.Add(Me.listview_lista)
         Me.panelLibros.Controls.Add(Me.lblNoDisponibles)
         Me.panelLibros.Controls.Add(Me.btnAgregar_temporal)
         Me.panelLibros.Location = New System.Drawing.Point(211, 75)
@@ -127,7 +129,7 @@ Partial Class frmMain
         Me.lblNoDisponibles.AutoSize = True
         Me.lblNoDisponibles.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNoDisponibles.ForeColor = System.Drawing.Color.White
-        Me.lblNoDisponibles.Location = New System.Drawing.Point(3, 0)
+        Me.lblNoDisponibles.Location = New System.Drawing.Point(3, 586)
         Me.lblNoDisponibles.MinimumSize = New System.Drawing.Size(1048, 270)
         Me.lblNoDisponibles.Name = "lblNoDisponibles"
         Me.lblNoDisponibles.Size = New System.Drawing.Size(1048, 270)
@@ -146,7 +148,7 @@ Partial Class frmMain
         Me.btnAgregar_temporal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAgregar_temporal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregar_temporal.ForeColor = System.Drawing.Color.White
-        Me.btnAgregar_temporal.Location = New System.Drawing.Point(464, 295)
+        Me.btnAgregar_temporal.Location = New System.Drawing.Point(464, 881)
         Me.btnAgregar_temporal.Margin = New System.Windows.Forms.Padding(464, 25, 0, 0)
         Me.btnAgregar_temporal.Name = "btnAgregar_temporal"
         Me.btnAgregar_temporal.Size = New System.Drawing.Size(120, 40)
@@ -315,6 +317,15 @@ Partial Class frmMain
         Me.chkGenero.Text = "Género"
         Me.chkGenero.UseVisualStyleBackColor = True
         '
+        'listview_lista
+        '
+        Me.listview_lista.Location = New System.Drawing.Point(3, 3)
+        Me.listview_lista.Name = "listview_lista"
+        Me.listview_lista.Size = New System.Drawing.Size(1038, 580)
+        Me.listview_lista.TabIndex = 24
+        Me.listview_lista.UseCompatibleStateImageBehavior = False
+        Me.listview_lista.Visible = False
+        '
         'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -366,5 +377,6 @@ Partial Class frmMain
     Friend WithEvents btnAgregar_temporal As System.Windows.Forms.Button
     Friend WithEvents cboxGenero As System.Windows.Forms.ComboBox
     Friend WithEvents chkGenero As System.Windows.Forms.CheckBox
+    Friend WithEvents listview_lista As System.Windows.Forms.ListView
 
 End Class
