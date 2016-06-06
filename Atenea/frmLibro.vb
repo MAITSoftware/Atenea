@@ -148,4 +148,10 @@ Public Class Libro
         editar = New frmAgregarLibro(True, Me.llaveLibro)
         editar.ShowDialog(Me)
     End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Dim eliminar As frmEliminar
+        eliminar = New frmEliminar(Me.llaveLibro)
+        eliminar.ShowDialog(Me)
+    End Sub
 End Class

@@ -23,16 +23,16 @@ Partial Class Libro
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.btnEliminar = New System.Windows.Forms.PictureBox()
         Me.btnEditar = New System.Windows.Forms.PictureBox()
         Me.imgNoDisponible = New System.Windows.Forms.PictureBox()
         Me.imgPortada = New System.Windows.Forms.PictureBox()
         Me.imgBorde = New System.Windows.Forms.PictureBox()
-        Me.btnEliminar = New System.Windows.Forms.PictureBox()
+        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgNoDisponible, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgPortada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgBorde, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTitulo
@@ -45,6 +45,18 @@ Partial Class Libro
         Me.lblTitulo.TabIndex = 4
         Me.lblTitulo.Text = "Preview"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnEliminar
+        '
+        Me.btnEliminar.BackgroundImage = Global.Atenea.My.Resources.Resources.eliminarLibro
+        Me.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEliminar.Location = New System.Drawing.Point(125, 0)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(20, 20)
+        Me.btnEliminar.TabIndex = 6
+        Me.btnEliminar.TabStop = False
         '
         'btnEditar
         '
@@ -91,18 +103,6 @@ Partial Class Libro
         Me.imgBorde.TabIndex = 1
         Me.imgBorde.TabStop = False
         '
-        'btnEliminar
-        '
-        Me.btnEliminar.BackgroundImage = Global.Atenea.My.Resources.Resources.eliminarLibro
-        Me.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEliminar.Location = New System.Drawing.Point(125, 0)
-        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(20, 20)
-        Me.btnEliminar.TabIndex = 6
-        Me.btnEliminar.TabStop = False
-        '
         'Libro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -117,11 +117,11 @@ Partial Class Libro
         Me.Margin = New System.Windows.Forms.Padding(10)
         Me.Name = "Libro"
         Me.Size = New System.Drawing.Size(150, 170)
+        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgNoDisponible, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgPortada, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgBorde, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
