@@ -5,8 +5,9 @@ Public Class Libro
     Dim llaveLibro As String
     Dim previewEditable As Boolean = False
     Dim preview As Boolean = False
-    Dim pathPortada As String
     Dim fc As OpenFileDialog = New OpenFileDialog()
+    Friend Titulo, Genero, Autor, ID, Condicion, pathPortada As String
+
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         fc.Title = "Seleccionar portada"
@@ -41,12 +42,19 @@ Public Class Libro
         Atenea.reader = cmd.ExecuteReader()
 
         While Atenea.reader.Read()
-            lblTitulo.Text = Atenea.reader.GetString(0)
-            Call New ToolTip().SetToolTip(imgNoDisponible, "Título: " & Atenea.reader.GetString(0) & ControlChars.NewLine &
-                                                "Autor: " & Atenea.reader.GetString(1) & ControlChars.NewLine &
-                                                "Género: " & Atenea.reader.GetString(3) & ControlChars.NewLine &
-                                                "Condición: " & Atenea.reader.GetString(4) & ControlChars.NewLine &
-                                                "ID: " & Atenea.reader.GetString(5))
+            Me.Titulo = Atenea.reader("Titulo")
+            Me.Genero = Atenea.reader("Genero")
+            Me.Autor = Atenea.reader("Autor")
+            Me.ID = Atenea.reader("ID")
+            Me.Condicion = Atenea.reader("Condicion")
+
+            lblTitulo.Text = Me.Titulo
+
+            Call New ToolTip().SetToolTip(imgNoDisponible, "Título: " & Me.Titulo & ControlChars.NewLine &
+                                                "Autor: " & Me.Autor & ControlChars.NewLine &
+                                                "Género: " & Me.Genero & ControlChars.NewLine &
+                                                "Condición: " & Me.Condicion & ControlChars.NewLine &
+                                                "ID: " & Me.ID)
 
             Dim byteImage() As Byte = Atenea.reader("Portada")
             Dim foto As New System.IO.MemoryStream(byteImage)
@@ -76,9 +84,8 @@ Public Class Libro
 
     Public Sub imgNoDisponible_Click(sender As Object, e As EventArgs) Handles imgNoDisponible.Click
 
-
-        If Atenea.funcionario And Not preview Or previewEditable Then
-            Dim frm As New frmConfPrestamo()
+        If Atenea.funcionario And Not (preview Or previewEditable) Then
+            Dim frm As New frmConfPrestamo(llaveLibro)
             frm.ShowDialog(Me.ParentForm)
         End If
 

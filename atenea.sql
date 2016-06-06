@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS `prestamo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prestamo` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` varchar(10) NOT NULL,
   `CI usuario` int(8) DEFAULT NULL,
   `CI funcionario` int(8) DEFAULT NULL,
   `Fecha prestamo` date NOT NULL,
@@ -65,8 +65,10 @@ CREATE TABLE `prestamo` (
   PRIMARY KEY (`ID`),
   KEY `CI-usuario-prestamo_idx` (`CI usuario`),
   KEY `CI-funcionario-prestamo_idx` (`CI funcionario`),
+  KEY `ID-libro_idx` (`ID`),
   CONSTRAINT `CI-funcionario-prestamo` FOREIGN KEY (`CI funcionario`) REFERENCES `usuario` (`CI`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `CI-usuario-prestamo` FOREIGN KEY (`CI usuario`) REFERENCES `usuario` (`CI`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `CI-usuario-prestamo` FOREIGN KEY (`CI usuario`) REFERENCES `usuario` (`CI`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ID-libro` FOREIGN KEY (`ID`) REFERENCES `libro` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

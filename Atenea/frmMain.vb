@@ -3,7 +3,7 @@ Public Class frmMain
 
     Dim pedirNick As Boolean
     Dim interfazFuncionario As Boolean
-    Dim CI As String
+    Friend CI As String
     Dim buscando As Boolean
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
