@@ -50,6 +50,7 @@ Partial Class Libro
         '
         Me.btnEditar.BackgroundImage = Global.Atenea.My.Resources.Resources.editarLibro
         Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEditar.Location = New System.Drawing.Point(100, 0)
         Me.btnEditar.Margin = New System.Windows.Forms.Padding(0)
         Me.btnEditar.Name = "btnEditar"
@@ -94,6 +95,7 @@ Partial Class Libro
         '
         Me.btnEliminar.BackgroundImage = Global.Atenea.My.Resources.Resources.eliminarLibro
         Me.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEliminar.Location = New System.Drawing.Point(125, 0)
         Me.btnEliminar.Margin = New System.Windows.Forms.Padding(0)
         Me.btnEliminar.Name = "btnEliminar"

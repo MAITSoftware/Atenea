@@ -50,12 +50,13 @@ Public Class Libro
 
             lblTitulo.Text = Me.Titulo
 
-            Call New ToolTip().SetToolTip(imgNoDisponible, "Título: " & Me.Titulo & ControlChars.NewLine &
-                                                "Autor: " & Me.Autor & ControlChars.NewLine &
-                                                "Género: " & Me.Genero & ControlChars.NewLine &
-                                                "Condición: " & Me.Condicion & ControlChars.NewLine &
-                                                "ID: " & Me.ID)
-
+            If Not (preview Or previewEditable) Then
+                Call New ToolTip().SetToolTip(imgNoDisponible, "Título: " & Me.Titulo & ControlChars.NewLine &
+                                                    "Autor: " & Me.Autor & ControlChars.NewLine &
+                                                    "Género: " & Me.Genero & ControlChars.NewLine &
+                                                    "Condición: " & Me.Condicion & ControlChars.NewLine &
+                                                    "ID: " & Me.ID)
+            End If
             Dim byteImage() As Byte = Atenea.reader("Portada")
             Dim foto As New System.IO.MemoryStream(byteImage)
             imgPortada.BackgroundImage = Image.FromStream(foto)
@@ -67,8 +68,24 @@ Public Class Libro
         cmd = New MySqlCommand(sentencia, Atenea.conexion)
         Atenea.reader = cmd.ExecuteReader()
 
+        If Atenea.funcionario And Not (preview Or previewEditable) Then
+            btnEditar.Visible = True
+            btnEliminar.Visible = True
+        End If
+
+        btnEditar.Location = New Point(100, 0)
+        btnEliminar.Location = New Point(125, 0)
+
+        imgNoDisponible.BackgroundImage = Nothing
+        imgNoDisponible.Cursor = Cursors.Hand
+
         While Atenea.reader.Read()
             imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
+            If Not (preview Or previewEditable) Then
+                imgNoDisponible.Cursor = Cursors.No
+            End If
+            btnEliminar.Visible = False
+            btnEditar.Location = New Point(125, 0)
         End While
 
         Atenea.reader.Close()
@@ -84,7 +101,7 @@ Public Class Libro
 
     Public Sub imgNoDisponible_Click(sender As Object, e As EventArgs) Handles imgNoDisponible.Click
 
-        If Atenea.funcionario And Not (preview Or previewEditable) Then
+        If Atenea.funcionario And Not (preview Or previewEditable) And Not (imgNoDisponible.Cursor Is Cursors.No) Then
             Dim frm As New frmConfPrestamo(llaveLibro)
             frm.ShowDialog(Me.ParentForm)
         End If
@@ -124,5 +141,11 @@ Public Class Libro
 
     Private Sub btnEliminar_Enter(sender As Object, e As EventArgs) Handles btnEliminar.MouseEnter
         btnEliminar.BackgroundImage = My.Resources.eliminarLibro_()
+    End Sub
+
+    Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
+        Dim editar As frmAgregarLibro
+        editar = New frmAgregarLibro(True, Me.llaveLibro)
+        editar.ShowDialog(Me)
     End Sub
 End Class

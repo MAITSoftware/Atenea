@@ -35,7 +35,7 @@ Partial Class frmAgregarLibro
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cboxEstado = New System.Windows.Forms.ComboBox()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -187,18 +187,18 @@ Partial Class frmAgregarLibro
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Estado del libro"
         '
-        'ComboBox1
+        'cboxEstado
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.DropDownWidth = 140
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Buen estado", "Regular", "Mal estado"})
-        Me.ComboBox1.Location = New System.Drawing.Point(268, 309)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(194, 28)
-        Me.ComboBox1.TabIndex = 9
+        Me.cboxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxEstado.DropDownWidth = 140
+        Me.cboxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cboxEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxEstado.FormattingEnabled = True
+        Me.cboxEstado.Items.AddRange(New Object() {"Buen estado", "Regular", "Mal estado"})
+        Me.cboxEstado.Location = New System.Drawing.Point(268, 309)
+        Me.cboxEstado.Name = "cboxEstado"
+        Me.cboxEstado.Size = New System.Drawing.Size(194, 28)
+        Me.cboxEstado.TabIndex = 9
         '
         'lblInfo
         '
@@ -219,7 +219,7 @@ Partial Class frmAgregarLibro
         Me.ClientSize = New System.Drawing.Size(486, 404)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.cboxEstado)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.btnCambiarPortada)
@@ -254,6 +254,6 @@ Partial Class frmAgregarLibro
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cboxEstado As System.Windows.Forms.ComboBox
     Friend WithEvents lblInfo As System.Windows.Forms.Label
 End Class

@@ -1,11 +1,28 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmAgregarLibro
 
-    Dim previewLibro As New Libro("Preview", True)
+    Dim previewLibro As Libro
+    Dim editar As Boolean = False
+    Dim keyEditar As String
+
     Private Sub frmAgregarLibro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If editar Then
+            Me.Text = "Editar libro · Atenea"
+            previewLibro = New Libro(keyEditar, True, True)
+            previewLibro.actualizarDatos()
+            txtNombre.Text = previewLibro.Titulo
+            txtAutor.Text = previewLibro.Autor
+            txtID.Text = previewLibro.ID
+            txtID.Enabled = False
+            cboxGenero.Text = previewLibro.Genero
+            cboxEstado.Text = previewLibro.Condicion
+        Else
+            previewLibro = New Libro("Preview", True)
+        End If
+
         previewLibro.Location = New Point(35, 60)
         Me.Controls.Add(previewLibro)
-        ComboBox1.SelectedIndex = 0
+        cboxEstado.SelectedIndex = 0
         cboxGenero.SelectedIndex = 0
     End Sub
 
@@ -16,6 +33,11 @@ Public Class frmAgregarLibro
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtID.TextChanged, txtAutor.TextChanged, txtNombre.TextChanged
         btnAgregar.Enabled = Not (String.IsNullOrWhiteSpace(txtNombre.Text) Or String.IsNullOrWhiteSpace(txtAutor.Text) Or String.IsNullOrWhiteSpace(txtID.Text))
         lblInfo.Visible = False
+        If String.IsNullOrWhiteSpace(txtNombre.Text) Then
+            previewLibro.lblTitulo.Text = "Preview"
+        Else
+            previewLibro.lblTitulo.Text = txtNombre.Text
+        End If
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -25,27 +47,46 @@ Public Class frmAgregarLibro
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Dim sentencia As String
-        sentencia = "INSERT INTO `libro` VALUES (@titulo, @autor, @portada, @genero, @estado, @id);"
-        Dim cmd As New MySqlCommand(sentencia, Atenea.conexion)
-        cmd.Parameters.AddWithValue("@titulo", txtNombre.Text)
-        cmd.Parameters.AddWithValue("@autor", txtAutor.Text)
-        cmd.Parameters.AddWithValue("@genero", cboxGenero.Text)
-        cmd.Parameters.AddWithValue("@estado", ComboBox1.Text)
+        sentencia = "INSERT INTO `libro` VALUES (@titulo, @autor, @portada, @genero, @condicion, @id);"
+        If editar Then
+            sentencia = "UPDATE `libro` SET Titulo=@titulo, Autor=@autor, Portada=@portada, Genero=@genero, Condicion=@condicion WHERE ID=@id;"
+        End If
 
         Dim mstream As New System.IO.MemoryStream()
         previewLibro.imgPortada.BackgroundImage.Save(mstream, System.Drawing.Imaging.ImageFormat.Png)
         Dim arrImage() As Byte = mstream.GetBuffer()
         mstream.Close()
 
-        cmd.Parameters.AddWithValue("@portada", arrImage)
-        cmd.Parameters.AddWithValue("@id", txtID.Text)
-        Try
-            cmd.ExecuteNonQuery()
-            Me.Dispose()
-        Catch ex As Exception
-            lblInfo.Visible = True
-        End Try
+        Using cmd As New MySqlCommand()
+            With cmd
+                .Connection = Atenea.conexion
+                .CommandText = sentencia
+                .CommandType = CommandType.Text
+                .Parameters.AddWithValue("@titulo", txtNombre.Text)
+                .Parameters.AddWithValue("@autor", txtAutor.Text)
+                .Parameters.AddWithValue("@portada", arrImage)
+                .Parameters.AddWithValue("@genero", cboxGenero.Text)
+                .Parameters.AddWithValue("@condicion", cboxEstado.Text)
+                .Parameters.AddWithValue("@id", txtID.Text)
+            End With
+            Try
+                cmd.ExecuteNonQuery()
+                Atenea.atenea.cargarLibros()
+                Me.Dispose()
+            Catch ex As Exception
+                If ex.ToString().Contains("max_allowed_packet") Then
+                    MsgBox("Imagen muy pesada.", MsgBoxStyle.Exclamation)
+                ElseIf ex.ToString().Contains("Duplicate") Then
+                    lblInfo.Visible = True
+                End If
+            End Try
+        End Using
 
-        Atenea.atenea.cargarLibros()
+    End Sub
+
+    Public Sub New(Optional ByVal edit As Boolean = False, Optional ByVal key As String = Nothing)
+        InitializeComponent()
+        editar = edit
+        keyEditar = key
     End Sub
 End Class
