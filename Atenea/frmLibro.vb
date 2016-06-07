@@ -40,20 +40,19 @@ Public Class Libro
 
     Public Sub actualizarDatos()
         Dim sentencia As String = String.Format("SELECT * FROM `libro` WHERE ID='{0}';", llaveLibro)
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
 
-        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
+        Dim conexion As DB = New DB()
 
-        While Atenea.DB.Reader.Read()
-            Me.Titulo = Atenea.DB.Reader("Titulo")
-            Me.Genero = Atenea.DB.Reader("Genero")
-            Me.Autor = Atenea.DB.Reader("Autor")
-            Me.ID = Atenea.DB.Reader("ID")
-            Me.Condicion = Atenea.DB.Reader("Condicion")
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn)
+
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+        While reader.Read()
+            Me.Titulo = reader("Titulo")
+            Me.Genero = reader("Genero")
+            Me.Autor = reader("Autor")
+            Me.ID = reader("ID")
+            Me.Condicion = reader("Condicion")
 
             lblTitulo.Text = Me.Titulo
 
@@ -64,16 +63,16 @@ Public Class Libro
                                                     "Condición: " & Me.Condicion & ControlChars.NewLine &
                                                     "ID: " & Me.ID)
             End If
-            Dim byteImage() As Byte = Atenea.DB.Reader("Portada")
+            Dim byteImage() As Byte = reader("Portada")
             Dim foto As New System.IO.MemoryStream(byteImage)
             imgPortada.BackgroundImage = Image.FromStream(foto)
         End While
 
-        Atenea.DB.Reader.Close()
+        reader.Close()
 
         sentencia = String.Format("SELECT ID FROM prestamo WHERE ID='{0}';", llaveLibro)
-        cmd = New MySqlCommand(sentencia, Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
+        cmd = New MySqlCommand(sentencia, conexion.Conn)
+        reader = cmd.ExecuteReader()
 
         If Atenea.funcionario And Not (preview Or previewEditable) Then
             btnEditar.Visible = True
@@ -90,7 +89,7 @@ Public Class Libro
             imgBorde.BackgroundImage = My.Resources.borde_Disponible()
         End If
 
-        While Atenea.DB.Reader.Read()
+        While reader.Read()
             If Not (preview Or previewEditable) Then
                 imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
                 imgBorde.BackgroundImage = My.Resources.borde_NoDisponible()
@@ -100,7 +99,7 @@ Public Class Libro
             btnEditar.Location = New Point(125, 0)
         End While
 
-        Atenea.DB.Reader.Close()
+        reader.Close()
 
     End Sub
 

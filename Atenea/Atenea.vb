@@ -5,7 +5,6 @@ Public Class Atenea
     Dim login As frmNewLogin
     Dim registro As frmNewRegistro
     Friend funcionario As Boolean = False
-    Friend DB As New DB()
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         agregarLogin()

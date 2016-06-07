@@ -44,9 +44,11 @@ Public Class frmAgregarLibro
         Dim arrImage() As Byte = mstream.GetBuffer()
         mstream.Close()
 
+        Dim conexion As DB = New DB()
+
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.DB.Conn
+                .Connection = conexion.Conn
                 .CommandText = sentencia
                 .CommandType = CommandType.Text
                 .Parameters.AddWithValue("@titulo", txtNombre.Text)

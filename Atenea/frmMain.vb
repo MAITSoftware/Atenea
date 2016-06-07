@@ -34,21 +34,19 @@ Public Class frmMain
     Public Sub cargarNick()
         Dim Nombre As String
         Dim Apellido As String = ""
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
-        Dim cmd As MySqlCommand = New MySqlCommand("select Nombre,Apellido from usuario where CI=@id;", Atenea.DB.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+        Dim conexion As New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand("select Nombre,Apellido from usuario where CI=@id;", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
         cmd.Parameters.AddWithValue("@id", CI)
 
-        Atenea.DB.Reader = cmd.ExecuteReader()
-        Atenea.DB.Reader.Read()
-        Nombre = Atenea.DB.Reader("Nombre")
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+        reader.Read()
+        Nombre = reader("Nombre")
         Try
-            Apellido = Atenea.DB.Reader("Apellido")
+            Apellido = reader("Apellido")
         Catch ex As Exception
         End Try
-        Atenea.DB.Reader.Close()
+        reader.Close()
+        conexion.Conn.Close()
 
         lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido
     End Sub
@@ -90,18 +88,14 @@ Public Class frmMain
             panelLibros.Controls.Add(btnAgregar_temporal)
         End If
 
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
+        Dim conexion As DB = New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
-        Atenea.DB.Reader = cmd.ExecuteReader()
-
-        While Atenea.DB.Reader.Read()
+        While reader.Read()
             panelLibros.Controls.Remove(lblNoDisponibles)
             panelLibros.Controls.Remove(btnAgregar_temporal)
-            Dim x As New Libro(Atenea.DB.Reader.GetString(0), False)
+            Dim x As New Libro(reader.GetString(0), False)
             panelLibros.Controls.Add(x)
         End While
 
@@ -112,22 +106,21 @@ Public Class frmMain
             End Try
         Next
 
-        Atenea.DB.Reader.Close()
+        reader.Close()
+        conexion.Conn.Close()
     End Sub
 
     Private Sub CheckPrestamo()
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
-        While Atenea.DB.Reader.Read()
+        Dim conexion As DB = New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), conexion.Conn)
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+        While reader.Read()
             panelInfo.Visible = True
             lblEntregarLibro.Visible = True
-            lblEntregarLibro.Text = "Entregue su libro antes del" & ControlChars.NewLine & DateTime.Parse(Atenea.DB.Reader.GetString(4)).ToShortDateString()
+            lblEntregarLibro.Text = "Entregue su libro antes del" & ControlChars.NewLine & DateTime.Parse(reader.GetString(4)).ToShortDateString()
         End While
-        Atenea.DB.Reader.Close()
+        reader.Close()
+        conexion.Conn.Close()
     End Sub
 
     Private Sub btnPrestamos_Click(sender As Object, e As EventArgs) Handles btnPrestamos.Click
@@ -135,18 +128,18 @@ Public Class frmMain
             Dim frm As New frmPrestamos()
             frm.ShowDialog(Me)
         Else
-            Try
-                Atenea.DB.Reader.Close()
-            Catch ex As Exception
-            End Try
 
-            Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), Atenea.DB.Conn)
-            Atenea.DB.Reader = cmd.ExecuteReader()
-            While Atenea.DB.Reader.Read()
-                Dim frm As New frmPrestamo(Atenea.DB.Reader("ID"))
+            Dim conexion As DB = New DB()
+            Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), conexion.Conn)
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            While reader.Read()
+                Dim frm As New frmPrestamo(reader("ID"))
                 frm.ShowDialog(Me)
                 Return
             End While
+
+            reader.Close()
+            conexion.Conn.Close()
 
             MsgBox("Aún no has rentado ningún libro")
         End If

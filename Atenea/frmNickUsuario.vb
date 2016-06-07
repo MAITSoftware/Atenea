@@ -8,9 +8,11 @@ Public Class frmNickUsuario
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click 'Al hacer click en aceptar
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` (`CI`, `Nombre`, `Tipo`) VALUES ('{0}', '{1}', 'Usuario');", CI, TextBox1.Text), Atenea.DB.Conn)
+        Dim conexion As New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` (`CI`, `Nombre`, `Tipo`) VALUES ('{0}', '{1}', 'Usuario');", CI, TextBox1.Text), conexion.Conn)
         cmd.ExecuteNonQuery()
         Atenea.atenea.cargarNick()
+        conexion.Conn.Close()
         Me.Dispose()
     End Sub
 

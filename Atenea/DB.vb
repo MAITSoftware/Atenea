@@ -1,10 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class DB
-    Friend Conn As New MySqlConnection("server=localhost;uid=atenea;password=atenea;database=atenea")
-    Friend Reader As MySqlDataReader
+    Friend Conn As MySqlConnection
 
     Public Sub New()
         Try
+            Conn = New MySqlConnection("server=localhost;uid=atenea;password=atenea;database=atenea")
             Conn.Open()
         Catch ex As Exception
             System.Console.WriteLine(ex)

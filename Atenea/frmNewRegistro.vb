@@ -6,20 +6,19 @@ Public Class frmNewRegistro
     End Sub
 
     Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click 'Al hacer click en btnRegistrarse
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
-
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` VALUES ('{0}', '{1}', '{2}', '{3}', 'Funcionario');", txtCI.Text, txtNombre.Text, txtApellido.Text, txtContrasenia.Text), Atenea.DB.Conn)
+        Dim conexion As New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` VALUES ('{0}', '{1}', '{2}', '{3}', 'Funcionario');", txtCI.Text, txtNombre.Text, txtApellido.Text, txtContrasenia.Text), conexion.Conn)
 
         Try
             cmd.ExecuteNonQuery()
+            conexion.Conn.Close()
             Atenea.agregarAtenea(txtCI.Text, False, True)
         Catch ex As Exception
             Console.Write(ex.ToString())
             lblInfo.Visible = True 'Muestra lblInfo
         End Try
+
+
     End Sub
 
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtNombre.TextChanged, txtApellido.TextChanged, txtCI.TextChanged, txtContrasenia.TextChanged

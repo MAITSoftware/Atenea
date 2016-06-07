@@ -25,18 +25,19 @@ Public Class frmPrestamos
         btnImprimir.Enabled = False
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
-        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
+        Dim conexion As New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn)
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-        While Atenea.DB.Reader.Read()
+        While reader.Read()
             Dim miItem As New ListViewItem
             Dim fechaPrestamo, fechaEntrega
-            miItem = planilla.Items.Add(Atenea.DB.Reader("CI_Usuario"), 0)
-            miItem.SubItems.Add(Atenea.DB.Reader("CI_Funcionario"))
-            miItem.SubItems.Add(Atenea.DB.Reader("Titulo"))
-            miItem.SubItems.Add(Atenea.DB.Reader("ID"))
-            fechaPrestamo = Atenea.DB.Reader("Fecha prestamo")
-            fechaEntrega = Atenea.DB.Reader("Fecha entrega")
+            miItem = planilla.Items.Add(reader("CI_Usuario"), 0)
+            miItem.SubItems.Add(reader("CI_Funcionario"))
+            miItem.SubItems.Add(reader("Titulo"))
+            miItem.SubItems.Add(reader("ID"))
+            fechaPrestamo = reader("Fecha prestamo")
+            fechaEntrega = reader("Fecha entrega")
             miItem.SubItems.Add(fechaPrestamo)
             miItem.SubItems.Add(fechaEntrega)
             Dim faltanDias As Integer = DateDiff(DateInterval.Day, fechaPrestamo, fechaEntrega)
@@ -45,7 +46,8 @@ Public Class frmPrestamos
             End If
             btnImprimir.Enabled = True
         End While
-        Atenea.DB.Reader.Close()
+        reader.Close()
+        conexion.Conn.Close()
     End Sub
     Private Sub planilla_SelectedIndexChanged(sender As Object, e As EventArgs) Handles planilla.SelectedIndexChanged
         Try
@@ -100,19 +102,21 @@ Public Class frmPrestamos
 "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
-        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
+        Dim conexion As New DB()
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn)
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-        While Atenea.DB.Reader.Read()
-            archivo += "Préstamo de libro: " & Atenea.DB.Reader("Titulo") & vbCrLf &
-                       "Usuario (CI): " & Atenea.DB.Reader("CI_Usuario") & vbCrLf &
-                       "Funcionario (CI): " & Atenea.DB.Reader("CI_Funcionario") & vbCrLf &
-                       "ID: " & Atenea.DB.Reader("ID") & vbCrLf &
-                       "Fecha préstamo: " & Atenea.DB.Reader("Fecha prestamo") & vbCrLf &
-                       "Fecha entrega: " & Atenea.DB.Reader("Fecha entrega") & vbCrLf &
+        While reader.Read()
+            archivo += "Préstamo de libro: " & reader("Titulo") & vbCrLf &
+                       "Usuario (CI): " & reader("CI_Usuario") & vbCrLf &
+                       "Funcionario (CI): " & reader("CI_Funcionario") & vbCrLf &
+                       "ID: " & reader("ID") & vbCrLf &
+                       "Fecha préstamo: " & reader("Fecha prestamo") & vbCrLf &
+                       "Fecha entrega: " & reader("Fecha entrega") & vbCrLf &
                        "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
         End While
-        Atenea.DB.Reader.Close()
+        reader.Close()
+        conexion.Conn.Close()
 
         Dim path As String = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".txt"
         Using sw As StreamWriter = File.CreateText(path)

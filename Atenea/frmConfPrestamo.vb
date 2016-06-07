@@ -53,16 +53,13 @@ Public Class frmConfPrestamo
     End Sub
 
     Private Sub btnPrestar_Click(sender As Object, e As EventArgs) Handles btnPrestar.Click
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
+        Dim conexion As New DB()
 
         Dim sentencia As String = "INSERT INTO `prestamo` VALUES (@id, @ciUsuario, @ciFuncionario, @fechaPrestamo, @fechaEntrega);"
         If interfazEdicion Then
             sentencia = "UPDATE `prestamo` SET `Fecha entrega`=@fechaEntrega WHERE `ID`=@id;"
         End If
-        Dim cmd As New MySqlCommand(sentencia, Atenea.DB.Conn)
+        Dim cmd As New MySqlCommand(sentencia, conexion.Conn)
         Dim hoy As DateTime = Now
         If interfazEdicion Then
             cmd.Parameters.AddWithValue("@id", llaveLibro)
@@ -80,8 +77,7 @@ Public Class frmConfPrestamo
             Atenea.atenea.cargarLibros()
         Catch ex As Exception
         End Try
-
-        Atenea.DB.Reader.Close()
+        conexion.Conn.Close()
         Me.Dispose()
     End Sub
 
@@ -89,43 +85,36 @@ Public Class frmConfPrestamo
         If interfazEdicion Then
             Return
         End If
-
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
+        Dim conexion As New DB()
         Dim user As String = comboUsuario.SelectedItem.ToString()
         ciUsuario = user.Substring(0, user.IndexOf(" -- "))
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), Atenea.DB.Conn)
-        Atenea.DB.Reader = cmd.ExecuteReader()
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), conexion.Conn)
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
         lblInfo.Visible = False
         btnPrestar.Enabled = True
-        While Atenea.DB.Reader.Read()
+        While reader.Read()
             lblInfo.Visible = True
             btnPrestar.Enabled = False
         End While
 
     End Sub
 
-    Private sub cargarUsuarios()
-    Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-
-        End Try
+    Private Sub cargarUsuarios()
+        Dim conexion As DB = New DB()
 
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.DB.Conn
+                .Connection = conexion.Conn
                 .CommandText = "select * from usuario where tipo='usuario' order by CI;"
                 .CommandType = CommandType.Text
             End With
-            Atenea.DB.Reader = cmd.ExecuteReader()
 
-            While Atenea.DB.Reader.Read()
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            While reader.Read()
                 Dim Nombre, ID
-                ID = Atenea.DB.Reader("CI")
-                Nombre = Atenea.DB.Reader("Nombre")
+                ID = reader("CI")
+                Nombre = reader("Nombre")
                 If interfazEdicion Then
                     If Not Convert.ToInt32(ciUsuario).Equals(ID) Then
                         Continue While
@@ -138,7 +127,7 @@ Public Class frmConfPrestamo
                 End If
             End While
 
-            Atenea.DB.Reader.Close()
+            reader.Close()
 
         End Using
     End Sub
