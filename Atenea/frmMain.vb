@@ -66,17 +66,16 @@ Public Class frmMain
                 sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por ID
             End If
 
-            If cboxDisponibles.Checked Then
-                sentencia += " order by (ID in (select ID from prestamo))"
-            Else
-                sentencia += " order by (ID in (select ID from prestamo)) DESC"
+            If chkGenero.Checked Then 'Si chkGenero está marcada
+                sentencia += String.Format(" AND Genero='{0}'", cboxGenero.Text) 'sentencia estará compuesta por " AND Genero='{0}';" y el texto en cboxGenero
             End If
 
-            If chkGenero.Checked Then 'Si chkGenero está marcada
-                sentencia += String.Format(" AND Genero='{0}';", cboxGenero.Text) 'sentencia estará compuesta por " AND Genero='{0}';" y el texto en cboxGenero
+            If cboxDisponibles.Checked Then
+                sentencia += " order by (ID in (select ID from prestamo));"
             Else
-                sentencia += ";" 'Agrega punto y coma a sentencia
+                sentencia += " order by (ID in (select ID from prestamo)) DESC;"
             End If
+
         End If
         panelLibros.Controls.Clear()
         lblNoDisponibles.Text = "No hay libros disponibles" 'Fija el texto de lblNoDisponibles a "No hay libros disponibles"

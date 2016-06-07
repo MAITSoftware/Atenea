@@ -49,7 +49,7 @@ Public Class frmConfPrestamo
 
         Dim user As String = comboUsuario.SelectedItem.ToString()
         ciUsuario = user.Substring(0, user.IndexOf(" -- "))
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI usuario`='{0}';", ciUsuario), Atenea.conexion)
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), Atenea.conexion)
         Atenea.reader = cmd.ExecuteReader()
         lblInfo.Visible = False
         btnPrestar.Enabled = True
