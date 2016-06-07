@@ -65,6 +65,7 @@ Partial Class frmNewLogin
         Me.txtICI.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtICI.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtICI.Location = New System.Drawing.Point(372, 176)
+        Me.txtICI.MaxLength = 8
         Me.txtICI.Name = "txtICI"
         Me.txtICI.Size = New System.Drawing.Size(158, 24)
         Me.txtICI.TabIndex = 2

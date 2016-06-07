@@ -43,6 +43,7 @@ Partial Class frmAgregarLibro
         '
         Me.txtAutor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAutor.Location = New System.Drawing.Point(268, 116)
+        Me.txtAutor.MaxLength = 50
         Me.txtAutor.Name = "txtAutor"
         Me.txtAutor.Size = New System.Drawing.Size(193, 26)
         Me.txtAutor.TabIndex = 1
@@ -51,6 +52,7 @@ Partial Class frmAgregarLibro
         '
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(268, 49)
+        Me.txtNombre.MaxLength = 45
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(193, 26)
         Me.txtNombre.TabIndex = 0
@@ -59,6 +61,7 @@ Partial Class frmAgregarLibro
         '
         Me.txtID.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtID.Location = New System.Drawing.Point(268, 247)
+        Me.txtID.MaxLength = 10
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(194, 26)
         Me.txtID.TabIndex = 3

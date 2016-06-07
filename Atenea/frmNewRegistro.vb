@@ -27,4 +27,11 @@ Public Class frmNewRegistro
         'btnRegistrarse se activará si los campos txtCI, txtNombre, txtApellido y txtContrasenia han sido llenados
         lblInfo.Visible = False 'Oculta lblInfo
     End Sub
+
+    Private Sub txtCI_TextChanged(t As Object, e As KeyPressEventArgs) Handles txtCI.KeyPress
+        If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.KeyChar = ""
+            My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Asterisk)
+        End If
+    End Sub
 End Class
