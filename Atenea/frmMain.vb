@@ -45,6 +45,11 @@ Public Class frmMain
         lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido
     End Sub
     Public Sub cargarLibros()
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
+
         Dim sentencia As String = "SELECT `ID` FROM `libro`"
         If cboxDisponibles.Checked Then
             sentencia += " order by (ID in (select ID from prestamo));"
@@ -62,9 +67,9 @@ Public Class frmMain
             End If
 
             If cboxDisponibles.Checked Then
-                sentencia += " order by (ID in (select ID from prestamo));"
+                sentencia += " order by (ID in (select ID from prestamo))"
             Else
-                sentencia += " order by (ID in (select ID from prestamo)) DESC;"
+                sentencia += " order by (ID in (select ID from prestamo)) DESC"
             End If
 
             If chkGenero.Checked Then 'Si chkGenero está marcada
@@ -74,7 +79,7 @@ Public Class frmMain
             End If
         End If
         panelLibros.Controls.Clear()
-            lblNoDisponibles.Text = "No hay libros disponibles" 'Fija el texto de lblNoDisponibles a "No hay libros disponibles"
+        lblNoDisponibles.Text = "No hay libros disponibles" 'Fija el texto de lblNoDisponibles a "No hay libros disponibles"
         panelLibros.Controls.Add(lblNoDisponibles)
         panelLibros.Controls.Add(btnAgregar_temporal)
 
