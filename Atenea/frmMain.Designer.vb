@@ -23,10 +23,8 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnAgregarLibro = New System.Windows.Forms.Button()
-        Me.radioIconos = New System.Windows.Forms.RadioButton()
-        Me.radioLista = New System.Windows.Forms.RadioButton()
-        Me.groupVista = New System.Windows.Forms.GroupBox()
         Me.panelLibros = New System.Windows.Forms.FlowLayoutPanel()
+        Me.listview_lista = New System.Windows.Forms.ListView()
         Me.lblNoDisponibles = New System.Windows.Forms.Label()
         Me.btnAgregar_temporal = New System.Windows.Forms.Button()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
@@ -41,8 +39,7 @@ Partial Class frmMain
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cboxGenero = New System.Windows.Forms.ComboBox()
         Me.chkGenero = New System.Windows.Forms.CheckBox()
-        Me.listview_lista = New System.Windows.Forms.ListView()
-        Me.groupVista.SuspendLayout()
+        Me.cboxDisponibles = New System.Windows.Forms.CheckBox()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -65,49 +62,6 @@ Partial Class frmMain
         Me.btnAgregarLibro.Text = "Agregar libro"
         Me.btnAgregarLibro.UseVisualStyleBackColor = False
         '
-        'radioIconos
-        '
-        Me.radioIconos.AutoSize = True
-        Me.radioIconos.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.radioIconos.Checked = True
-        Me.radioIconos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioIconos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer))
-        Me.radioIconos.Location = New System.Drawing.Point(21, 13)
-        Me.radioIconos.Name = "radioIconos"
-        Me.radioIconos.Size = New System.Drawing.Size(66, 20)
-        Me.radioIconos.TabIndex = 8
-        Me.radioIconos.TabStop = True
-        Me.radioIconos.Text = "Iconos"
-        Me.radioIconos.UseVisualStyleBackColor = False
-        '
-        'radioLista
-        '
-        Me.radioLista.AutoSize = True
-        Me.radioLista.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.radioLista.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioLista.ForeColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer))
-        Me.radioLista.Location = New System.Drawing.Point(93, 13)
-        Me.radioLista.Name = "radioLista"
-        Me.radioLista.Size = New System.Drawing.Size(54, 20)
-        Me.radioLista.TabIndex = 9
-        Me.radioLista.TabStop = True
-        Me.radioLista.Text = "Lista"
-        Me.radioLista.UseVisualStyleBackColor = False
-        '
-        'groupVista
-        '
-        Me.groupVista.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.groupVista.Controls.Add(Me.radioLista)
-        Me.groupVista.Controls.Add(Me.radioIconos)
-        Me.groupVista.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.groupVista.ForeColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer))
-        Me.groupVista.Location = New System.Drawing.Point(16, 346)
-        Me.groupVista.Name = "groupVista"
-        Me.groupVista.Size = New System.Drawing.Size(160, 43)
-        Me.groupVista.TabIndex = 10
-        Me.groupVista.TabStop = False
-        Me.groupVista.Text = "Vista de"
-        '
         'panelLibros
         '
         Me.panelLibros.AutoScroll = True
@@ -120,6 +74,15 @@ Partial Class frmMain
         Me.panelLibros.Name = "panelLibros"
         Me.panelLibros.Size = New System.Drawing.Size(1054, 586)
         Me.panelLibros.TabIndex = 0
+        '
+        'listview_lista
+        '
+        Me.listview_lista.Location = New System.Drawing.Point(3, 3)
+        Me.listview_lista.Name = "listview_lista"
+        Me.listview_lista.Size = New System.Drawing.Size(1038, 580)
+        Me.listview_lista.TabIndex = 24
+        Me.listview_lista.UseCompatibleStateImageBehavior = False
+        Me.listview_lista.Visible = False
         '
         'lblNoDisponibles
         '
@@ -278,6 +241,7 @@ Partial Class frmMain
         Me.lblBienvenida.Size = New System.Drawing.Size(147, 20)
         Me.lblBienvenida.TabIndex = 22
         Me.lblBienvenida.Text = "Bienvenido, usuario"
+        Me.lblBienvenida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1
         '
@@ -317,20 +281,26 @@ Partial Class frmMain
         Me.chkGenero.Text = "Género"
         Me.chkGenero.UseVisualStyleBackColor = True
         '
-        'listview_lista
+        'cboxDisponibles
         '
-        Me.listview_lista.Location = New System.Drawing.Point(3, 3)
-        Me.listview_lista.Name = "listview_lista"
-        Me.listview_lista.Size = New System.Drawing.Size(1038, 580)
-        Me.listview_lista.TabIndex = 24
-        Me.listview_lista.UseCompatibleStateImageBehavior = False
-        Me.listview_lista.Visible = False
+        Me.cboxDisponibles.AutoSize = True
+        Me.cboxDisponibles.Checked = True
+        Me.cboxDisponibles.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cboxDisponibles.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboxDisponibles.ForeColor = System.Drawing.Color.White
+        Me.cboxDisponibles.Location = New System.Drawing.Point(16, 294)
+        Me.cboxDisponibles.Name = "cboxDisponibles"
+        Me.cboxDisponibles.Size = New System.Drawing.Size(148, 20)
+        Me.cboxDisponibles.TabIndex = 25
+        Me.cboxDisponibles.Text = "Disponibles primero"
+        Me.cboxDisponibles.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Controls.Add(Me.cboxDisponibles)
         Me.Controls.Add(Me.chkGenero)
         Me.Controls.Add(Me.cboxGenero)
         Me.Controls.Add(Me.lblBienvenida)
@@ -345,12 +315,9 @@ Partial Class frmMain
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.btnAgregarLibro)
         Me.Controls.Add(Me.panelLibros)
-        Me.Controls.Add(Me.groupVista)
         Me.DoubleBuffered = True
         Me.Name = "frmMain"
         Me.Size = New System.Drawing.Size(1264, 661)
-        Me.groupVista.ResumeLayout(False)
-        Me.groupVista.PerformLayout()
         Me.panelLibros.ResumeLayout(False)
         Me.panelLibros.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -360,9 +327,6 @@ Partial Class frmMain
     End Sub
     Friend WithEvents panelLibros As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents btnAgregarLibro As System.Windows.Forms.Button
-    Friend WithEvents radioIconos As System.Windows.Forms.RadioButton
-    Friend WithEvents radioLista As System.Windows.Forms.RadioButton
-    Friend WithEvents groupVista As System.Windows.Forms.GroupBox
     Friend WithEvents txtBusqueda As System.Windows.Forms.TextBox
     Friend WithEvents radioNombre As System.Windows.Forms.RadioButton
     Friend WithEvents radioAutor As System.Windows.Forms.RadioButton
@@ -378,5 +342,6 @@ Partial Class frmMain
     Friend WithEvents cboxGenero As System.Windows.Forms.ComboBox
     Friend WithEvents chkGenero As System.Windows.Forms.CheckBox
     Friend WithEvents listview_lista As System.Windows.Forms.ListView
+    Friend WithEvents cboxDisponibles As System.Windows.Forms.CheckBox
 
 End Class

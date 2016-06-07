@@ -15,30 +15,64 @@ Public Class frmMain
             ventanaNick.ShowDialog(Me) 'Muestra 
         End If
 
+        cargarNick()
+
         If Not interfazFuncionario Then 'Si interfazFuncionario es false
             btnAgregarLibro.Visible = False 'No muestra btnAgregarLibro
             btnAgregar_temporal.Visible = False 'No muestra btnAgregar_temporal
         End If
 
     End Sub
+    Private Sub cargarNick()
+        Dim Nombre As String
+        Dim Apellido As String = ""
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
+        Dim cmd As MySqlCommand = New MySqlCommand("select Nombre,Apellido from usuario where CI=@id;", Atenea.conexion) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.conexion
+        cmd.Parameters.AddWithValue("@id", CI)
 
+        Atenea.reader = cmd.ExecuteReader()
+        Atenea.reader.Read()
+        Nombre = Atenea.reader("Nombre")
+        Try
+            Apellido = Atenea.reader("Apellido")
+        Catch ex As Exception
+        End Try
+        Atenea.reader.Close()
+
+        lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido
+    End Sub
     Public Sub cargarLibros()
-        Dim sentencia As String = "SELECT `ID` FROM `libro`;" 'Define sentencia como String
-            If buscando Then 'Si buscando es verdadero
-                If radioNombre.Checked Then 'Si radioNombre está seleccionado
-                    sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por nombre
-                ElseIf radioAutor.Checked Then 'Si radioAutor está seleccionado
-                    sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por autor
-                ElseIf radioID.Checked Then 'Si radioID está seleccionado
-                    sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por ID
-                End If
+        Dim sentencia As String = "SELECT `ID` FROM `libro`"
+        If cboxDisponibles.Checked Then
+            sentencia += " order by (ID in (select ID from prestamo));"
+        Else
+            sentencia += " order by (ID in (select ID from prestamo)) DESC;"
+        End If
 
-                If chkGenero.Checked Then 'Si chkGenero está marcada
-                    sentencia += String.Format(" AND Genero='{0}';", cboxGenero.Text) 'sentencia estará compuesta por " AND Genero='{0}';" y el texto en cboxGenero
-                Else
-                    sentencia += ";" 'Agrega punto y coma a sentencia
-                End If
+        If buscando Then 'Si buscando es verdadero
+            If radioNombre.Checked Then 'Si radioNombre está seleccionado
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por nombre
+            ElseIf radioAutor.Checked Then 'Si radioAutor está seleccionado
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por autor
+            ElseIf radioID.Checked Then 'Si radioID está seleccionado
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por ID
             End If
+
+            If cboxDisponibles.Checked Then
+                sentencia += " order by (ID in (select ID from prestamo));"
+            Else
+                sentencia += " order by (ID in (select ID from prestamo)) DESC;"
+            End If
+
+            If chkGenero.Checked Then 'Si chkGenero está marcada
+                sentencia += String.Format(" AND Genero='{0}';", cboxGenero.Text) 'sentencia estará compuesta por " AND Genero='{0}';" y el texto en cboxGenero
+            Else
+                sentencia += ";" 'Agrega punto y coma a sentencia
+            End If
+        End If
         panelLibros.Controls.Clear()
             lblNoDisponibles.Text = "No hay libros disponibles" 'Fija el texto de lblNoDisponibles a "No hay libros disponibles"
         panelLibros.Controls.Add(lblNoDisponibles)
@@ -49,7 +83,7 @@ Public Class frmMain
         Catch ex As Exception
         End Try
 
-            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.conexion
+        Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.conexion
         Atenea.reader = cmd.ExecuteReader()
 
         While Atenea.reader.Read()
@@ -67,7 +101,6 @@ Public Class frmMain
         Next
 
         Atenea.reader.Close()
-
     End Sub
     
     Private Sub x(sender As Object, e As EventArgs) Handles chkGenero.CheckedChanged
@@ -119,5 +152,7 @@ Public Class frmMain
         cargarLibros() 'Ejecuta el método cargarLibros ()
     End Sub
 
- 
+    Private Sub cboxDisponibles_CheckedChanged(sender As Object, e As EventArgs) Handles cboxDisponibles.CheckedChanged
+        cargarLibros()
+    End Sub
 End Class

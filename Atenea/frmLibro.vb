@@ -79,8 +79,13 @@ Public Class Libro
         imgNoDisponible.BackgroundImage = Nothing
         imgNoDisponible.Cursor = Cursors.Hand
 
+        If Not (preview Or previewEditable) Then
+            imgBorde.BackgroundImage = My.Resources.borde_Disponible()
+        End If
+
         While Atenea.reader.Read()
             imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
+            imgBorde.BackgroundImage = My.Resources.borde_NoDisponible()
             If Not (preview Or previewEditable) Then
                 imgNoDisponible.Cursor = Cursors.No
             End If
@@ -115,17 +120,6 @@ Public Class Libro
     Dim portada As Bitmap = New Bitmap(pathPortada)
             imgPortada.BackgroundImage = portada
         End If
-    End Sub
-
-    Private Sub imgBorde_Enter(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseLeave
-        imgBorde.BackgroundImage = My.Resources.borde()
-    End Sub
-
-    Private Sub imgBorde_Leave(sender As Object, e As EventArgs) Handles imgNoDisponible.MouseEnter
-        If preview Or previewEditable Then
-            Return
-        End If
-        imgBorde.BackgroundImage = My.Resources.borde_hover()
     End Sub
 
     Private Sub btnEditar_Leave(sender As Object, e As EventArgs) Handles btnEditar.MouseLeave

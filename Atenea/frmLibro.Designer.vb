@@ -93,7 +93,7 @@ Partial Class Libro
         '
         'imgBorde
         '
-        Me.imgBorde.BackgroundImage = Global.Atenea.My.Resources.Resources.borde
+        Me.imgBorde.BackgroundImage = Global.Atenea.My.Resources.Resources.borde_Neutral
         Me.imgBorde.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.imgBorde.Cursor = System.Windows.Forms.Cursors.Help
         Me.imgBorde.Location = New System.Drawing.Point(0, 20)

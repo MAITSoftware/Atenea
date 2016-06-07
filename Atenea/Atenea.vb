@@ -6,7 +6,7 @@ Public Class Atenea
     Dim registro As frmNewRegistro
     Friend funcionario As Boolean = False
 
-    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=30065432;database=Atenea")
+    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
     Friend reader As MySqlDataReader
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
