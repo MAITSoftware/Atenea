@@ -12,7 +12,7 @@
    id="svg5684"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="degradado_disponible.svg">
+   sodipodi:docname="borde_NoDisponible.svg">
   <metadata
      id="metadata5697">
     <rdf:RDF>
@@ -21,6 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,10 +38,10 @@
      inkscape:window-height="856"
      id="namedview5695"
      showgrid="false"
-     inkscape:zoom="2"
-     inkscape:cx="11.488538"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="112.5"
      inkscape:cy="106.15531"
-     inkscape:window-x="4"
+     inkscape:window-x="8"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg5684" />
@@ -63,7 +64,7 @@
     </linearGradient>
   </defs>
   <path
-     style="fill:none;fill-opacity:1;stroke:#999999;stroke-width:3.01447678;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     style="fill:none;fill-opacity:1;stroke:#aa0044;stroke-width:3.01447678;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
      d="m 1.5072384,1.5072348 0,196.9855252 196.9855216,0 0,-196.9855252 -196.9855216,0 z"
      id="rect5693"
      inkscape:connector-curvature="0" />
