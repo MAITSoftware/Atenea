@@ -90,4 +90,11 @@ Public Class frmAgregarLibro
         Atenea.atenea.cargarLibros()
         Me.Dispose()
     End Sub
+
+
+    Private Sub EnterClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtID.KeyDown, txtNombre.KeyDown, txtAutor.KeyDown
+        If e.KeyCode.Equals(Keys.Enter) Then
+            btnAgregar.PerformClick()
+        End If
+    End Sub
 End Class

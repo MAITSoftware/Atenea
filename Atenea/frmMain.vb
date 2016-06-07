@@ -197,5 +197,4 @@ Public Class frmMain
         Dim frm As New frmAgregarLibro()
         frm.ShowDialog(Me)
     End Sub
-
 End Class
