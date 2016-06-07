@@ -1,13 +1,13 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmConfPrestamo
-    Dim llaveLibro, ciUsuario, ciUser_Edit, fechaActual, fechaPrestamo As String
+    Dim llaveLibro, ciUsuario, fechaActual, fechaPrestamo As String
     Dim interfazEdicion As Boolean
 
     Public Sub New(ByVal llave As String, Optional ByVal editar As Boolean = False, Optional ByVal usuario As String = Nothing, Optional ByVal fechalibro As String = Nothing, Optional ByVal fechalibro2 As String = Nothing)
         InitializeComponent()
         llaveLibro = llave
         interfazEdicion = editar
-        CI = usuario
+        ciUsuario = usuario
         fechaActual = fechalibro
         fechaPrestamo = fechalibro2
     End Sub
@@ -69,7 +69,7 @@ Public Class frmConfPrestamo
             cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
         Else
             cmd.Parameters.AddWithValue("@id", llaveLibro)
-            cmd.Parameters.AddWithValue("@ciUsuario", CI)
+            cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario)
             cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.atenea.CI)
             cmd.Parameters.AddWithValue("@fechaPrestamo", hoy.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
@@ -127,7 +127,7 @@ Public Class frmConfPrestamo
                 ID = Atenea.DB.Reader("CI")
                 Nombre = Atenea.DB.Reader("Nombre")
                 If interfazEdicion Then
-                    If Not Convert.ToInt32(CI).Equals(ID) Then
+                    If Not Convert.ToInt32(ciUsuario).Equals(ID) Then
                         Continue While
                     End If
                 End If

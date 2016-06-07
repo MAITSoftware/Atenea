@@ -35,7 +35,7 @@ Public Class frmAgregarLibro
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Dim sentencia As String
         sentencia = "INSERT INTO `libro` VALUES (@titulo, @autor, @portada, @genero, @condicion, @id);"
-        If editar Then
+        If interfazEdicion Then
             sentencia = "UPDATE `libro` SET Titulo=@titulo, Autor=@autor, Portada=@portada, Genero=@genero, Condicion=@condicion WHERE ID=@id;"
         End If
 
