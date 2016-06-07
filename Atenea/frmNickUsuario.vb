@@ -19,4 +19,5 @@ Public Class frmNickUsuario
         Me.Dispose()
         Atenea.agregarLogin()
     End Sub
+
 End Class

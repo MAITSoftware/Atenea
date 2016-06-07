@@ -65,6 +65,7 @@ Partial Class frmNewRegistro
         Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(356, 102)
+        Me.txtNombre.MaxLength = 25
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(158, 24)
         Me.txtNombre.TabIndex = 6
@@ -74,6 +75,7 @@ Partial Class frmNewRegistro
         Me.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApellido.Location = New System.Drawing.Point(356, 158)
+        Me.txtApellido.MaxLength = 30
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(158, 24)
         Me.txtApellido.TabIndex = 8
@@ -94,6 +96,7 @@ Partial Class frmNewRegistro
         Me.txtCI.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCI.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCI.Location = New System.Drawing.Point(356, 214)
+        Me.txtCI.MaxLength = 8
         Me.txtCI.Name = "txtCI"
         Me.txtCI.Size = New System.Drawing.Size(158, 24)
         Me.txtCI.TabIndex = 10
@@ -114,6 +117,7 @@ Partial Class frmNewRegistro
         Me.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtContrasenia.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContrasenia.Location = New System.Drawing.Point(356, 270)
+        Me.txtContrasenia.MaxLength = 45
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
         Me.txtContrasenia.TabIndex = 12
