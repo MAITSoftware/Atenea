@@ -84,9 +84,9 @@ Public Class Libro
         End If
 
         While Atenea.reader.Read()
-            imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
-            imgBorde.BackgroundImage = My.Resources.borde_NoDisponible()
             If Not (preview Or previewEditable) Then
+                imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
+                imgBorde.BackgroundImage = My.Resources.borde_NoDisponible()
                 imgNoDisponible.Cursor = Cursors.No
             End If
             btnEliminar.Visible = False
@@ -144,8 +144,8 @@ Public Class Libro
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Dim eliminar As frmEliminar
-        eliminar = New frmEliminar(Me.llaveLibro)
+        Dim eliminar As frmAccionLibro
+        eliminar = New frmAccionLibro(Me.llaveLibro)
         eliminar.ShowDialog(Me)
     End Sub
 End Class

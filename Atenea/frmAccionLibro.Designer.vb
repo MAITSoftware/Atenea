@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmEliminar
+Partial Class frmAccionLibro
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,14 +22,15 @@ Partial Class frmEliminar
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEliminar))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccionLibro))
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblAccion = New System.Windows.Forms.Label()
         Me.lblCondicion = New System.Windows.Forms.Label()
         Me.lblID = New System.Windows.Forms.Label()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblAutor = New System.Windows.Forms.Label()
+        Me.lblPrestado = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnCancelar
@@ -68,16 +69,16 @@ Partial Class frmEliminar
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lblAccion
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(71, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(341, 24)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "¿Seguro que quiere eliminar este libro?"
+        Me.lblAccion.AutoSize = True
+        Me.lblAccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAccion.ForeColor = System.Drawing.Color.White
+        Me.lblAccion.Location = New System.Drawing.Point(71, 23)
+        Me.lblAccion.Name = "lblAccion"
+        Me.lblAccion.Size = New System.Drawing.Size(341, 24)
+        Me.lblAccion.TabIndex = 9
+        Me.lblAccion.Text = "¿Seguro que quiere eliminar este libro?"
         '
         'lblCondicion
         '
@@ -123,23 +124,36 @@ Partial Class frmEliminar
         Me.lblAutor.TabIndex = 10
         Me.lblAutor.Text = "Autor: "
         '
-        'frmEliminar
+        'lblPrestado
+        '
+        Me.lblPrestado.AutoSize = True
+        Me.lblPrestado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrestado.ForeColor = System.Drawing.Color.White
+        Me.lblPrestado.Location = New System.Drawing.Point(193, 170)
+        Me.lblPrestado.Name = "lblPrestado"
+        Me.lblPrestado.Size = New System.Drawing.Size(90, 20)
+        Me.lblPrestado.TabIndex = 14
+        Me.lblPrestado.Text = "Prestado a:"
+        Me.lblPrestado.Visible = False
+        '
+        'frmAccionLibro
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(473, 250)
+        Me.Controls.Add(Me.lblPrestado)
         Me.Controls.Add(Me.lblCondicion)
         Me.Controls.Add(Me.lblID)
         Me.Controls.Add(Me.lblGenero)
         Me.Controls.Add(Me.lblAutor)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblAccion)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmEliminar"
+        Me.Name = "frmAccionLibro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Eliminar libro · Atenea"
         Me.ResumeLayout(False)
@@ -148,9 +162,10 @@ Partial Class frmEliminar
     End Sub
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents BtnEliminar As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblAccion As System.Windows.Forms.Label
     Friend WithEvents lblCondicion As System.Windows.Forms.Label
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblAutor As System.Windows.Forms.Label
+    Friend WithEvents lblPrestado As System.Windows.Forms.Label
 End Class

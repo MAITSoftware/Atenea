@@ -17,7 +17,7 @@ Public Class frmAgregarLibro
             cboxGenero.Text = previewLibro.Genero
             cboxEstado.Text = previewLibro.Condicion
         Else
-            previewLibro = New Libro("Preview", True)
+            previewLibro = New Libro(Nothing, True)
         End If
 
         previewLibro.Location = New Point(35, 60)

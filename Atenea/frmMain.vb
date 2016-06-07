@@ -13,9 +13,11 @@ Public Class frmMain
         If pedirNick Then 'Si pedirNick es true
             Dim ventanaNick As frmNickUsuario = New frmNickUsuario(CI) 'Define ventanaNick como 
             ventanaNick.ShowDialog(Me) 'Muestra 
+
+        Else
+            cargarNick()
         End If
 
-        cargarNick()
 
         If Not interfazFuncionario Then 'Si interfazFuncionario es false
             btnAgregarLibro.Visible = False 'No muestra btnAgregarLibro
@@ -23,7 +25,7 @@ Public Class frmMain
         End If
 
     End Sub
-    Private Sub cargarNick()
+    Public Sub cargarNick()
         Dim Nombre As String
         Dim Apellido As String = ""
         Try

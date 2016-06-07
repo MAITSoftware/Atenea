@@ -2,6 +2,11 @@
 Public Class frmConfPrestamo
     Dim llaveLibro As String
     Dim ciUsuario As String
+    Dim editar As Boolean
+    Dim ciUser_Edit As String
+    Dim fechaActual As String
+    Dim fechaPrestamo As String
+
     Private Sub frmConfPrestamo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim libro As Libro
         libro = New Libro(llaveLibro, False, True)
@@ -13,40 +18,82 @@ Public Class frmConfPrestamo
         lblID.Text = "ID: " + libro.ID
         lblCondicion.Text = "Condición: " + libro.Condicion
 
-        calendario.MinDate = System.DateTime.Now().AddDays(1)
-        calendario.MaxDate = System.DateTime.Now().AddDays(14)
-        calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.MaxDate}
-        calendario.SetDate(calendario.MaxDate)
+
+        If editar Then
+            calendario.MinDate = Convert.ToDateTime(fechaPrestamo)
+            calendario.MaxDate = calendario.MinDate.AddDays(14)
+            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
+            calendario.SetDate(Convert.ToDateTime(fechaActual))
+        Else
+            calendario.MinDate = System.DateTime.Now().AddDays(1)
+            calendario.MaxDate = System.DateTime.Now().AddDays(14)
+            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.MaxDate}
+            calendario.SetDate(calendario.MaxDate)
+        End If
+
+        If editar Then
+            Me.Text = "Actualizar datos de préstamo · Atenea"
+            comboUsuario.Enabled = False
+            btnPrestar.Enabled = True
+            btnPrestar.Text = "Cambiar"
+        End If
 
         Try
             Atenea.reader.Close()
         Catch ex As Exception
+
         End Try
 
-        Dim cmd As MySqlCommand = New MySqlCommand("select * from usuario where tipo='usuario' order by CI;", Atenea.conexion)
-        Atenea.reader = cmd.ExecuteReader()
+        Using cmd As New MySqlCommand()
+            With cmd
+                .Connection = Atenea.conexion
+                .CommandText = "select * from usuario where tipo='usuario' order by CI;"
+                .CommandType = CommandType.Text
+            End With
+            Atenea.reader = cmd.ExecuteReader()
 
-        While Atenea.reader.Read()
-            Dim Nombre, ID
-            ID = Atenea.reader("CI")
-            Nombre = Atenea.reader("Nombre")
-            comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
-        End While
-        Atenea.reader.Close()
+            While Atenea.reader.Read()
+                Dim Nombre, ID
+                ID = Atenea.reader("CI")
+                Nombre = Atenea.reader("Nombre")
+                If editar Then
+                    Console.WriteLine(ID)
+                    Console.WriteLine(ciUser_Edit)
+                    Console.WriteLine("-------")
+                    If Not Convert.ToInt32(ciUser_Edit).Equals(ID) Then
+                        Continue While
+                    End If
+                End If
+
+                comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
+                If editar Then
+                    comboUsuario.Text = String.Format("{0} -- {1}", ID, Nombre)
+                End If
+            End While
+
+            Atenea.reader.Close()
+
+        End Using
 
     End Sub
 
-    Public Sub New(ByVal llave As String)
+    Public Sub New(ByVal llave As String, Optional ByVal editando As Boolean = False, Optional ByVal usuario As String = Nothing, Optional ByVal fechalibro As String = Nothing, Optional ByVal fechalibro2 As String = Nothing)
         InitializeComponent()
         llaveLibro = llave
+        editar = editando
+        ciUser_Edit = usuario
+        fechaActual = fechalibro
+        fechaPrestamo = fechalibro2
     End Sub
 
     Private Sub comboUsuario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboUsuario.SelectedIndexChanged
+        If editar Then
+            Return
+        End If
         Try
             Atenea.reader.Close()
         Catch ex As Exception
         End Try
-
         Dim user As String = comboUsuario.SelectedItem.ToString()
         ciUsuario = user.Substring(0, user.IndexOf(" -- "))
         Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), Atenea.conexion)
@@ -57,7 +104,6 @@ Public Class frmConfPrestamo
             lblInfo.Visible = True
             btnPrestar.Enabled = False
         End While
-        Atenea.reader.Close()
 
     End Sub
 
@@ -77,24 +123,33 @@ Public Class frmConfPrestamo
         End Try
 
         Dim sentencia As String = "INSERT INTO `prestamo` VALUES (@id, @ciUsuario, @ciFuncionario, @fechaPrestamo, @fechaEntrega);"
+        If editar Then
+            sentencia = "UPDATE `prestamo` SET `Fecha entrega`=@fechaEntrega WHERE `ID`=@id;"
+        End If
         Dim cmd As New MySqlCommand(sentencia, Atenea.conexion)
         Dim hoy As DateTime = Now
-
-        cmd.Parameters.AddWithValue("@id", llaveLibro)
-        cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario)
-        cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.atenea.CI)
-        cmd.Parameters.AddWithValue("@fechaPrestamo", hoy.ToString("yyyy-MM-dd"))
-        cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
+        If editar Then
+            cmd.Parameters.AddWithValue("@id", llaveLibro)
+            cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
+        Else
+            cmd.Parameters.AddWithValue("@id", llaveLibro)
+            cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario)
+            cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.atenea.CI)
+            cmd.Parameters.AddWithValue("@fechaPrestamo", hoy.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
+        End If
 
         Try
             cmd.ExecuteNonQuery()
-            Atenea.reader.Close()
             Atenea.atenea.cargarLibros()
-            Me.Dispose()
+            Atenea.reader.Close()
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
             Atenea.reader.Close()
         End Try
+
+
+        Me.Dispose()
 
     End Sub
 
