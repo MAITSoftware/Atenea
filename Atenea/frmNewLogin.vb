@@ -3,6 +3,7 @@ Public Class frmNewLogin
 
     Private Sub rbtnFuncionario_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnFuncionario.CheckedChanged
         If rbtnFuncionario.Checked Then 'Si rbtn fue seleccionado
+            txtContrasenia.Text = ""
             lblContrasenia.Visible = True 'Muestra lblContrasenia
             txtContrasenia.Visible = True 'Muestra txtContrasenia
             lblNuevoUsuario.Visible = True 'Muestra lblNuevoUsuario
@@ -11,6 +12,7 @@ Public Class frmNewLogin
             lblCI.Location = New Point(391, 128) 'Cambia la posición de lblCI
             txtICI.Location = New Point(372, 155) 'Cambia la posición de txtICI
             btnEntrar.Location = New Point(393, 284) 'Cambia la posición de btnEntrar
+
         Else 'Sino
             txtICI.Text = ""
             lblContrasenia.Visible = False 'Oculta lblContrasenia

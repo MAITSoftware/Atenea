@@ -13,7 +13,6 @@ Public Class frmMain
  
     Private Sub mainLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarLibros()
-        Me.Cursor = System.Windows.Forms.Cursors.Arrow 
         cboxGenero.SelectedIndex = 0
  
         If pedirNick Then 
@@ -29,6 +28,9 @@ Public Class frmMain
             btnPrestamos.Text = "Préstamo en curso"
             CheckPrestamo()
         End If
+
+
+        Me.Cursor = System.Windows.Forms.Cursors.Arrow
     End Sub
  
     Public Sub cargarNick()
@@ -99,12 +101,29 @@ Public Class frmMain
             panelLibros.Controls.Add(x)
         End While
 
-        For Each Libro In panelLibros.Controls
+        Dim visibles As Integer
+        For Each l As Libro In panelLibros.Controls
             Try
-                Libro.actualizarDatos()
+                l.actualizarDatos()
+                visibles += 1
+                If chkSoloDisponibles.Checked Then
+                    If Not l.estaDisponible Then
+                        l.Visible = False
+                        visibles -= 1
+                    End If
+                End If
             Catch ex As Exception
             End Try
         Next
+
+        If visibles <= 0 Then
+            panelLibros.Controls.Clear()
+            lblNoDisponibles.Text = "No hay libros disponibles"
+            panelLibros.Controls.Add(lblNoDisponibles)
+            If interfazFuncionario Then
+                panelLibros.Controls.Add(btnAgregar_temporal)
+            End If
+        End If
 
         reader.Close()
         conexion.Conn.Close()
@@ -164,7 +183,7 @@ Public Class frmMain
         cargarLibros()
     End Sub
 
-    Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged, chkGenero.CheckedChanged
+    Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged, chkGenero.CheckedChanged, chkSoloDisponibles.CheckedChanged
         cboxGenero.Enabled = chkGenero.Checked
         cargarLibros()
     End Sub
@@ -178,4 +197,5 @@ Public Class frmMain
         Dim frm As New frmAgregarLibro()
         frm.ShowDialog(Me)
     End Sub
+
 End Class

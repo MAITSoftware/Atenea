@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Libro
 
-    Dim estaDisponible As Boolean = True
+    Friend estaDisponible As Boolean = True
     Dim llaveLibro As String
     Dim previewEditable As Boolean = False
     Dim preview As Boolean = False
@@ -89,9 +89,11 @@ Public Class Libro
             imgBorde.BackgroundImage = My.Resources.borde_Disponible()
         End If
 
+        estaDisponible = True
         While reader.Read()
             If Not (preview Or previewEditable) Then
                 imgNoDisponible.BackgroundImage = My.Resources.sombra_nodisponible()
+                estaDisponible = False
                 imgBorde.BackgroundImage = My.Resources.borde_NoDisponible()
                 imgNoDisponible.Cursor = Cursors.No
             End If

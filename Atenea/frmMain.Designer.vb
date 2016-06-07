@@ -42,6 +42,7 @@ Partial Class frmMain
         Me.cboxDisponibles = New System.Windows.Forms.CheckBox()
         Me.panelInfo = New System.Windows.Forms.Panel()
         Me.lblEntregarLibro = New System.Windows.Forms.Label()
+        Me.chkSoloDisponibles = New System.Windows.Forms.CheckBox()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelInfo.SuspendLayout()
@@ -291,7 +292,7 @@ Partial Class frmMain
         Me.cboxDisponibles.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cboxDisponibles.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboxDisponibles.ForeColor = System.Drawing.Color.White
-        Me.cboxDisponibles.Location = New System.Drawing.Point(16, 294)
+        Me.cboxDisponibles.Location = New System.Drawing.Point(16, 307)
         Me.cboxDisponibles.Name = "cboxDisponibles"
         Me.cboxDisponibles.Size = New System.Drawing.Size(148, 20)
         Me.cboxDisponibles.TabIndex = 25
@@ -322,11 +323,24 @@ Partial Class frmMain
         Me.lblEntregarLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblEntregarLibro.Visible = False
         '
+        'chkSoloDisponibles
+        '
+        Me.chkSoloDisponibles.AutoSize = True
+        Me.chkSoloDisponibles.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkSoloDisponibles.ForeColor = System.Drawing.Color.White
+        Me.chkSoloDisponibles.Location = New System.Drawing.Point(16, 282)
+        Me.chkSoloDisponibles.Name = "chkSoloDisponibles"
+        Me.chkSoloDisponibles.Size = New System.Drawing.Size(128, 20)
+        Me.chkSoloDisponibles.TabIndex = 27
+        Me.chkSoloDisponibles.Text = "Sólo disponibles"
+        Me.chkSoloDisponibles.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Controls.Add(Me.chkSoloDisponibles)
         Me.Controls.Add(Me.panelInfo)
         Me.Controls.Add(Me.cboxDisponibles)
         Me.Controls.Add(Me.chkGenero)
@@ -375,5 +389,6 @@ Partial Class frmMain
     Friend WithEvents cboxDisponibles As System.Windows.Forms.CheckBox
     Friend WithEvents panelInfo As System.Windows.Forms.Panel
     Friend WithEvents lblEntregarLibro As System.Windows.Forms.Label
+    Friend WithEvents chkSoloDisponibles As System.Windows.Forms.CheckBox
 
 End Class

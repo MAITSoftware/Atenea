@@ -27,12 +27,12 @@ Public Class frmConfPrestamo
 
         If interfazEdicion Then
             calendario.MinDate = Convert.ToDateTime(fechaPrestamo)
-            calendario.MaxDate = calendario.MinDate.AddDays(14)
+            calendario.MaxDate = calendario.MinDate.AddDays(21)
             calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
             calendario.SetDate(Convert.ToDateTime(fechaActual))
         Else
             calendario.MinDate = System.DateTime.Now().AddDays(1)
-            calendario.MaxDate = System.DateTime.Now().AddDays(14)
+            calendario.MaxDate = System.DateTime.Now().AddDays(21)
             calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.MaxDate}
             calendario.SetDate(calendario.MaxDate)
         End If
