@@ -53,6 +53,7 @@ Public Class frmPrestamos
             btnLibroDevuelto.Enabled = True
             btnCambiarFecha.Enabled = True
         Catch ex As Exception
+            ID = Nothing
             btnLibroDevuelto.Enabled = False
             btnCambiarFecha.Enabled = False
         End Try
@@ -77,6 +78,8 @@ Public Class frmPrestamos
         frmDevolver = New frmAccionLibro(ID, True, planilla.SelectedItems.Item(0).SubItems(0).Text)
         frmDevolver.ShowDialog(Me)
         ID = Nothing
+        btnLibroDevuelto.Enabled = False
+        btnCambiarFecha.Enabled = False
         updateLibro()
         actualizarDatos()
     End Sub
@@ -93,14 +96,21 @@ Public Class frmPrestamos
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        Dim archivo As String = "CI Usuario | CI Funcionario | Nombre del libro | ID del libro | Fecha de préstamo | Fecha de entrega" & vbCrLf & vbCrLf
+        Dim archivo As String = "Préstamos" & vbCrLf &
+"----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
         Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn)
         Atenea.DB.Reader = cmd.ExecuteReader()
 
         While Atenea.DB.Reader.Read()
-            archivo += Atenea.DB.Reader("CI_Usuario") & " | " & Atenea.DB.Reader("CI_Funcionario") & " | " & Atenea.DB.Reader("Titulo") & " | " & Atenea.DB.Reader("ID") & " | " & Atenea.DB.Reader("Fecha prestamo") & " | " & Atenea.DB.Reader("Fecha entrega") & vbCrLf 
+            archivo += "Préstamo de libro: " & Atenea.DB.Reader("Titulo") & vbCrLf &
+                       "Usuario (CI): " & Atenea.DB.Reader("CI_Usuario") & vbCrLf &
+                       "Funcionario (CI): " & Atenea.DB.Reader("CI_Funcionario") & vbCrLf &
+                       "ID: " & Atenea.DB.Reader("ID") & vbCrLf &
+                       "Fecha préstamo: " & Atenea.DB.Reader("Fecha prestamo") & vbCrLf &
+                       "Fecha entrega: " & Atenea.DB.Reader("Fecha entrega") & vbCrLf &
+                       "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
         End While
         Atenea.DB.Reader.Close()
 
