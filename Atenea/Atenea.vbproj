@@ -90,6 +90,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB.vb" />
     <Compile Include="frmConfPrestamo.Designer.vb">
       <DependentUpon>frmConfPrestamo.vb</DependentUpon>
     </Compile>

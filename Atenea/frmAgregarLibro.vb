@@ -59,7 +59,7 @@ Public Class frmAgregarLibro
 
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.conexion
+                .Connection = Atenea.DB.Conn
                 .CommandText = sentencia
                 .CommandType = CommandType.Text
                 .Parameters.AddWithValue("@titulo", txtNombre.Text)

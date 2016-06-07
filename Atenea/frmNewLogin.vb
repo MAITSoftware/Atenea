@@ -35,19 +35,19 @@ Public Class frmNewLogin
         Dim datosCorrectos As Boolean = False 'Define datosCorrectos como Boolean
         Dim sentencia As String 'Define sentencia como String
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
 
 
         If rbtnFuncionario.Checked Then 'Si rbtnFuncionario es seleccionado
             sentencia = String.Format("SELECT * FROM `usuario` WHERE CI='{0}' AND Contrasenia='{1}' AND Tipo='Funcionario';", txtICI.Text, txtContrasenia.Text)
-            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.conexion
-            Atenea.reader = cmd.ExecuteReader()
+            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            Atenea.DB.Reader = cmd.ExecuteReader()
 
-            While Atenea.reader.Read()
-                Atenea.reader.Read()
-                Atenea.reader.GetString(0)
+            While Atenea.DB.Reader.Read()
+                Atenea.DB.Reader.Read()
+                Atenea.DB.Reader.GetString(0)
                 datosCorrectos = True 'Define datosCorrectos como true
             End While
 
@@ -56,28 +56,28 @@ Public Class frmNewLogin
                 Return
             End If
 
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
             Atenea.agregarAtenea(txtICI.Text, False, True)
 
         Else 'Si rbtnFuncionario no es seleccionado
             sentencia = String.Format("SELECT `Nombre`, `Tipo` FROM `usuario` WHERE CI='{0}';", txtICI.Text)
-            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.conexion
-            Atenea.reader = cmd.ExecuteReader()
+            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.DB.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            Atenea.DB.Reader = cmd.ExecuteReader()
 
-            While Atenea.reader.Read()
-                Atenea.reader.Read()
-                Atenea.reader.GetString(0)
-                If Atenea.reader.GetString(1) = "Funcionario" Then
+            While Atenea.DB.Reader.Read()
+                Atenea.DB.Reader.Read()
+                Atenea.DB.Reader.GetString(0)
+                If Atenea.DB.Reader.GetString(1) = "Funcionario" Then
                     rbtnFuncionario.Checked = True
 
-                    Atenea.reader.Close()
+                    Atenea.DB.Reader.Close()
                     Return
                 End If
 
                 precisaNick = False 'Define precisaNick como false
             End While
 
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
             Atenea.agregarAtenea(txtICI.Text, precisaNick)
         End If
 

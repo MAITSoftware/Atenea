@@ -14,21 +14,21 @@ Public Class frmPrestamo
         lblID.Text = "ID: " & libro.ID
 
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.conexion
+                .Connection = Atenea.DB.Conn
                 .CommandText = "select `Fecha entrega` from prestamo where ID=@id;"
                 .CommandType = CommandType.Text
                 .Parameters.AddWithValue("@id", llaveLibro)
             End With
-            Atenea.reader = cmd.ExecuteReader()
-            While Atenea.reader.Read()
-                lblDevolver.Text += " " & DateTime.Parse(Atenea.reader.GetString(0)).ToShortDateString()
+            Atenea.DB.Reader = cmd.ExecuteReader()
+            While Atenea.DB.Reader.Read()
+                lblDevolver.Text += " " & DateTime.Parse(Atenea.DB.Reader.GetString(0)).ToShortDateString()
             End While
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         End Using
 
     End Sub

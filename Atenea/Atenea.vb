@@ -5,19 +5,10 @@ Public Class Atenea
     Dim login As frmNewLogin
     Dim registro As frmNewRegistro
     Friend funcionario As Boolean = False
+    Friend DB As New DB()
 
-    Friend conexion As New MySqlConnection("server=localhost;uid=root;password=ignacio;database=Atenea")
-    Friend reader As MySqlDataReader
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            conexion.Open()
-        Catch ex As Exception
-            System.Console.WriteLine(ex)
-            MsgBox("Error al establecer la conexión con el servidor", MsgBoxStyle.Critical)
-            Environment.Exit(0)
-        End Try
-
         agregarLogin()
     End Sub
 

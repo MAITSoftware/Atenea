@@ -7,11 +7,11 @@ Public Class frmNewRegistro
 
     Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click 'Al hacer click en btnRegistrarse
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
 
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` VALUES ('{0}', '{1}', '{2}', '{3}', 'Funcionario');", txtCI.Text, txtNombre.Text, txtApellido.Text, txtContrasenia.Text), Atenea.conexion)
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` VALUES ('{0}', '{1}', '{2}', '{3}', 'Funcionario');", txtCI.Text, txtNombre.Text, txtApellido.Text, txtContrasenia.Text), Atenea.DB.Conn)
 
         Try
             cmd.ExecuteNonQuery()

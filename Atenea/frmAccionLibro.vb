@@ -33,12 +33,12 @@ Public Class frmAccionLibro
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.conexion
+                .Connection = Atenea.DB.Conn
                 .CommandText = "DELETE FROM `libro` WHERE ID=@id;"
                 If devolucion Then
                     .CommandText = "DELETE FROM `prestamo` WHERE ID=@id;"

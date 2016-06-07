@@ -39,23 +39,23 @@ Public Class frmConfPrestamo
         End If
 
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
 
         End Try
 
         Using cmd As New MySqlCommand()
             With cmd
-                .Connection = Atenea.conexion
+                .Connection = Atenea.DB.Conn
                 .CommandText = "select * from usuario where tipo='usuario' order by CI;"
                 .CommandType = CommandType.Text
             End With
-            Atenea.reader = cmd.ExecuteReader()
+            Atenea.DB.Reader = cmd.ExecuteReader()
 
-            While Atenea.reader.Read()
+            While Atenea.DB.Reader.Read()
                 Dim Nombre, ID
-                ID = Atenea.reader("CI")
-                Nombre = Atenea.reader("Nombre")
+                ID = Atenea.DB.Reader("CI")
+                Nombre = Atenea.DB.Reader("Nombre")
                 If editar Then
                     Console.WriteLine(ID)
                     Console.WriteLine(ciUser_Edit)
@@ -71,7 +71,7 @@ Public Class frmConfPrestamo
                 End If
             End While
 
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
 
         End Using
 
@@ -91,16 +91,16 @@ Public Class frmConfPrestamo
             Return
         End If
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
         Dim user As String = comboUsuario.SelectedItem.ToString()
         ciUsuario = user.Substring(0, user.IndexOf(" -- "))
-        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), Atenea.conexion)
-        Atenea.reader = cmd.ExecuteReader()
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", ciUsuario), Atenea.DB.Conn)
+        Atenea.DB.Reader = cmd.ExecuteReader()
         lblInfo.Visible = False
         btnPrestar.Enabled = True
-        While Atenea.reader.Read()
+        While Atenea.DB.Reader.Read()
             lblInfo.Visible = True
             btnPrestar.Enabled = False
         End While
@@ -118,7 +118,7 @@ Public Class frmConfPrestamo
 
     Private Sub btnPrestar_Click(sender As Object, e As EventArgs) Handles btnPrestar.Click
         Try
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
         End Try
 
@@ -126,7 +126,7 @@ Public Class frmConfPrestamo
         If editar Then
             sentencia = "UPDATE `prestamo` SET `Fecha entrega`=@fechaEntrega WHERE `ID`=@id;"
         End If
-        Dim cmd As New MySqlCommand(sentencia, Atenea.conexion)
+        Dim cmd As New MySqlCommand(sentencia, Atenea.DB.Conn)
         Dim hoy As DateTime = Now
         If editar Then
             cmd.Parameters.AddWithValue("@id", llaveLibro)
@@ -142,10 +142,10 @@ Public Class frmConfPrestamo
         Try
             cmd.ExecuteNonQuery()
             Atenea.atenea.cargarLibros()
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
-            Atenea.reader.Close()
+            Atenea.DB.Reader.Close()
         End Try
 
 
