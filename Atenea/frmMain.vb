@@ -148,7 +148,7 @@ Public Class frmMain
                 Return
             End While
 
-            MsgBox("Aún no haz rentado ningún libro")
+            MsgBox("Aún no has rentado ningún libro")
         End If
     End Sub
 
