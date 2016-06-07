@@ -18,11 +18,13 @@ Public Class frmMain
             cargarNick()
         End If
 
-
         If Not interfazFuncionario Then 'Si interfazFuncionario es false
             btnAgregarLibro.Visible = False 'No muestra btnAgregarLibro
             btnAgregar_temporal.Visible = False 'No muestra btnAgregar_temporal
+            btnPrestamos.Text = "Préstamo en curso"
+            CheckPrestamo()
         End If
+
 
     End Sub
     Public Sub cargarNick()
@@ -132,9 +134,41 @@ Public Class frmMain
         frm.ShowDialog(Me)
     End Sub
 
+    Private Sub CheckPrestamo()
+        Try
+            Atenea.reader.Close()
+        Catch ex As Exception
+        End Try
+        Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), Atenea.conexion)
+        Atenea.reader = cmd.ExecuteReader()
+        While Atenea.reader.Read()
+            panelInfo.Visible = True
+            lblEntregarLibro.Visible = True
+            lblEntregarLibro.Text = "Entregue su libro antes del" & ControlChars.NewLine & DateTime.Parse(Atenea.reader.GetString(4)).ToShortDateString()
+        End While
+        Atenea.reader.Close()
+    End Sub
+
     Private Sub btnPrestamos_Click(sender As Object, e As EventArgs) Handles btnPrestamos.Click
-        Dim frm As New frmPrestamos()
-        frm.ShowDialog(Me)
+        If interfazFuncionario Then
+            Dim frm As New frmPrestamos()
+            frm.ShowDialog(Me)
+        Else
+            Try
+                Atenea.reader.Close()
+            Catch ex As Exception
+            End Try
+
+            Dim cmd As MySqlCommand = New MySqlCommand(String.Format("select * from prestamo where `CI_Usuario`='{0}';", CI), Atenea.conexion)
+            Atenea.reader = cmd.ExecuteReader()
+            While Atenea.reader.Read()
+                Dim frm As New frmPrestamo(Atenea.reader("ID"))
+                frm.ShowDialog(Me)
+                Return
+            End While
+
+            MsgBox("Aún no haz rentado ningún libro")
+        End If
     End Sub
 
     Public Sub New(ByVal ci_ As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal funcionario As Boolean = False)

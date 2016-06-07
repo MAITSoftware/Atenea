@@ -108,6 +108,12 @@
     <Compile Include="frmNickUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPrestamo.Designer.vb">
+      <DependentUpon>frmPrestamo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestamo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPrestamos.Designer.vb">
       <DependentUpon>frmPrestamos.vb</DependentUpon>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNickUsuario.resx">
       <DependentUpon>frmNickUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestamo.resx">
+      <DependentUpon>frmPrestamo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrestamos.resx">
       <DependentUpon>frmPrestamos.vb</DependentUpon>

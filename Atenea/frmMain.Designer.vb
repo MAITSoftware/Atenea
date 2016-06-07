@@ -40,8 +40,11 @@ Partial Class frmMain
         Me.cboxGenero = New System.Windows.Forms.ComboBox()
         Me.chkGenero = New System.Windows.Forms.CheckBox()
         Me.cboxDisponibles = New System.Windows.Forms.CheckBox()
+        Me.panelInfo = New System.Windows.Forms.Panel()
+        Me.lblEntregarLibro = New System.Windows.Forms.Label()
         Me.panelLibros.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelInfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAgregarLibro
@@ -238,9 +241,9 @@ Partial Class frmMain
         Me.lblBienvenida.ForeColor = System.Drawing.Color.White
         Me.lblBienvenida.Location = New System.Drawing.Point(16, 17)
         Me.lblBienvenida.Name = "lblBienvenida"
-        Me.lblBienvenida.Size = New System.Drawing.Size(147, 20)
+        Me.lblBienvenida.Size = New System.Drawing.Size(100, 20)
         Me.lblBienvenida.TabIndex = 22
-        Me.lblBienvenida.Text = "Bienvenido, usuario"
+        Me.lblBienvenida.Text = "Bienvenido/a"
         Me.lblBienvenida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1
@@ -295,11 +298,36 @@ Partial Class frmMain
         Me.cboxDisponibles.Text = "Disponibles primero"
         Me.cboxDisponibles.UseVisualStyleBackColor = True
         '
+        'panelInfo
+        '
+        Me.panelInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.panelInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.panelInfo.Controls.Add(Me.lblEntregarLibro)
+        Me.panelInfo.Location = New System.Drawing.Point(841, 9)
+        Me.panelInfo.Name = "panelInfo"
+        Me.panelInfo.Size = New System.Drawing.Size(255, 55)
+        Me.panelInfo.TabIndex = 26
+        Me.panelInfo.Visible = False
+        '
+        'lblEntregarLibro
+        '
+        Me.lblEntregarLibro.AutoSize = True
+        Me.lblEntregarLibro.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEntregarLibro.ForeColor = System.Drawing.Color.White
+        Me.lblEntregarLibro.Location = New System.Drawing.Point(12, 5)
+        Me.lblEntregarLibro.Name = "lblEntregarLibro"
+        Me.lblEntregarLibro.Size = New System.Drawing.Size(235, 24)
+        Me.lblEntregarLibro.TabIndex = 0
+        Me.lblEntregarLibro.Text = "Entregue su libro antes del"
+        Me.lblEntregarLibro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblEntregarLibro.Visible = False
+        '
         'frmMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Controls.Add(Me.panelInfo)
         Me.Controls.Add(Me.cboxDisponibles)
         Me.Controls.Add(Me.chkGenero)
         Me.Controls.Add(Me.cboxGenero)
@@ -321,6 +349,8 @@ Partial Class frmMain
         Me.panelLibros.ResumeLayout(False)
         Me.panelLibros.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelInfo.ResumeLayout(False)
+        Me.panelInfo.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -343,5 +373,7 @@ Partial Class frmMain
     Friend WithEvents chkGenero As System.Windows.Forms.CheckBox
     Friend WithEvents listview_lista As System.Windows.Forms.ListView
     Friend WithEvents cboxDisponibles As System.Windows.Forms.CheckBox
+    Friend WithEvents panelInfo As System.Windows.Forms.Panel
+    Friend WithEvents lblEntregarLibro As System.Windows.Forms.Label
 
 End Class
