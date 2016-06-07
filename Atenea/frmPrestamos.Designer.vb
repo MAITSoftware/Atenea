@@ -33,7 +33,7 @@ Partial Class frmPrestamos
         Me.btnLibroDevuelto = New System.Windows.Forms.Button()
         Me.btnCambiarFecha = New System.Windows.Forms.Button()
         Me.btnImprimir = New System.Windows.Forms.Button()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.impresora = New System.Drawing.Printing.PrintDocument()
         Me.SuspendLayout()
         '
         'planilla
@@ -169,5 +169,5 @@ Partial Class frmPrestamos
     Friend WithEvents btnLibroDevuelto As System.Windows.Forms.Button
     Friend WithEvents btnCambiarFecha As System.Windows.Forms.Button
     Friend WithEvents btnImprimir As System.Windows.Forms.Button
-    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents impresora As System.Drawing.Printing.PrintDocument
 End Class

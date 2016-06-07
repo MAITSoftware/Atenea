@@ -6,8 +6,9 @@ Public Class frmPrestamos
     Dim sentencia As String
     Dim libro As Libro
 
-    Friend ID As String = Nothing
-    Dim archivo As String
+    Friend ID As String
+    Dim archivoImprimir As StreamReader
+    Dim fuente As Font = New System.Drawing.Font("Arial", 10)
 
     Private Sub frmPrestamos_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'Al cargar frmPrestamos
         planilla.View = View.Details 'Muestra planilla en vista detallada
@@ -91,14 +92,14 @@ Public Class frmPrestamos
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        archivo = "CI Usuario | CI Funcionario | Nombre del libro | ID del libro | Fecha de préstamo | Fecha de entrega" & vbCrLf
+        Dim archivo As String = "CI Usuario | CI Funcionario | Nombre del libro | ID del libro | Fecha de préstamo | Fecha de entrega" & vbCrLf & vbCrLf
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
         Dim cmd As MySqlCommand = New MySqlCommand(sentencia, Atenea.conexion)
         Atenea.reader = cmd.ExecuteReader()
 
         While Atenea.reader.Read()
-            archivo += Atenea.reader("CI_Usuario") & " | " & Atenea.reader("CI_Funcionario") & " | " & Atenea.reader("Titulo") & " | " & Atenea.reader("ID") & " | " & Atenea.reader("Fecha prestamo") & " | " & Atenea.reader("Fecha entrega") & vbCrLf
+            archivo += Atenea.reader("CI_Usuario") & " | " & Atenea.reader("CI_Funcionario") & " | " & Atenea.reader("Titulo") & " | " & Atenea.reader("ID") & " | " & Atenea.reader("Fecha prestamo") & " | " & Atenea.reader("Fecha entrega")
         End While
         Atenea.reader.Close()
 
@@ -108,43 +109,40 @@ Public Class frmPrestamos
             sw.Close()
         End Using
 
-        PrintDocument1.DocumentName = "Prestamos"
-        Dim stream As New FileStream(path, FileMode.Open)
+        archivoImprimir = New System.IO.StreamReader(path)
         Try
-            Dim reader As New StreamReader(stream)
-            Try
-                archivo = reader.ReadToEnd()
-            Finally
-                reader.Dispose()
-            End Try
-        Finally
-            stream.Dispose()
-        End Try
-
-        Try
-            PrintDocument1.Print()
+            impresora.Print()
+            archivoImprimir.Close()
         Catch ex As Exception
-            MsgBox("Error al imprimir.")
+            MsgBox("Error al imprimir")
         End Try
 
     End Sub
 
-    Private Sub printDocument1_PrintPage(ByVal sender As Object, _
-        ByVal e As PrintPageEventArgs)
+    Private Sub impresora_PrintPage(sender As Object, e As  _
+       System.Drawing.Printing.PrintPageEventArgs) Handles _
+       impresora.PrintPage
 
-        Dim charactersOnPage As Integer = 0
-        Dim linesPerPage As Integer = 0
-
-        e.Graphics.MeasureString(archivo, Me.Font, e.MarginBounds.Size, _
-            StringFormat.GenericTypographic, charactersOnPage, linesPerPage)
-
-        e.Graphics.DrawString(archivo, Me.Font, Brushes.Black, _
-            e.MarginBounds, StringFormat.GenericTypographic)
-
-        archivo = archivo.Substring(charactersOnPage)
-
-        e.HasMorePages = archivo.Length > 0
-
+        Dim linesPerPage As Single = 0
+        Dim yPos As Single = 0
+        Dim count As Integer = 0
+        Dim leftMargin As Single = e.MarginBounds.Left
+        Dim topMargin As Single = e.MarginBounds.Top
+        Dim line As String = Nothing
+        linesPerPage = e.MarginBounds.Height / fuente.GetHeight(e.Graphics)
+        While count < linesPerPage
+            line = archivoImprimir.ReadLine()
+            If line Is Nothing Then
+                Exit While
+            End If
+            yPos = topMargin + count * fuente.GetHeight(e.Graphics)
+            e.Graphics.DrawString(line, fuente, Brushes.Black, leftMargin, _
+               yPos, New StringFormat())
+            count += 1
+        End While
+        If Not (line Is Nothing) Then
+            e.HasMorePages = True
+        End If
     End Sub
 
 End Class
