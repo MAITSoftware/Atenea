@@ -87,6 +87,7 @@ Public Class frmPrestamos
         frmEditar.ShowDialog(Me)
         btnLibroDevuelto.Enabled = False
         btnCambiarFecha.Enabled = False
+        ID = Nothing
         updateLibro()
         actualizarDatos()
     End Sub
