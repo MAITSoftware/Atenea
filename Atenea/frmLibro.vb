@@ -64,7 +64,7 @@ Public Class Libro
 
         Atenea.reader.Close()
 
-        sentencia = String.Format("SELECT ID FROM Prestamo WHERE ID='{0}';", llaveLibro)
+        sentencia = String.Format("SELECT ID FROM prestamo WHERE ID='{0}';", llaveLibro)
         cmd = New MySqlCommand(sentencia, Atenea.conexion)
         Atenea.reader = cmd.ExecuteReader()
 

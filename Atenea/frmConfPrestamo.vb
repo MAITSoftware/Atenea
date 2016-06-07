@@ -23,7 +23,7 @@ Public Class frmConfPrestamo
         Catch ex As Exception
         End Try
 
-        Dim cmd As MySqlCommand = New MySqlCommand("select * from usuario where tipo='usuario';", Atenea.conexion)
+        Dim cmd As MySqlCommand = New MySqlCommand("select * from usuario where tipo='usuario' order by CI;", Atenea.conexion)
         Atenea.reader = cmd.ExecuteReader()
 
         While Atenea.reader.Read()
