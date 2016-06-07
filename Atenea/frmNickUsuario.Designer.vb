@@ -23,19 +23,19 @@ Partial Class frmNickUsuario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNickUsuario))
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtNick = New System.Windows.Forms.TextBox()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txtNick
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(57, 47)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(197, 29)
-        Me.TextBox1.TabIndex = 2
+        Me.txtNick.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNick.Location = New System.Drawing.Point(57, 47)
+        Me.txtNick.Name = "txtNick"
+        Me.txtNick.Size = New System.Drawing.Size(197, 29)
+        Me.txtNick.TabIndex = 2
         '
         'btnAceptar
         '
@@ -92,7 +92,7 @@ Partial Class frmNickUsuario
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtNick)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -107,7 +107,7 @@ Partial Class frmNickUsuario
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNick As System.Windows.Forms.TextBox
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnCancelar As System.Windows.Forms.Button

@@ -33,4 +33,10 @@ Public Class frmNewRegistro
             My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Asterisk)
         End If
     End Sub
+
+    Private Sub EnterClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtCI.KeyDown, txtNombre.KeyDown, txtApellido.KeyDown, txtContrasenia.KeyDown
+        If e.KeyCode.Equals(Keys.Enter) Then
+            btnRegistrarse.PerformClick()
+        End If
+    End Sub
 End Class
