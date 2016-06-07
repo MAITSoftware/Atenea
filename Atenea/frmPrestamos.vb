@@ -99,7 +99,7 @@ Public Class frmPrestamos
         Atenea.DB.Reader = cmd.ExecuteReader()
 
         While Atenea.DB.Reader.Read()
-            archivo += Atenea.DB.Reader("CI_Usuario") & " | " & Atenea.DB.Reader("CI_Funcionario") & " | " & Atenea.DB.Reader("Titulo") & " | " & Atenea.DB.Reader("ID") & " | " & Atenea.DB.Reader("Fecha prestamo") & " | " & Atenea.DB.Reader("Fecha entrega")
+            archivo += Atenea.DB.Reader("CI_Usuario") & " | " & Atenea.DB.Reader("CI_Funcionario") & " | " & Atenea.DB.Reader("Titulo") & " | " & Atenea.DB.Reader("ID") & " | " & Atenea.DB.Reader("Fecha prestamo") & " | " & Atenea.DB.Reader("Fecha entrega") & vbCrLf 
         End While
         Atenea.DB.Reader.Close()
 

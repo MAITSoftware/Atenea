@@ -7,7 +7,6 @@ Public Class Atenea
     Friend funcionario As Boolean = False
     Friend DB As New DB()
 
-
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         agregarLogin()
     End Sub
@@ -34,7 +33,7 @@ Public Class Atenea
         Me.Controls.Add(registro)
     End Sub
 
-    Public Sub agregarAtenea(ByVal CI As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal f As Boolean = False)
+    Public Sub agregarAtenea(ByVal CI As String, Optional ByVal firstLogin As Boolean = False, Optional ByVal esFuncionario As Boolean = False)
         Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.Controls.Clear()
         Me.Text = "Atenea"
@@ -42,9 +41,9 @@ Public Class Atenea
         Me.Height = 700
         Centrar()
 
-        funcionario = f
+        funcionario = esFuncionario
 
-        atenea = New frmMain(CI, primeraVez, funcionario)
+        atenea = New frmMain(CI, firstLogin, esFuncionario)
 
         Me.Controls.Add(atenea)
 

@@ -1,32 +1,36 @@
 ﻿Imports MySql.Data.MySqlClient 'Importa MySql.Data.MySqlClient
 Public Class frmMain
 
-    Dim pedirNick As Boolean 'Define pedirNick como Boolean
-    Dim interfazFuncionario As Boolean 'Define interfazFuncionario como Boolean
+    Dim interfazFuncionario, buscando, pedirNick As Boolean 'Define interfazFuncionario como Boolean
     Friend CI As String 'Define CI como String
-    Dim buscando As Boolean 'Define buscando como Boolean
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'Al cargar frmMain
-        cargarLibros() 'Ejecuta el método cargarLibros()
-        Me.Cursor = System.Windows.Forms.Cursors.Arrow 'Define el cursor como una flecha
+ 
+    Public Sub New(ByVal ID As String, Optional ByVal firstLogin As Boolean = False, Optional ByVal esFuncionario As Boolean = False)
+        InitializeComponent()
+        pedirNick = firstLogin
+        interfazFuncionario = esFuncionario
+        CI = ID
+    End Sub
+ 
+    Private Sub mainLoad(sender As Object, e As EventArgs) Handles MyBase.Load
+        cargarLibros()
+        Me.Cursor = System.Windows.Forms.Cursors.Arrow 
         cboxGenero.SelectedIndex = 0
-        If pedirNick Then 'Si pedirNick es true
-            Dim ventanaNick As frmNickUsuario = New frmNickUsuario(CI) 'Define ventanaNick como 
-            ventanaNick.ShowDialog(Me) 'Muestra 
-
+ 
+        If pedirNick Then 
+            Dim ventanaNick As frmNickUsuario = New frmNickUsuario(CI) 
+            ventanaNick.ShowDialog(Me)
         Else
             cargarNick()
         End If
 
-        If Not interfazFuncionario Then 'Si interfazFuncionario es false
-            btnAgregarLibro.Visible = False 'No muestra btnAgregarLibro
-            btnAgregar_temporal.Visible = False 'No muestra btnAgregar_temporal
+        If Not interfazFuncionario Then 
+            btnAgregarLibro.Visible = False 
+            btnAgregar_temporal.Visible = False 
             btnPrestamos.Text = "Préstamo en curso"
             CheckPrestamo()
         End If
-
-
     End Sub
+ 
     Public Sub cargarNick()
         Dim Nombre As String
         Dim Apellido As String = ""
@@ -48,30 +52,27 @@ Public Class frmMain
 
         lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido
     End Sub
-    Public Sub cargarLibros()
-        Try
-            Atenea.DB.Reader.Close()
-        Catch ex As Exception
-        End Try
 
+    Public Sub cargarLibros()
         Dim sentencia As String = "SELECT `ID` FROM `libro`"
+ 
         If cboxDisponibles.Checked Then
             sentencia += " order by (ID in (select ID from prestamo));"
         Else
             sentencia += " order by (ID in (select ID from prestamo)) DESC;"
         End If
 
-        If buscando Then 'Si buscando es verdadero
-            If radioNombre.Checked Then 'Si radioNombre está seleccionado
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por nombre
-            ElseIf radioAutor.Checked Then 'Si radioAutor está seleccionado
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por autor
-            ElseIf radioID.Checked Then 'Si radioID está seleccionado
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text) 'Buscará el libro por ID
+        If buscando Then
+            If radioNombre.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text)
+            ElseIf radioAutor.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text)
+            ElseIf radioID.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text)
             End If
 
-            If chkGenero.Checked Then 'Si chkGenero está marcada
-                sentencia += String.Format(" AND Genero='{0}'", cboxGenero.Text) 'sentencia estará compuesta por " AND Genero='{0}';" y el texto en cboxGenero
+            If chkGenero.Checked Then
+                sentencia += String.Format(" AND Genero='{0}'", cboxGenero.Text)
             End If
 
             If cboxDisponibles.Checked Then
@@ -81,10 +82,13 @@ Public Class frmMain
             End If
 
         End If
+ 
         panelLibros.Controls.Clear()
-        lblNoDisponibles.Text = "No hay libros disponibles" 'Fija el texto de lblNoDisponibles a "No hay libros disponibles"
+        lblNoDisponibles.Text = "No hay libros disponibles"
         panelLibros.Controls.Add(lblNoDisponibles)
-        panelLibros.Controls.Add(btnAgregar_temporal)
+        If interfazFuncionario Then
+            panelLibros.Controls.Add(btnAgregar_temporal)
+        End If
 
         Try
             Atenea.DB.Reader.Close()
@@ -109,29 +113,6 @@ Public Class frmMain
         Next
 
         Atenea.DB.Reader.Close()
-    End Sub
-
-    Private Sub x(sender As Object, e As EventArgs) Handles chkGenero.CheckedChanged
-        cboxGenero.Enabled = chkGenero.Checked
-        cargarLibros()
-    End Sub
-
-    Private Sub y(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged
-        cargarLibros()
-    End Sub
-
-    Private Sub btnAgregar_temporal_Click(sender As Object, e As EventArgs) Handles btnAgregar_temporal.Click
-        btnAgregarLibro.PerformClick()
-    End Sub
-
-    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        Me.Dispose()
-        Atenea.agregarLogin()
-    End Sub
-
-    Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click
-        Dim frm As New frmAgregarLibro()
-        frm.ShowDialog(Me)
     End Sub
 
     Private Sub CheckPrestamo()
@@ -171,12 +152,6 @@ Public Class frmMain
         End If
     End Sub
 
-    Public Sub New(ByVal ci_ As String, Optional ByVal primeraVez As Boolean = False, Optional ByVal funcionario As Boolean = False)
-        InitializeComponent()
-        pedirNick = primeraVez
-        interfazFuncionario = funcionario
-        CI = ci_
-    End Sub
 
     Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
         buscando = True
@@ -194,5 +169,20 @@ Public Class frmMain
 
     Private Sub cboxDisponibles_CheckedChanged(sender As Object, e As EventArgs) Handles cboxDisponibles.CheckedChanged
         cargarLibros()
+    End Sub
+
+    Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged, chkGenero.CheckedChanged
+        cboxGenero.Enabled = chkGenero.Checked
+        cargarLibros()
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Dispose()
+        Atenea.agregarLogin()
+    End Sub
+
+    Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click, btnAgregar_temporal.Click
+        Dim frm As New frmAgregarLibro()
+        frm.ShowDialog(Me)
     End Sub
 End Class

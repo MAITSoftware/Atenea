@@ -20,7 +20,6 @@ Public Class frmNewRegistro
             Console.Write(ex.ToString())
             lblInfo.Visible = True 'Muestra lblInfo
         End Try
-
     End Sub
 
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtNombre.TextChanged, txtApellido.TextChanged, txtCI.TextChanged, txtContrasenia.TextChanged
@@ -28,6 +27,4 @@ Public Class frmNewRegistro
         'btnRegistrarse se activará si los campos txtCI, txtNombre, txtApellido y txtContrasenia han sido llenados
         lblInfo.Visible = False 'Oculta lblInfo
     End Sub
-
-   
 End Class

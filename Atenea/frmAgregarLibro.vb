@@ -2,11 +2,17 @@
 Public Class frmAgregarLibro
 
     Dim previewLibro As Libro
-    Dim editar As Boolean = False
+    Dim interfazEdicion As Boolean = False
     Dim keyEditar As String
 
+    Public Sub New(Optional ByVal editar As Boolean = False, Optional ByVal key As String = Nothing)
+        InitializeComponent()
+        interfazEdicion = editar
+        keyEditar = key
+    End Sub
+
     Private Sub frmAgregarLibro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If editar Then
+        If interfazEdicion Then
             Me.Text = "Editar libro · Atenea"
             previewLibro = New Libro(keyEditar, True, True)
             previewLibro.actualizarDatos()
@@ -24,25 +30,6 @@ Public Class frmAgregarLibro
         Me.Controls.Add(previewLibro)
         cboxEstado.SelectedIndex = 0
         cboxGenero.SelectedIndex = 0
-    End Sub
-
-    Private Sub btnCambiarPortada_Click(sender As Object, e As EventArgs) Handles btnCambiarPortada.Click
-        previewLibro.imgNoDisponible_Click(previewLibro.imgNoDisponible, Nothing)
-    End Sub
-
-    Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtID.TextChanged, txtAutor.TextChanged, txtNombre.TextChanged
-        btnAgregar.Enabled = Not (String.IsNullOrWhiteSpace(txtNombre.Text) Or String.IsNullOrWhiteSpace(txtAutor.Text) Or String.IsNullOrWhiteSpace(txtID.Text))
-        lblInfo.Visible = False
-        If String.IsNullOrWhiteSpace(txtNombre.Text) Then
-            previewLibro.lblTitulo.Text = "Preview"
-        Else
-            previewLibro.lblTitulo.Text = txtNombre.Text
-        End If
-    End Sub
-
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        Atenea.atenea.cargarLibros()
-        Me.Dispose()
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
@@ -81,12 +68,24 @@ Public Class frmAgregarLibro
                 End If
             End Try
         End Using
-
     End Sub
 
-    Public Sub New(Optional ByVal edit As Boolean = False, Optional ByVal key As String = Nothing)
-        InitializeComponent()
-        editar = edit
-        keyEditar = key
+    Private Sub btnCambiarPortada_Click(sender As Object, e As EventArgs) Handles btnCambiarPortada.Click
+        previewLibro.imgNoDisponible_Click(previewLibro.imgNoDisponible, Nothing)
+    End Sub
+
+    Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtID.TextChanged, txtAutor.TextChanged, txtNombre.TextChanged
+        btnAgregar.Enabled = Not (String.IsNullOrWhiteSpace(txtNombre.Text) Or String.IsNullOrWhiteSpace(txtAutor.Text) Or String.IsNullOrWhiteSpace(txtID.Text))
+        lblInfo.Visible = False
+        If String.IsNullOrWhiteSpace(txtNombre.Text) Then
+            previewLibro.lblTitulo.Text = "Preview"
+        Else
+            previewLibro.lblTitulo.Text = txtNombre.Text
+        End If
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Atenea.atenea.cargarLibros()
+        Me.Dispose()
     End Sub
 End Class

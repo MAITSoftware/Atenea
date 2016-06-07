@@ -2,7 +2,6 @@
 Public Class frmNewLogin
 
     Private Sub rbtnFuncionario_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnFuncionario.CheckedChanged
-
         If rbtnFuncionario.Checked Then 'Si rbtn fue seleccionado
             lblContrasenia.Visible = True 'Muestra lblContrasenia
             txtContrasenia.Visible = True 'Muestra txtContrasenia
@@ -91,6 +90,4 @@ Public Class frmNewLogin
 
         lblInfo.Visible = False 'Oculta lblInfo
     End Sub
-
-
 End Class

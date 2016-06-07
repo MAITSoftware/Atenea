@@ -9,7 +9,14 @@ Public Class Libro
     Friend Titulo, Genero, Autor, ID, Condicion, pathPortada As String
 
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Public Sub New(ByVal llaveLibro As String, ByVal previewE As Boolean, Optional ByVal prev As Boolean = False)
+        InitializeComponent()
+        previewEditable = previewE
+        preview = prev
+        Me.llaveLibro = llaveLibro
+    End Sub
+
+    Private Sub libro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         fc.Title = "Seleccionar portada"
         fc.Filter = "Archivos de mapa de bits (*.bmp, *.dib)|*.BMP;*.DIB;*.RLE|JPEG (*.jpg, *.jpeg, *.jpeg, *.jfif)|*.JPG;*.JPEG;*.JPE;*.JFIF|GIF (*.gif)|*.GIF|TIFF (*.tif, *.tiff)|*.TIF;*.TIFF|PNG (*.png)|*.PNG|Todos los archivos|*.*|Todos los archivos de imagen|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG"
         fc.FilterIndex = 7
@@ -95,13 +102,6 @@ Public Class Libro
 
         Atenea.DB.Reader.Close()
 
-    End Sub
-
-    Public Sub New(ByVal llaveLibro As String, ByVal previewE As Boolean, Optional ByVal prev As Boolean = False)
-        InitializeComponent()
-        previewEditable = previewE
-        preview = prev
-        Me.llaveLibro = llaveLibro
     End Sub
 
     Public Sub imgNoDisponible_Click(sender As Object, e As EventArgs) Handles imgNoDisponible.Click

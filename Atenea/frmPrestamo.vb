@@ -1,7 +1,12 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmPrestamo
-
     Dim llaveLibro As String
+
+    Public Sub New(ByVal llave As String)
+        InitializeComponent()
+        llaveLibro = llave
+    End Sub
+
     Private Sub frmPrestamo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim libro As Libro
         libro = New Libro(llaveLibro, False, True)
@@ -30,12 +35,6 @@ Public Class frmPrestamo
             End While
             Atenea.DB.Reader.Close()
         End Using
-
-    End Sub
-
-    Public Sub New(ByVal llave As String)
-        InitializeComponent()
-        llaveLibro = llave
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
