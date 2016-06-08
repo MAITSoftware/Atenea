@@ -33,6 +33,7 @@ Public Class frmAgregarLibro
 
             cboxGenero.Text = previewLibro.Genero
             cboxEstado.Text = previewLibro.Condicion
+            btnAgregar.Text = "Guardar"
         Else
             ' Genera un nuevo libro (preview) sin nada
             previewLibro = New Libro(Nothing, True, True)
