@@ -144,6 +144,8 @@ Public Class frmMain
         If lblNoDisponibles.Visible Then
             reader.Close() ' cerrar reader
             conexion.Conn.Close() ' cerrar conexión
+            ' El cursor vuelve a ser una flecha
+            Me.Cursor = System.Windows.Forms.Cursors.Arrow
             Return ' volver
         End If
 
@@ -172,6 +174,7 @@ Public Class frmMain
         If visibles <= 0 Then
             ' Eliminar todos los libros, y mostrar lblNoDisponibles
             panelLibros.Controls.Clear()
+            lblNoDisponibles.Visible = True
             lblNoDisponibles.Text = "No hay libros disponibles"
             panelLibros.Controls.Add(lblNoDisponibles)
 
@@ -243,7 +246,6 @@ Public Class frmMain
         End If
     End Sub
 
-
     Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
         ' Al cambiar el texto de txtBusqueda, y que éste tenga realmente texto, se activa la busqueda
         buscando = True
@@ -268,6 +270,7 @@ Public Class frmMain
 
     Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged, chkGenero.CheckedChanged, chkSoloDisponibles.CheckedChanged
         ' Al cambiar los parámetros de busqueda
+        buscando = True
         cboxGenero.Enabled = chkGenero.Checked ' activar cboxgenero si chkGenero está chckeado
         cargarLibros() ' actualizar libros en base a busqueda
     End Sub

@@ -42,7 +42,7 @@ Public Class frmNewLogin
         Dim conexion As DB = New DB()
 
         If rbtnFuncionario.Checked Then 'Si rbtnFuncionario es seleccionado
-            Dim cmd As MySqlCommand = New MySqlCommand("SELECT * FROM `usuario` WHERE CI='@ID' AND Contrasenia='@Contra' AND Tipo='Funcionario';", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            Dim cmd As MySqlCommand = New MySqlCommand("SELECT * FROM `usuario` WHERE CI=@ID AND Contrasenia=@Contra AND Tipo='Funcionario';", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
             cmd.Parameters.AddWithValue("@ID", txtICI.Text)
             cmd.Parameters.AddWithValue("@Contra", txtContrasenia.Text)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
@@ -63,8 +63,8 @@ Public Class frmNewLogin
             conexion.Conn.Close()
 
         Else 'Si rbtnFuncionario no es seleccionado
-            sentencia = String.Format("SELECT `Nombre`, `Tipo` FROM `usuario` WHERE CI='{0}';", txtICI.Text)
-            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            Dim cmd As MySqlCommand = New MySqlCommand("SELECT `Nombre`, `Tipo` FROM `usuario` WHERE CI=@ID;", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            cmd.Parameters.AddWithValue("@ID", txtICI.Text)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
             While reader.Read()

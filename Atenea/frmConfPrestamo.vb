@@ -93,7 +93,7 @@ Public Class frmConfPrestamo
             ' El valor cambia en caso de que se esté editando un préstamo
             sentencia = "UPDATE `prestamo` SET `Fecha entrega`=@fechaEntrega WHERE `ID`=@id;"
         End If
-    
+
         Dim cmd As New MySqlCommand(sentencia, conexion.Conn) ' Define un comando sql
 
         If interfazEdicion Then
@@ -122,7 +122,7 @@ Public Class frmConfPrestamo
         If interfazEdicion Then ' Si está editando, obviamente, tiene un préstamo activo.
             Return ' así que no hacer nada
         End If
- 
+
         Dim conexion As New DB() ' Define la conexión a la DB
         Dim user As String = comboUsuario.SelectedItem.ToString() ' Convierte la selecciónn a String
         ciUsuario = user.Substring(0, user.IndexOf(" -- ")) ' Busca la posición de " -- " (el separador) y obtiene el texto anterior a éste
@@ -149,7 +149,7 @@ Public Class frmConfPrestamo
 
         Dim conexion As DB = New DB() ' Establece la conexión
 
-       ' Crea un nuevo comando (mysqlCommand) y lo pone en uso
+        ' Crea un nuevo comando (mysqlCommand) y lo pone en uso
         Using cmd As New MySqlCommand()
             With cmd
                 ' Establece los valores necesarios para la sentencia / comando.
@@ -186,7 +186,7 @@ Public Class frmConfPrestamo
 
     Private Sub calendario_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calendario.DateChanged
         ' Cuando cambia la fecha turnarla en negrita
-        if interfazEdicion ' En caso de edición pone en negrita la fecha mínima y la seleccionada
+        If interfazEdicion Then ' En caso de edición pone en negrita la fecha mínima y la seleccionada
             calendario.BoldedDates = New System.DateTime() {calendario.MinDate, calendario.SelectionRange.Start}
         Else ' En caso de préstamo, pone en negrita la fecha de hoy, y la seleccionada
             calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.SelectionRange.Start}

@@ -48,7 +48,7 @@ Public Class frmAccionLibro
             cmd.ExecuteNonQuery()
 
             Atenea.atenea.cargarLibros()
-            conexion.Conn.Close()
+            conexion.Close()
 
             Me.Dispose()
         End Using

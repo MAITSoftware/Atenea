@@ -115,7 +115,7 @@ Public Class Libro
         imgNoDisponible.BackgroundImage = Nothing
         imgNoDisponible.Cursor = Cursors.Hand
 
-        If Not (preview Or previewEditable) Then
+        If Not (preview Or elegirFoto) Then
             ' cambia el borde a un borde verde, que indica que el libro está disponible
             imgBorde.BackgroundImage = My.Resources.borde_Disponible()
         End If
