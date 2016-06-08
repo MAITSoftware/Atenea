@@ -33,7 +33,7 @@ Public Class frmPrestamo
             End While
 
             reader.Close()
-            conexion.Conn.Close()
+            conexion.Close()
 
         End Using
     End Sub

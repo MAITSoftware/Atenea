@@ -12,7 +12,7 @@ Public Class frmNickUsuario
         Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` (`CI`, `Nombre`, `Tipo`) VALUES ('{0}', '{1}', 'Usuario');", CI, txtNick.Text), conexion.Conn)
         cmd.ExecuteNonQuery()
         Atenea.atenea.cargarNick()
-        conexion.Conn.Close()
+        conexion.Close()
         Me.Dispose()
     End Sub
 

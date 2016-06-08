@@ -143,7 +143,7 @@ Public Class frmMain
         ' Si el lblNoDisponibles está visible
         If lblNoDisponibles.Visible Then
             reader.Close() ' cerrar reader
-            conexion.Conn.Close() ' cerrar conexión
+            conexion.Close() ' cerrar conexión
             ' El cursor vuelve a ser una flecha
             Me.Cursor = System.Windows.Forms.Cursors.Arrow
             Return ' volver
@@ -233,14 +233,14 @@ Public Class frmMain
                 Dim frm As New frmPrestamo(reader("ID"))
                 frm.ShowDialog(Me)
                 reader.Close() ' cerrar reader
-                conexion.Conn.Close() ' cerrar conexión
+                conexion.Close() ' cerrar conexión
                 Return ' volver
             End While
 
             ' En caso de que no haya == no hay préstamo activo
 
             reader.Close() ' cerrar reader
-            conexion.Conn.Close() ' cerrar conexión
+            conexion.Close() ' cerrar conexión
 
             MsgBox("Aún no has rentado ningún libro") ' muestra un msgbox notificando que no hay un préstamo activo
         End If

@@ -49,7 +49,7 @@ Public Class frmPrestamos
         End While
 
         reader.Close()
-        conexion.Conn.Close()
+        conexion.Close()
     End Sub
     Private Sub planilla_SelectedIndexChanged(sender As Object, e As EventArgs) Handles planilla.SelectedIndexChanged
         Try
@@ -118,7 +118,7 @@ Public Class frmPrestamos
                        "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
         End While
         reader.Close()
-        conexion.Conn.Close()
+        conexion.Close()
 
         Dim path As String = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".txt"
         Using sw As StreamWriter = File.CreateText(path)

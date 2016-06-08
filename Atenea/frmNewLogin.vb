@@ -60,7 +60,7 @@ Public Class frmNewLogin
 
             reader.Close()
             Atenea.agregarAtenea(txtICI.Text, False, True)
-            conexion.Conn.Close()
+            conexion.Close()
 
         Else 'Si rbtnFuncionario no es seleccionado
             Dim cmd As MySqlCommand = New MySqlCommand("SELECT `Nombre`, `Tipo` FROM `usuario` WHERE CI=@ID;", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
@@ -80,7 +80,7 @@ Public Class frmNewLogin
             End While
 
             reader.Close()
-            conexion.Conn.Close()
+            conexion.Close()
             Atenea.agregarAtenea(txtICI.Text, precisaNick)
         End If
 
