@@ -1,6 +1,7 @@
-﻿Imports MySql.Data.MySqlClient
-Imports System.Drawing.Printing
-Imports System.IO
+﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
+' Importa los módulos de impresión
+Imports System.Drawing.Printing  
+Imports System.IO 
 Public Class frmPrestamos
 
     Dim sentencia As String

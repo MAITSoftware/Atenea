@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
 Public Class frmAccionLibro
     Dim llaveLibro, CIUsuario As String
     Dim interfazDevolver As Boolean
