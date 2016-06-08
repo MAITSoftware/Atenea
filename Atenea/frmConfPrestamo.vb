@@ -27,7 +27,7 @@ Public Class frmConfPrestamo
         libro.actualizarDatos()
 
         lblAutor.Text = "Autor: " + libro.Autor
-        lblGenero.Text = "Genero: " + libro.Genero
+        lblGenero.Text = "Género: " + libro.Genero
         lblID.Text = "ID: " + libro.ID
         lblCondicion.Text = "Condición: " + libro.Condicion
 
