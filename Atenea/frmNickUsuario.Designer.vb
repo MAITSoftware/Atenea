@@ -41,6 +41,7 @@ Partial Class frmNickUsuario
         '
         Me.btnAceptar.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAceptar.Enabled = False
         Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnAceptar.FlatAppearance.BorderSize = 2
         Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))

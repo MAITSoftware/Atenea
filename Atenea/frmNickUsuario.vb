@@ -28,4 +28,7 @@ Public Class frmNickUsuario
         Atenea.agregarLogin()
     End Sub
 
+    Private Sub txtNick_TextChanged(sender As Object, e As EventArgs) Handles txtNick.TextChanged
+        btnAceptar.Enabled = Not (String.IsNullOrWhiteSpace(txtNick.Text))
+    End Sub
 End Class

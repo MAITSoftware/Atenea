@@ -18,7 +18,6 @@ Public Class frmNewRegistro
             lblInfo.Visible = True 'Muestra lblInfo
         End Try
 
-
     End Sub
 
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtNombre.TextChanged, txtApellido.TextChanged, txtCI.TextChanged, txtContrasenia.TextChanged

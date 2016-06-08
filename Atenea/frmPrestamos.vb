@@ -46,6 +46,7 @@ Public Class frmPrestamos
             End If
             btnImprimir.Enabled = True
         End While
+
         reader.Close()
         conexion.Conn.Close()
     End Sub

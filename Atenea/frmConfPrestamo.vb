@@ -61,6 +61,7 @@ Public Class frmConfPrestamo
         End If
         Dim cmd As New MySqlCommand(sentencia, conexion.Conn)
         Dim hoy As DateTime = Now
+
         If interfazEdicion Then
             cmd.Parameters.AddWithValue("@id", llaveLibro)
             cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
@@ -72,11 +73,9 @@ Public Class frmConfPrestamo
             cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd"))
         End If
 
-        Try
-            cmd.ExecuteNonQuery()
-            Atenea.atenea.cargarLibros()
-        Catch ex As Exception
-        End Try
+        cmd.ExecuteNonQuery()
+        Atenea.atenea.cargarLibros()
+
         conexion.Conn.Close()
         Me.Dispose()
     End Sub

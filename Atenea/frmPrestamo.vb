@@ -31,7 +31,10 @@ Public Class frmPrestamo
             While reader.Read()
                 lblDevolver.Text += " " & DateTime.Parse(reader.GetString(0)).ToShortDateString()
             End While
+
             reader.Close()
+            conexion.Conn.Close()
+
         End Using
     End Sub
 

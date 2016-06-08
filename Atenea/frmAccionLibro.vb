@@ -45,12 +45,12 @@ Public Class frmAccionLibro
                 .CommandType = CommandType.Text
                 .Parameters.AddWithValue("@id", llaveLibro)
             End With
-            Try
-                cmd.ExecuteNonQuery()
-                Atenea.atenea.cargarLibros()
-                Me.Dispose()
-            Catch ex As Exception
-            End Try
+            cmd.ExecuteNonQuery()
+
+            Atenea.atenea.cargarLibros()
+            conexion.Conn.Close()
+
+            Me.Dispose()
         End Using
     End Sub
 

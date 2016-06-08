@@ -58,9 +58,11 @@ Public Class frmAgregarLibro
                 .Parameters.AddWithValue("@condicion", cboxEstado.Text)
                 .Parameters.AddWithValue("@id", txtID.Text)
             End With
+
             Try
                 cmd.ExecuteNonQuery()
                 Atenea.atenea.cargarLibros()
+                conexion.Conn.Close()
                 Me.Dispose()
             Catch ex As Exception
                 If ex.ToString().Contains("max_allowed_packet") Then
@@ -69,6 +71,7 @@ Public Class frmAgregarLibro
                     lblInfo.Visible = True
                 End If
             End Try
+
         End Using
     End Sub
 

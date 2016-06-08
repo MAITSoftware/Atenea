@@ -94,12 +94,20 @@ Public Class frmMain
         Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
         Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
+        lblNoDisponibles.Visible = True
         While reader.Read()
             panelLibros.Controls.Remove(lblNoDisponibles)
             panelLibros.Controls.Remove(btnAgregar_temporal)
+            lblNoDisponibles.Visible = False
             Dim x As New Libro(reader.GetString(0), False)
             panelLibros.Controls.Add(x)
         End While
+
+        If lblNoDisponibles.Visible Then
+            reader.Close()
+            conexion.Conn.Close()
+            Return
+        End If
 
         Dim visibles As Integer
         For Each l As Libro In panelLibros.Controls

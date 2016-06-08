@@ -102,7 +102,7 @@ Public Class Libro
         End While
 
         reader.Close()
-
+        conexion.Conn.Close()
     End Sub
 
     Public Sub imgNoDisponible_Click(sender As Object, e As EventArgs) Handles imgNoDisponible.Click
