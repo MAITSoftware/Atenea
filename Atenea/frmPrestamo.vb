@@ -12,7 +12,7 @@ Public Class frmPrestamo
     Private Sub frmPrestamo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Al cargar la ventana, crear una preview del libro y acomodarlo
         Dim libro As Libro
-        libro = New Libro(llaveLibro, False, True)
+        libro = New Libro(llaveLibro, True)
         libro.Location = New Point(12, 40)
         libro.Parent = Me
         libro.actualizarDatos() 

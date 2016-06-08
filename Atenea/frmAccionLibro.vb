@@ -18,7 +18,7 @@ Public Class frmAccionLibro
         'Al cargar el form, un preview del libro (llaveLibro) es creado, luego se ubica y se actalizan los datos
         Dim libro As Libro
 
-        libro = New Libro(llaveLibro, False, True)
+        libro = New Libro(llaveLibro, True)
         libro.Parent = Me
         libro.imgNoDisponible.Cursor = Cursors.Default
         libro.Location = New Point(25, 60)
