@@ -11,7 +11,7 @@ Public Class Libro
 
     Friend estaDisponible As Boolean = True
     Dim llaveLibro As String
-    Dim elegirFoto As Boolean = False
+    Dim elegirFoto As Boolean
     Dim preview As Boolean = False
     Dim fc As OpenFileDialog = New OpenFileDialog()
     Friend Titulo, Genero, Autor, ID, Condicion As String
@@ -25,7 +25,7 @@ Public Class Libro
         InitializeComponent()
 
         ' Setea los valores de las variables locales a los valores especificados en la creación
-        elegirFoto = eligeFoto
+        Me.elegirFoto = eligeFoto
         preview = prev
         llaveLibro = llave
     End Sub
@@ -155,7 +155,7 @@ Public Class Libro
         End If
 
         ' Si no está para elegir foto
-        If Not elegirFoto Then
+        If Not Me.elegirFoto Then
             Return ' Volver atrás
         End If
 

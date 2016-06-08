@@ -35,7 +35,7 @@ Public Class frmAgregarLibro
             cboxEstado.Text = previewLibro.Condicion
         Else
             ' Genera un nuevo libro (preview) sin nada
-            previewLibro = New Libro(Nothing, True)
+            previewLibro = New Libro(Nothing, True, True)
         End If
 
         ' Ubica al libro, y lo agrega al form
