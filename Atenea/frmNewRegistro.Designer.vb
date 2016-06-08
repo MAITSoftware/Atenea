@@ -68,7 +68,7 @@ Partial Class frmNewRegistro
         Me.txtNombre.MaxLength = 25
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(158, 24)
-        Me.txtNombre.TabIndex = 6
+        Me.txtNombre.TabIndex = 0
         '
         'txtApellido
         '
@@ -78,7 +78,7 @@ Partial Class frmNewRegistro
         Me.txtApellido.MaxLength = 30
         Me.txtApellido.Name = "txtApellido"
         Me.txtApellido.Size = New System.Drawing.Size(158, 24)
-        Me.txtApellido.TabIndex = 8
+        Me.txtApellido.TabIndex = 1
         '
         'lblApellido
         '
@@ -99,7 +99,7 @@ Partial Class frmNewRegistro
         Me.txtCI.MaxLength = 8
         Me.txtCI.Name = "txtCI"
         Me.txtCI.Size = New System.Drawing.Size(158, 24)
-        Me.txtCI.TabIndex = 10
+        Me.txtCI.TabIndex = 2
         '
         'lblCI
         '
@@ -120,7 +120,7 @@ Partial Class frmNewRegistro
         Me.txtContrasenia.MaxLength = 45
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
-        Me.txtContrasenia.TabIndex = 12
+        Me.txtContrasenia.TabIndex = 3
         Me.txtContrasenia.UseSystemPasswordChar = True
         '
         'lblContrasenia
@@ -160,7 +160,7 @@ Partial Class frmNewRegistro
         Me.btnRegistrarse.Location = New System.Drawing.Point(310, 310)
         Me.btnRegistrarse.Name = "btnRegistrarse"
         Me.btnRegistrarse.Size = New System.Drawing.Size(116, 32)
-        Me.btnRegistrarse.TabIndex = 15
+        Me.btnRegistrarse.TabIndex = 4
         Me.btnRegistrarse.Text = "Registrarse"
         Me.btnRegistrarse.UseVisualStyleBackColor = False
         '
@@ -178,7 +178,7 @@ Partial Class frmNewRegistro
         Me.btnCancelar.Location = New System.Drawing.Point(444, 310)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(116, 32)
-        Me.btnCancelar.TabIndex = 16
+        Me.btnCancelar.TabIndex = 5
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '

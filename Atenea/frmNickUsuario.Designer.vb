@@ -25,7 +25,7 @@ Partial Class frmNickUsuario
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNickUsuario))
         Me.txtNick = New System.Windows.Forms.TextBox()
         Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblNuevoNombre = New System.Windows.Forms.Label()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -35,7 +35,7 @@ Partial Class frmNickUsuario
         Me.txtNick.Location = New System.Drawing.Point(57, 47)
         Me.txtNick.Name = "txtNick"
         Me.txtNick.Size = New System.Drawing.Size(197, 29)
-        Me.txtNick.TabIndex = 2
+        Me.txtNick.TabIndex = 0
         '
         'btnAceptar
         '
@@ -52,20 +52,20 @@ Partial Class frmNickUsuario
         Me.btnAceptar.Location = New System.Drawing.Point(23, 89)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(115, 32)
-        Me.btnAceptar.TabIndex = 8
+        Me.btnAceptar.TabIndex = 1
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lblNuevoNombre
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(26, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(259, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Nuevo nombre de usuario"
+        Me.lblNuevoNombre.AutoSize = True
+        Me.lblNuevoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNuevoNombre.ForeColor = System.Drawing.Color.White
+        Me.lblNuevoNombre.Location = New System.Drawing.Point(26, 9)
+        Me.lblNuevoNombre.Name = "lblNuevoNombre"
+        Me.lblNuevoNombre.Size = New System.Drawing.Size(259, 25)
+        Me.lblNuevoNombre.TabIndex = 0
+        Me.lblNuevoNombre.Text = "Nuevo nombre de usuario"
         '
         'btnCancelar
         '
@@ -81,7 +81,7 @@ Partial Class frmNickUsuario
         Me.btnCancelar.Location = New System.Drawing.Point(171, 89)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(115, 32)
-        Me.btnCancelar.TabIndex = 9
+        Me.btnCancelar.TabIndex = 2
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -94,7 +94,7 @@ Partial Class frmNickUsuario
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.txtNick)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblNuevoNombre)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -110,6 +110,6 @@ Partial Class frmNickUsuario
     End Sub
     Friend WithEvents txtNick As System.Windows.Forms.TextBox
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblNuevoNombre As System.Windows.Forms.Label
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
 End Class

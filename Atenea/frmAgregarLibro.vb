@@ -26,7 +26,7 @@ Public Class frmAgregarLibro
             previewLibro = New Libro(keyEditar, True, True)
             previewLibro.actualizarDatos()
 
-            txtNombre.Text = previewLibro.Titulo
+            txtNombreLibro.Text = previewLibro.Titulo
             txtAutor.Text = previewLibro.Autor
             txtID.Text = previewLibro.ID
             txtID.Enabled = False
@@ -69,7 +69,7 @@ Public Class frmAgregarLibro
                 .Connection = conexion.Conn
                 .CommandText = sentencia
                 .CommandType = CommandType.Text
-                .Parameters.AddWithValue("@titulo", txtNombre.Text)
+                .Parameters.AddWithValue("@titulo", txtNombreLibro.Text)
                 .Parameters.AddWithValue("@autor", txtAutor.Text)
                 .Parameters.AddWithValue("@portada", arrImage)
                 .Parameters.AddWithValue("@genero", cboxGenero.Text)
@@ -100,15 +100,15 @@ Public Class frmAgregarLibro
         previewLibro.imgNoDisponible_Click(previewLibro.imgNoDisponible, Nothing) ' Acciona el evento de click de imgNoDisponible
     End Sub
 
-    Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtID.TextChanged, txtAutor.TextChanged, txtNombre.TextChanged
+    Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtID.TextChanged, txtAutor.TextChanged, txtNombreLibro.TextChanged
         ' Comprueba (cada vez que se escribeen los txt*) que los datos escritos no sean nulos o puros espacios
-        btnAgregar.Enabled = Not (String.IsNullOrWhiteSpace(txtNombre.Text) Or String.IsNullOrWhiteSpace(txtAutor.Text) Or String.IsNullOrWhiteSpace(txtID.Text))
+        btnAgregar.Enabled = Not (String.IsNullOrWhiteSpace(txtNombreLibro.Text) Or String.IsNullOrWhiteSpace(txtAutor.Text) Or String.IsNullOrWhiteSpace(txtID.Text))
 
         lblInfo.Visible = False ' Oculta el label de error
-        If String.IsNullOrWhiteSpace(txtNombre.Text) Then ' En caso de que el label sea nulo o puro espacios
+        If String.IsNullOrWhiteSpace(txtNombreLibro.Text) Then ' En caso de que el label sea nulo o puro espacios
             previewLibro.lblTitulo.Text = "Preview" ' El título del libro de preview se auto-setea
         Else
-            previewLibro.lblTitulo.Text = txtNombre.Text ' El título del libro de preview se setea al valor del txtNombre'
+            previewLibro.lblTitulo.Text = txtNombreLibro.Text ' El título del libro de preview se setea al valor del txtNombre'
         End If
     End Sub
 
@@ -118,7 +118,7 @@ Public Class frmAgregarLibro
     End Sub
 
 
-    Private Sub EnterClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtID.KeyDown, txtNombre.KeyDown, txtAutor.KeyDown
+    Private Sub EnterClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtID.KeyDown, txtNombreLibro.KeyDown, txtAutor.KeyDown
         ' Acciona el btnAgregar cuando se presiona Enter en alguno de los campos.
         If e.KeyCode.Equals(Keys.Enter) Then
             btnAgregar.PerformClick()

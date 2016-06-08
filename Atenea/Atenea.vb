@@ -13,7 +13,7 @@ Public Class Atenea
     Dim registro As frmNewRegistro
 
     Private Sub Atenea_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Al cargar, agregarLogin por defecto.
+        ' Al cargar, agregarLogin por defecto
         agregarLogin()
     End Sub
 
@@ -30,7 +30,7 @@ Public Class Atenea
     End Sub
 
     Public Sub agregarRegistro()
-        ' Agrega el registro de funcionario a la ventana principal.
+        ' Agrega el registro de funcionario a la ventana principal
         Me.Controls.Clear()
         Me.Text = "Registro de funcionario · Atenea"
         Me.Width = 610

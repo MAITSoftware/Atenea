@@ -10,15 +10,15 @@ Public Class frmPrestamo
     Private Sub frmPrestamo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim libro As Libro
         libro = New Libro(llaveLibro, False, True)
-        libro.Location = New Point(12, 40)
+        libro.Location = New Point(12, 40) 'Define la posición del libro
         libro.Parent = Me
-        libro.actualizarDatos()
-        lblAutor.Text = "Autor: " & libro.Autor
-        lblCondicion.Text = "Condición: " & libro.Condicion
-        lblGenero.Text = "Género: " & libro.Genero
-        lblID.Text = "ID: " & libro.ID
+        libro.actualizarDatos() 'Actualiza los datos del libro
+        lblAutor.Text = "Autor: " & libro.Autor 'Muestra el autor del libro 
+        lblCondicion.Text = "Condición: " & libro.Condicion 'Muestra la condición del libro
+        lblGenero.Text = "Género: " & libro.Genero 'Muestra el género del libro
+        lblID.Text = "ID: " & libro.ID 'Muestra el ID del libro
 
-        Dim conexion As New DB()
+        Dim conexion As New DB() 'Establece conexión con la DB
 
         Using cmd As New MySqlCommand()
             With cmd
@@ -33,7 +33,7 @@ Public Class frmPrestamo
             End While
 
             reader.Close()
-            conexion.Close()
+            conexion.Close() 'Cierra la conexión con la DB
 
         End Using
     End Sub

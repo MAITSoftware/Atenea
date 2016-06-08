@@ -26,17 +26,17 @@ Partial Class frmConfPrestamo
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.lblFechaEntrega = New System.Windows.Forms.Label()
         Me.lblInfo = New System.Windows.Forms.Label()
-        Me.calendario = New System.Windows.Forms.MonthCalendar()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.calPrestamo = New System.Windows.Forms.MonthCalendar()
+        Me.pnlPreview = New System.Windows.Forms.Panel()
         Me.lblCondicion = New System.Windows.Forms.Label()
         Me.lblID = New System.Windows.Forms.Label()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblAutor = New System.Windows.Forms.Label()
-        Me.comboUsuario = New System.Windows.Forms.ComboBox()
+        Me.cboxUsuario = New System.Windows.Forms.ComboBox()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.btnPrestar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
+        Me.pnlPreview.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblUsuario
@@ -73,25 +73,25 @@ Partial Class frmConfPrestamo
         Me.lblInfo.Text = "El usuario tiene un préstamo pendiente"
         Me.lblInfo.Visible = False
         '
-        'calendario
+        'calPrestamo
         '
-        Me.calendario.Location = New System.Drawing.Point(474, 136)
-        Me.calendario.MaxSelectionCount = 1
-        Me.calendario.Name = "calendario"
-        Me.calendario.ShowTodayCircle = False
-        Me.calendario.TabIndex = 37
+        Me.calPrestamo.Location = New System.Drawing.Point(474, 136)
+        Me.calPrestamo.MaxSelectionCount = 1
+        Me.calPrestamo.Name = "calPrestamo"
+        Me.calPrestamo.ShowTodayCircle = False
+        Me.calPrestamo.TabIndex = 1
         '
-        'Panel1
+        'pnlPreview
         '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.lblCondicion)
-        Me.Panel1.Controls.Add(Me.lblID)
-        Me.Panel1.Controls.Add(Me.lblGenero)
-        Me.Panel1.Controls.Add(Me.lblAutor)
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(266, 380)
-        Me.Panel1.TabIndex = 40
+        Me.pnlPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.pnlPreview.Controls.Add(Me.lblCondicion)
+        Me.pnlPreview.Controls.Add(Me.lblID)
+        Me.pnlPreview.Controls.Add(Me.lblGenero)
+        Me.pnlPreview.Controls.Add(Me.lblAutor)
+        Me.pnlPreview.Location = New System.Drawing.Point(0, 0)
+        Me.pnlPreview.Name = "pnlPreview"
+        Me.pnlPreview.Size = New System.Drawing.Size(266, 380)
+        Me.pnlPreview.TabIndex = 40
         '
         'lblCondicion
         '
@@ -137,17 +137,17 @@ Partial Class frmConfPrestamo
         Me.lblAutor.TabIndex = 0
         Me.lblAutor.Text = "Autor: "
         '
-        'comboUsuario
+        'cboxUsuario
         '
-        Me.comboUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.comboUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.comboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.comboUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
-        Me.comboUsuario.FormattingEnabled = True
-        Me.comboUsuario.Location = New System.Drawing.Point(475, 53)
-        Me.comboUsuario.Name = "comboUsuario"
-        Me.comboUsuario.Size = New System.Drawing.Size(227, 26)
-        Me.comboUsuario.TabIndex = 41
+        Me.cboxUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cboxUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboxUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.cboxUsuario.FormattingEnabled = True
+        Me.cboxUsuario.Location = New System.Drawing.Point(475, 53)
+        Me.cboxUsuario.Name = "cboxUsuario"
+        Me.cboxUsuario.Size = New System.Drawing.Size(227, 26)
+        Me.cboxUsuario.TabIndex = 0
         '
         'lblFecha
         '
@@ -177,7 +177,7 @@ Partial Class frmConfPrestamo
         Me.btnPrestar.Location = New System.Drawing.Point(489, 321)
         Me.btnPrestar.Name = "btnPrestar"
         Me.btnPrestar.Size = New System.Drawing.Size(116, 32)
-        Me.btnPrestar.TabIndex = 43
+        Me.btnPrestar.TabIndex = 2
         Me.btnPrestar.Text = "Prestar"
         Me.btnPrestar.UseVisualStyleBackColor = False
         '
@@ -195,7 +195,7 @@ Partial Class frmConfPrestamo
         Me.btnCancelar.Location = New System.Drawing.Point(631, 321)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(116, 32)
-        Me.btnCancelar.TabIndex = 44
+        Me.btnCancelar.TabIndex = 3
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
@@ -208,9 +208,9 @@ Partial Class frmConfPrestamo
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnPrestar)
         Me.Controls.Add(Me.lblFecha)
-        Me.Controls.Add(Me.comboUsuario)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.calendario)
+        Me.Controls.Add(Me.cboxUsuario)
+        Me.Controls.Add(Me.pnlPreview)
+        Me.Controls.Add(Me.calPrestamo)
         Me.Controls.Add(Me.lblUsuario)
         Me.Controls.Add(Me.lblFechaEntrega)
         Me.Controls.Add(Me.lblInfo)
@@ -222,8 +222,8 @@ Partial Class frmConfPrestamo
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Préstamo de libro · Atenea"
         Me.TopMost = True
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.pnlPreview.ResumeLayout(False)
+        Me.pnlPreview.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,13 +231,13 @@ Partial Class frmConfPrestamo
     Friend WithEvents lblUsuario As System.Windows.Forms.Label
     Friend WithEvents lblFechaEntrega As System.Windows.Forms.Label
     Friend WithEvents lblInfo As System.Windows.Forms.Label
-    Friend WithEvents calendario As System.Windows.Forms.MonthCalendar
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents calPrestamo As System.Windows.Forms.MonthCalendar
+    Friend WithEvents pnlPreview As System.Windows.Forms.Panel
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblAutor As System.Windows.Forms.Label
     Friend WithEvents lblCondicion As System.Windows.Forms.Label
-    Friend WithEvents comboUsuario As System.Windows.Forms.ComboBox
+    Friend WithEvents cboxUsuario As System.Windows.Forms.ComboBox
     Friend WithEvents lblFecha As System.Windows.Forms.Label
     Friend WithEvents btnPrestar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button

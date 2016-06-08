@@ -28,7 +28,7 @@ Partial Class frmNewLogin
         Me.lblContrasenia = New System.Windows.Forms.Label()
         Me.txtContrasenia = New System.Windows.Forms.TextBox()
         Me.btnEntrar = New System.Windows.Forms.Button()
-        Me.lblNuevoUsuario = New System.Windows.Forms.Label()
+        Me.lblNuevoFuncionario = New System.Windows.Forms.Label()
         Me.btnRegistrarse = New System.Windows.Forms.Button()
         Me.rbtnFuncionario = New System.Windows.Forms.RadioButton()
         Me.rbtnUsuario = New System.Windows.Forms.RadioButton()
@@ -68,7 +68,7 @@ Partial Class frmNewLogin
         Me.txtICI.MaxLength = 8
         Me.txtICI.Name = "txtICI"
         Me.txtICI.Size = New System.Drawing.Size(158, 24)
-        Me.txtICI.TabIndex = 2
+        Me.txtICI.TabIndex = 4
         '
         'lblContrasenia
         '
@@ -89,7 +89,7 @@ Partial Class frmNewLogin
         Me.txtContrasenia.Location = New System.Drawing.Point(372, 228)
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.Size = New System.Drawing.Size(158, 24)
-        Me.txtContrasenia.TabIndex = 2
+        Me.txtContrasenia.TabIndex = 5
         Me.txtContrasenia.UseSystemPasswordChar = True
         Me.txtContrasenia.Visible = False
         '
@@ -108,21 +108,21 @@ Partial Class frmNewLogin
         Me.btnEntrar.Location = New System.Drawing.Point(393, 232)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(116, 32)
-        Me.btnEntrar.TabIndex = 7
+        Me.btnEntrar.TabIndex = 6
         Me.btnEntrar.Text = "Entrar"
         Me.btnEntrar.UseVisualStyleBackColor = False
         '
-        'lblNuevoUsuario
+        'lblNuevoFuncionario
         '
-        Me.lblNuevoUsuario.AutoSize = True
-        Me.lblNuevoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblNuevoUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblNuevoUsuario.Location = New System.Drawing.Point(296, 335)
-        Me.lblNuevoUsuario.Name = "lblNuevoUsuario"
-        Me.lblNuevoUsuario.Size = New System.Drawing.Size(154, 20)
-        Me.lblNuevoUsuario.TabIndex = 1
-        Me.lblNuevoUsuario.Text = "¿Nuevo funcionario?"
-        Me.lblNuevoUsuario.Visible = False
+        Me.lblNuevoFuncionario.AutoSize = True
+        Me.lblNuevoFuncionario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblNuevoFuncionario.ForeColor = System.Drawing.Color.White
+        Me.lblNuevoFuncionario.Location = New System.Drawing.Point(296, 335)
+        Me.lblNuevoFuncionario.Name = "lblNuevoFuncionario"
+        Me.lblNuevoFuncionario.Size = New System.Drawing.Size(154, 20)
+        Me.lblNuevoFuncionario.TabIndex = 1
+        Me.lblNuevoFuncionario.Text = "¿Nuevo funcionario?"
+        Me.lblNuevoFuncionario.Visible = False
         '
         'btnRegistrarse
         '
@@ -151,7 +151,7 @@ Partial Class frmNewLogin
         Me.rbtnFuncionario.Location = New System.Drawing.Point(443, 84)
         Me.rbtnFuncionario.Name = "rbtnFuncionario"
         Me.rbtnFuncionario.Size = New System.Drawing.Size(129, 28)
-        Me.rbtnFuncionario.TabIndex = 8
+        Me.rbtnFuncionario.TabIndex = 3
         Me.rbtnFuncionario.Text = "Funcionario"
         Me.rbtnFuncionario.UseVisualStyleBackColor = True
         '
@@ -164,7 +164,7 @@ Partial Class frmNewLogin
         Me.rbtnUsuario.Location = New System.Drawing.Point(326, 84)
         Me.rbtnUsuario.Name = "rbtnUsuario"
         Me.rbtnUsuario.Size = New System.Drawing.Size(92, 28)
-        Me.rbtnUsuario.TabIndex = 8
+        Me.rbtnUsuario.TabIndex = 0
         Me.rbtnUsuario.TabStop = True
         Me.rbtnUsuario.Text = "Usuario"
         Me.rbtnUsuario.UseVisualStyleBackColor = True
@@ -205,7 +205,7 @@ Partial Class frmNewLogin
         Me.Controls.Add(Me.imgLogo)
         Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.txtICI)
-        Me.Controls.Add(Me.lblNuevoUsuario)
+        Me.Controls.Add(Me.lblNuevoFuncionario)
         Me.Controls.Add(Me.lblContrasenia)
         Me.Controls.Add(Me.lblCI)
         Me.Controls.Add(Me.lblBienvenido)
@@ -223,7 +223,7 @@ Partial Class frmNewLogin
     Friend WithEvents txtContrasenia As System.Windows.Forms.TextBox
     Friend WithEvents imgLogo As System.Windows.Forms.PictureBox
     Friend WithEvents btnEntrar As System.Windows.Forms.Button
-    Friend WithEvents lblNuevoUsuario As System.Windows.Forms.Label
+    Friend WithEvents lblNuevoFuncionario As System.Windows.Forms.Label
     Friend WithEvents btnRegistrarse As System.Windows.Forms.Button
     Friend WithEvents rbtnFuncionario As System.Windows.Forms.RadioButton
     Friend WithEvents rbtnUsuario As System.Windows.Forms.RadioButton

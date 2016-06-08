@@ -27,7 +27,7 @@ Partial Class frmPrestamo
         Me.lblID = New System.Windows.Forms.Label()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblAutor = New System.Windows.Forms.Label()
-        Me.lblAccion = New System.Windows.Forms.Label()
+        Me.lblPrestamo = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.lblDevolver = New System.Windows.Forms.Label()
         Me.SuspendLayout()
@@ -76,16 +76,16 @@ Partial Class frmPrestamo
         Me.lblAutor.TabIndex = 18
         Me.lblAutor.Text = "Autor: "
         '
-        'lblAccion
+        'lblPrestamo
         '
-        Me.lblAccion.AutoSize = True
-        Me.lblAccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccion.ForeColor = System.Drawing.Color.White
-        Me.lblAccion.Location = New System.Drawing.Point(128, 9)
-        Me.lblAccion.Name = "lblAccion"
-        Me.lblAccion.Size = New System.Drawing.Size(168, 24)
-        Me.lblAccion.TabIndex = 17
-        Me.lblAccion.Text = "Préstamo en curso"
+        Me.lblPrestamo.AutoSize = True
+        Me.lblPrestamo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrestamo.ForeColor = System.Drawing.Color.White
+        Me.lblPrestamo.Location = New System.Drawing.Point(128, 9)
+        Me.lblPrestamo.Name = "lblPrestamo"
+        Me.lblPrestamo.Size = New System.Drawing.Size(168, 24)
+        Me.lblPrestamo.TabIndex = 17
+        Me.lblPrestamo.Text = "Préstamo en curso"
         '
         'btnAceptar
         '
@@ -101,7 +101,7 @@ Partial Class frmPrestamo
         Me.btnAceptar.Location = New System.Drawing.Point(316, 202)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(84, 33)
-        Me.btnAceptar.TabIndex = 15
+        Me.btnAceptar.TabIndex = 0
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
@@ -126,7 +126,7 @@ Partial Class frmPrestamo
         Me.Controls.Add(Me.lblID)
         Me.Controls.Add(Me.lblGenero)
         Me.Controls.Add(Me.lblAutor)
-        Me.Controls.Add(Me.lblAccion)
+        Me.Controls.Add(Me.lblPrestamo)
         Me.Controls.Add(Me.btnAceptar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -143,7 +143,7 @@ Partial Class frmPrestamo
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblAutor As System.Windows.Forms.Label
-    Friend WithEvents lblAccion As System.Windows.Forms.Label
+    Friend WithEvents lblPrestamo As System.Windows.Forms.Label
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
     Friend WithEvents lblDevolver As System.Windows.Forms.Label
 End Class

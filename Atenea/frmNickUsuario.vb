@@ -8,11 +8,12 @@ Public Class frmNickUsuario
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click 'Al hacer click en aceptar
-        Dim conexion As New DB()
+        Dim conexion As New DB() 'Establece conexión con la DB
+        'Guarda los datos del usuario en la DB
         Dim cmd As MySqlCommand = New MySqlCommand(String.Format("INSERT INTO `usuario` (`CI`, `Nombre`, `Tipo`) VALUES ('{0}', '{1}', 'Usuario');", CI, txtNick.Text), conexion.Conn)
         cmd.ExecuteNonQuery()
         Atenea.atenea.cargarNick()
-        conexion.Close()
+        conexion.Close() 'Cierra la conexión
         Me.Dispose()
     End Sub
 
@@ -22,13 +23,14 @@ Public Class frmNickUsuario
         End If
     End Sub
 
-    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click 'Al presionar Cancelar
         Atenea.atenea.Dispose()
         Me.Dispose()
-        Atenea.agregarLogin()
+        Atenea.agregarLogin() 'Vuelve al login
     End Sub
 
     Private Sub txtNick_TextChanged(sender As Object, e As EventArgs) Handles txtNick.TextChanged
-        btnAceptar.Enabled = Not (String.IsNullOrWhiteSpace(txtNick.Text))
+        btnAceptar.Enabled = Not (String.IsNullOrWhiteSpace(txtNick.Text)) 'Si no hay texto en el txtNick, el botón aceptar no puede ser clickeado
     End Sub
+
 End Class

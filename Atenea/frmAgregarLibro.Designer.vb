@@ -24,7 +24,7 @@ Partial Class frmAgregarLibro
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgregarLibro))
         Me.txtAutor = New System.Windows.Forms.TextBox()
-        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.txtNombreLibro = New System.Windows.Forms.TextBox()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.cboxGenero = New System.Windows.Forms.ComboBox()
         Me.lblNombreLibro = New System.Windows.Forms.Label()
@@ -34,7 +34,7 @@ Partial Class frmAgregarLibro
         Me.btnCambiarPortada = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblEstado = New System.Windows.Forms.Label()
         Me.cboxEstado = New System.Windows.Forms.ComboBox()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.SuspendLayout()
@@ -48,14 +48,14 @@ Partial Class frmAgregarLibro
         Me.txtAutor.Size = New System.Drawing.Size(193, 26)
         Me.txtAutor.TabIndex = 1
         '
-        'txtNombre
+        'txtNombreLibro
         '
-        Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(268, 49)
-        Me.txtNombre.MaxLength = 45
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(193, 26)
-        Me.txtNombre.TabIndex = 0
+        Me.txtNombreLibro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombreLibro.Location = New System.Drawing.Point(268, 49)
+        Me.txtNombreLibro.MaxLength = 45
+        Me.txtNombreLibro.Name = "txtNombreLibro"
+        Me.txtNombreLibro.Size = New System.Drawing.Size(193, 26)
+        Me.txtNombreLibro.TabIndex = 0
         '
         'txtID
         '
@@ -179,16 +179,16 @@ Partial Class frmAgregarLibro
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lblEstado
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(268, 285)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(118, 20)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Estado del libro"
+        Me.lblEstado.AutoSize = True
+        Me.lblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.lblEstado.ForeColor = System.Drawing.Color.White
+        Me.lblEstado.Location = New System.Drawing.Point(268, 285)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(118, 20)
+        Me.lblEstado.TabIndex = 8
+        Me.lblEstado.Text = "Estado del libro"
         '
         'cboxEstado
         '
@@ -201,7 +201,7 @@ Partial Class frmAgregarLibro
         Me.cboxEstado.Location = New System.Drawing.Point(268, 309)
         Me.cboxEstado.Name = "cboxEstado"
         Me.cboxEstado.Size = New System.Drawing.Size(194, 28)
-        Me.cboxEstado.TabIndex = 9
+        Me.cboxEstado.TabIndex = 4
         '
         'lblInfo
         '
@@ -221,7 +221,7 @@ Partial Class frmAgregarLibro
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(486, 404)
         Me.Controls.Add(Me.lblInfo)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.cboxEstado)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAgregar)
@@ -232,7 +232,7 @@ Partial Class frmAgregarLibro
         Me.Controls.Add(Me.lblNombreLibro)
         Me.Controls.Add(Me.cboxGenero)
         Me.Controls.Add(Me.txtID)
-        Me.Controls.Add(Me.txtNombre)
+        Me.Controls.Add(Me.txtNombreLibro)
         Me.Controls.Add(Me.txtAutor)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -246,7 +246,7 @@ Partial Class frmAgregarLibro
 
     End Sub
     Friend WithEvents txtAutor As System.Windows.Forms.TextBox
-    Friend WithEvents txtNombre As System.Windows.Forms.TextBox
+    Friend WithEvents txtNombreLibro As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
     Friend WithEvents cboxGenero As System.Windows.Forms.ComboBox
     Friend WithEvents lblNombreLibro As System.Windows.Forms.Label
@@ -256,7 +256,7 @@ Partial Class frmAgregarLibro
     Friend WithEvents btnCambiarPortada As System.Windows.Forms.Button
     Friend WithEvents btnAgregar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents cboxEstado As System.Windows.Forms.ComboBox
     Friend WithEvents lblInfo As System.Windows.Forms.Label
 End Class

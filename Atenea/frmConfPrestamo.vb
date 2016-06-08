@@ -37,7 +37,7 @@ Public Class frmConfPrestamo
         ' Construye el libro a partir de la llaveLibro, el booleano True indica que es un preview intocable
         libro = New Libro(llaveLibro, True)
         libro.Location = New Point(58, 50) ' Lo ubica
-        libro.Parent = Panel1 ' Setea el padre
+        libro.Parent = pnlPreview ' Setea el padre
         libro.actualizarDatos() ' actualiza los datos del libro
 
         ' Setea los valores de los labels locales a los datos del libro
@@ -52,26 +52,25 @@ Public Class frmConfPrestamo
             ' Setear la fecha máxima a: fechaMínima en la que se realizó el préstamo + 21 días'
             ' Oscurece el día de hoy, y la fecha de préstamo actual
             ' Setea la fecha del calendario a la fecha de préstamo actual
-            calendario.MinDate = Convert.ToDateTime(fechaPrestamo)
-            calendario.MaxDate = calendario.MinDate.AddDays(21)
-            calendario.BoldedDates = New System.DateTime() {calendario.MinDate, DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
-            calendario.SetDate(Convert.ToDateTime(fechaActual))
+            calPrestamo.MinDate = Convert.ToDateTime(fechaPrestamo)
+            calPrestamo.MaxDate = calPrestamo.MinDate.AddDays(21)
+            calPrestamo.BoldedDates = New System.DateTime() {calPrestamo.MinDate, DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
+            calPrestamo.SetDate(Convert.ToDateTime(fechaActual))
 
 
             Me.Text = "Actualizar datos de préstamo · Atenea" ' Cambia el nombre de la ventana'
-            comboUsuario.Enabled = False ' Desactiva la selecion de usuario
+            cboxUsuario.Enabled = False ' Desactiva la selecion de usuario
             btnPrestar.Enabled = True ' Activa el botón de prestamo/cambiar que por defecto está desactivado'
             btnPrestar.Text = "Cambiar" ' Setea el texto del botón a Cambiar.
-            lblUsuario.Text = "Prestado a: "
         Else
             ' Setear la fecha mínima a la fecha de hoy
             ' Setear la fecha máxima a: fecha de hoy + 21 días'
             ' Oscurece el día de hoy, y la fecha máxima (hoy + 21 días)
             ' Setea la fecha del calendario a la fecha máxima (hoy + 21 días)
-            calendario.MinDate = System.DateTime.Now().AddDays(1)
-            calendario.MaxDate = System.DateTime.Now().AddDays(21)
-            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.MaxDate}
-            calendario.SetDate(calendario.MaxDate)
+            calPrestamo.MinDate = System.DateTime.Now().AddDays(1)
+            calPrestamo.MaxDate = System.DateTime.Now().AddDays(21)
+            calPrestamo.BoldedDates = New System.DateTime() {System.DateTime.Now(), calPrestamo.MaxDate}
+            calPrestamo.SetDate(calPrestamo.MaxDate)
         End If
 
         ' Agrega los usuarios al combobox
@@ -100,13 +99,13 @@ Public Class frmConfPrestamo
         If interfazEdicion Then
             ' En caso de edición, agregar solo estos dos valores
             cmd.Parameters.AddWithValue("@id", llaveLibro) ' llave del libro
-            cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
+            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
         Else
             cmd.Parameters.AddWithValue("@id", llaveLibro) ' llave del libro
             cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario) ' ci del usuario
             cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.CI) ' ci del funcionario'
             cmd.Parameters.AddWithValue("@fechaPrestamo", DateTime.Now.ToString("yyyy-MM-dd")) ' fecha actual
-            cmd.Parameters.AddWithValue("@fechaEntrega", calendario.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
+            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
         End If
 
         ' Ejecuta la secuencia
@@ -117,7 +116,7 @@ Public Class frmConfPrestamo
         Me.Dispose() ' Destruye la ventana
     End Sub
 
-    Private Sub comboUsuario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboUsuario.SelectedIndexChanged
+    Private Sub comboUsuario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxUsuario.SelectedIndexChanged
         ' al cambiar la selecion del comboUsuario, checkear si este no tiene un préstamo activo
 
         If interfazEdicion Then ' Si está editando, obviamente, tiene un préstamo activo.
@@ -125,7 +124,7 @@ Public Class frmConfPrestamo
         End If
 
         Dim conexion As New DB() ' Define la conexión a la DB
-        Dim user As String = comboUsuario.SelectedItem.ToString() ' Convierte la selecciónn a String
+        Dim user As String = cboxUsuario.SelectedItem.ToString() ' Convierte la selecciónn a String
         ciUsuario = user.Substring(0, user.IndexOf(" -- ")) ' Busca la posición de " -- " (el separador) y obtiene el texto anterior a éste
         Dim cmd As MySqlCommand = New MySqlCommand("select * from prestamo where `CI_Usuario`=@id;", conexion.Conn) ' crea el comando
         cmd.Parameters.AddWithValue("@id", ciUsuario) ' agregar la ci del usuario a la sentencia
@@ -173,9 +172,10 @@ Public Class frmConfPrestamo
                     End If
                 End If
 
-                comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
-                If interfazEdicion Then
-                    comboUsuario.Text = String.Format("{0} -- {1}", ID, Nombre)
+                If interfazEdicion Then ' En caso de edición setea el valor del combobox
+                    cboxUsuario.Text = String.Format("{0} -- {1}", ID, Nombre)
+                Else ' En caso de que no sea edición agrega el usuario a la lista
+                    cboxUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
                 End If
             End While
 
@@ -184,15 +184,15 @@ Public Class frmConfPrestamo
         End Using
     End Sub
 
-    Private Sub calendario_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calendario.DateChanged
+    Private Sub calendario_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calPrestamo.DateChanged
         ' Cuando cambia la fecha turnarla en negrita
         If interfazEdicion Then ' En caso de edición pone en negrita la fecha mínima y la seleccionada
-            calendario.BoldedDates = New System.DateTime() {calendario.MinDate, calendario.SelectionRange.Start}
+            calPrestamo.BoldedDates = New System.DateTime() {calPrestamo.MinDate, calPrestamo.SelectionRange.Start}
         Else ' En caso de préstamo, pone en negrita la fecha de hoy, y la seleccionada
-            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.SelectionRange.Start}
+            calPrestamo.BoldedDates = New System.DateTime() {System.DateTime.Now(), calPrestamo.SelectionRange.Start}
         End If
         ' Cambia el texto de lblFecha a la fecha seleccionada
-        lblFecha.Text = FormatDateTime(calendario.SelectionRange.Start, DateFormat.ShortDate)
+        lblFecha.Text = FormatDateTime(calPrestamo.SelectionRange.Start, DateFormat.ShortDate)
     End Sub
 
 End Class

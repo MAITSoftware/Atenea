@@ -23,7 +23,7 @@ Public Class frmMain
     End Sub
  
     Private Sub mainLoad(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Al cargar el form, cargar los libros '
+        ' Al cargar el form, cargar los libros
         cargarLibros()
         ' Setear la selección de cboxGenero a la principal'
         cboxGenero.SelectedIndex = 0
@@ -39,16 +39,16 @@ Public Class frmMain
 
         If Not interfazFuncionario Then 
             ' Si no es funcionario
-            btnAgregarLibro.Visible = False  ' ocultar botón de agregarLibro
-            btnAgregar_temporal.Visible = False  ' ocultar botón de agregarLibro temporal'
-            btnPrestamos.Text = "Préstamo en curso" ' cambiar el modo de la palabra
-            CheckPrestamo() ' comprueba si hay un préstamo activo
+            btnAgregarLibro.Visible = False  ' Oculta botón de agregarLibro
+            btnAgregarLibro_temporal.Visible = False  'Oculta botón de agregarLibro temporal
+            btnPrestamos.Text = "Préstamo en curso" 'Cambiar la palabra préstamos de plural a singular
+            CheckPrestamo() 'Comprueba si hay un préstamo activo
         End If
     End Sub
- 
+
     Public Sub cargarNick()
         ' Carga el nick desde la DB
-        ' Define nombre, apellido, y la conexión'
+        ' Define nombre, apellido, y la conexión
         Dim Nombre As String
         Dim Apellido As String = ""
         Dim conexion As New DB()
@@ -69,8 +69,7 @@ Public Class frmMain
         reader.Close() ' cierra el reader
         conexion.Close() ' cierra la conexión
 
-        ' actualiza el lblBienvenida a los datos nuevos
-        lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido
+        lblBienvenida.Text = "Bienvenido/a " & ControlChars.NewLine & Nombre & " " & Apellido  'Actualiza el lblBienvenida a los datos nuevos
     End Sub
 
     Public Sub cargarLibros()
@@ -79,9 +78,9 @@ Public Class frmMain
         ' cambia el cursor a un cursor pensando xD
         Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
 
-        ' Define la sentencia principal'
+        ' Define la sentencia principal
         Dim sentencia As String = "SELECT `ID` FROM `libro`"
- 
+
         If cboxDisponibles.Checked Then ' si cboxDisponibles está checkeado
             sentencia += " order by (ID in (select ID from prestamo));"  ' el orden queda ascendente
         Else
@@ -91,12 +90,12 @@ Public Class frmMain
         ' Si estamos buscando
         If buscando Then
             ' Se agregan las preferencias de busqueda
-            If radioNombre.Checked Then
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text)
-            ElseIf radioAutor.Checked Then
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text)
-            ElseIf radioID.Checked Then
-                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text)
+            If rbtnNombre.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Titulo LIKE '{0}%'", txtBusqueda.Text) 'Si rbtnNombre está checkeado busca por nombre
+            ElseIf rbtnAutor.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE Autor LIKE '{0}%'", txtBusqueda.Text) 'Si rbtnAurot está chequeado busca por autor
+            ElseIf rbtnID.Checked Then
+                sentencia = String.Format("SELECT `ID` FROM `libro` WHERE ID LIKE '{0}%'", txtBusqueda.Text) 'Si rbtnID está chequeado  busca por ID
             End If
 
             If chkGenero.Checked Then
@@ -117,7 +116,7 @@ Public Class frmMain
 
         If interfazFuncionario Then
             ' Si es funcionario agrega el botón para agregar libros
-            panelLibros.Controls.Add(btnAgregar_temporal)
+            panelLibros.Controls.Add(btnAgregarLibro_temporal)
         End If
 
         Dim conexion As DB = New DB() ' establece la conexión'
@@ -132,7 +131,7 @@ Public Class frmMain
         While reader.Read()
             ' Si hay algún valor: elimna el lblNoDisponibles + btnAgregarTemporal
             panelLibros.Controls.Remove(lblNoDisponibles)
-            panelLibros.Controls.Remove(btnAgregar_temporal)
+            panelLibros.Controls.Remove(btnAgregarLibro_temporal)
             lblNoDisponibles.Visible = False
 
             ' Crea un nuevo libro con la llave obtenida y lo agrega
@@ -180,7 +179,7 @@ Public Class frmMain
 
             If interfazFuncionario Then
                 ' Si es funcionario, agrega el botón para agregar libro
-                panelLibros.Controls.Add(btnAgregar_temporal)
+                panelLibros.Controls.Add(btnAgregarLibro_temporal)
             End If
         End If
 
@@ -268,7 +267,7 @@ Public Class frmMain
         cargarLibros() ' Actualizar libros en base a busqueda
     End Sub
 
-    Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles radioNombre.CheckedChanged, radioID.CheckedChanged, radioAutor.CheckedChanged, chkGenero.CheckedChanged, chkSoloDisponibles.CheckedChanged
+    Private Sub paramsBusqueda(sender As Object, e As EventArgs) Handles rbtnNombre.CheckedChanged, rbtnID.CheckedChanged, rbtnAutor.CheckedChanged, chkGenero.CheckedChanged, chkSoloDisponibles.CheckedChanged
         ' Al cambiar los parámetros de busqueda
         buscando = True
         cboxGenero.Enabled = chkGenero.Checked ' activar cboxgenero si chkGenero está chckeado
@@ -281,9 +280,13 @@ Public Class frmMain
         Atenea.agregarLogin() ' Y agregar login nuevamente
     End Sub
 
-    Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click, btnAgregar_temporal.Click
+    Private Sub btnAgregarLibro_Click(sender As Object, e As EventArgs) Handles btnAgregarLibro.Click, btnAgregarLibro_temporal.Click
         ' Al clickear en agregar libro, llamar al form para AgregarLibro
         Dim frm As New frmAgregarLibro()
         frm.ShowDialog(Me)
+    End Sub
+
+    Private Sub lvwLibros_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvwLibros.SelectedIndexChanged
+
     End Sub
 End Class

@@ -98,7 +98,7 @@ Partial Class frmPrestamos
         Me.btnLibroDevuelto.Location = New System.Drawing.Point(16, 266)
         Me.btnLibroDevuelto.Name = "btnLibroDevuelto"
         Me.btnLibroDevuelto.Size = New System.Drawing.Size(230, 32)
-        Me.btnLibroDevuelto.TabIndex = 16
+        Me.btnLibroDevuelto.TabIndex = 0
         Me.btnLibroDevuelto.Text = "Marcar libro como devuelto"
         Me.btnLibroDevuelto.UseVisualStyleBackColor = False
         '
@@ -117,7 +117,7 @@ Partial Class frmPrestamos
         Me.btnCambiarFecha.Location = New System.Drawing.Point(16, 312)
         Me.btnCambiarFecha.Name = "btnCambiarFecha"
         Me.btnCambiarFecha.Size = New System.Drawing.Size(230, 32)
-        Me.btnCambiarFecha.TabIndex = 17
+        Me.btnCambiarFecha.TabIndex = 1
         Me.btnCambiarFecha.Text = "Editar fecha de entrega"
         Me.btnCambiarFecha.UseVisualStyleBackColor = False
         '
@@ -130,12 +130,12 @@ Partial Class frmPrestamos
         Me.btnImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImprimir.ForeColor = System.Drawing.Color.White
         Me.btnImprimir.Location = New System.Drawing.Point(16, 358)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(230, 32)
-        Me.btnImprimir.TabIndex = 18
+        Me.btnImprimir.TabIndex = 2
         Me.btnImprimir.Text = "Imprimir detalles de préstamos"
         Me.btnImprimir.UseVisualStyleBackColor = False
         '

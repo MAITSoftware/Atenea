@@ -8,7 +8,7 @@ Public Class frmNewLogin
             txtContrasenia.Text = ""
             lblContrasenia.Visible = True 'Muestra lblContrasenia
             txtContrasenia.Visible = True 'Muestra txtContrasenia
-            lblNuevoUsuario.Visible = True 'Muestra lblNuevoUsuario
+            lblNuevoFuncionario.Visible = True 'Muestra lblNuevoUsuario
             btnRegistrarse.Visible = True 'Muestra btnRegistrarse
 
             lblCI.Location = New Point(391, 128) 'Cambia la posición de lblCI
@@ -19,7 +19,7 @@ Public Class frmNewLogin
             txtICI.Text = ""
             lblContrasenia.Visible = False 'Oculta lblContrasenia
             txtContrasenia.Visible = False 'Oculta txtContrasenia
-            lblNuevoUsuario.Visible = False 'Oculta lblNuevoUsuario
+            lblNuevoFuncionario.Visible = False 'Oculta lblNuevoUsuario
             btnRegistrarse.Visible = False 'Oculta btnRegistrarse
 
             lblCI.Location = New Point(391, 149) 'Cambia la posición de lblCI
@@ -108,5 +108,9 @@ Public Class frmNewLogin
         If e.KeyCode.Equals(Keys.Enter) Then
             btnEntrar.PerformClick()
         End If
+    End Sub
+
+    Private Sub frmNewLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

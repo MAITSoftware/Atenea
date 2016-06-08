@@ -9,7 +9,7 @@ Public Class frmPrestamos
 
     Friend ID As String
     Dim archivoImprimir As StreamReader
-    Dim fuente As Font = New System.Drawing.Font("Arial", 10)
+    Dim fuente As Font = New System.Drawing.Font("Arial", 10) 'Establece la fuente y tamaño del texto para la impresión
 
     Private Sub frmPrestamos_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'Al cargar frmPrestamos
         planilla.View = View.Details 'Muestra planilla en vista detallada
@@ -18,15 +18,15 @@ Public Class frmPrestamos
 
         libro = New Libro(Nothing, False, True)
         libro.Parent = Me
-        libro.Location = New Point(56, 56)
+        libro.Location = New Point(56, 56) 'Establece la ¿¿¿locación??? del libro
 
     End Sub
     Public Sub actualizarDatos()
-        planilla.Items.Clear()
-        btnImprimir.Enabled = False
+        planilla.Items.Clear() 'Si la planilla de datos esta vacía
+        btnImprimir.Enabled = False 'El botón de imprimir no se muestra 
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
-        Dim conexion As New DB()
+        Dim conexion As New DB() 'Establece la conexión con la DB
         Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn)
         Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
@@ -41,25 +41,26 @@ Public Class frmPrestamos
             fechaEntrega = reader("Fecha entrega")
             miItem.SubItems.Add(fechaPrestamo)
             miItem.SubItems.Add(fechaEntrega)
-            Dim faltanDias As Integer = DateDiff(DateInterval.Day, fechaPrestamo, fechaEntrega)
-            If faltanDias <= 5 Then
-                miItem.BackColor = Color.OrangeRed
+            Dim faltanDias As Integer = DateDiff(DateInterval.Day, fechaPrestamo, fechaEntrega) 'Define la variable faltanDias como un entero
+            'Expresará la diferencia de días entre la fecha de préstamo y la fecha de entrega.
+            If faltanDias <= 5 Then 'Si faltan 5 o menos días para la devolución del libro,
+                miItem.BackColor = Color.OrangeRed 'El color de fondo de la fila del préstamo se pondrá naranja, a modo de alerta
             End If
-            btnImprimir.Enabled = True
+            btnImprimir.Enabled = True 'Y al tener libros prestados, se activará el botón de imprimir
         End While
 
         reader.Close()
-        conexion.Close()
+        conexion.Close() 'Se cierra la conexion
     End Sub
     Private Sub planilla_SelectedIndexChanged(sender As Object, e As EventArgs) Handles planilla.SelectedIndexChanged
         Try
-            ID = planilla.SelectedItems.Item(0).SubItems(3).Text
-            btnLibroDevuelto.Enabled = True
-            btnCambiarFecha.Enabled = True
+            ID = planilla.SelectedItems.Item(0).SubItems(3).Text 'Si hay un préstamo en curso seleccionado,
+            btnLibroDevuelto.Enabled = True 'btnLibroDevuelto se activa
+            btnCambiarFecha.Enabled = True 'btnCambiarFecha se activa
         Catch ex As Exception
-            ID = Nothing
-            btnLibroDevuelto.Enabled = False
-            btnCambiarFecha.Enabled = False
+            ID = Nothing 'Si no hay ningún préstamo en curso seleccionado,
+            btnLibroDevuelto.Enabled = False 'btnLibroDevuelto se desactiva
+            btnCambiarFecha.Enabled = False 'btnCambiarFecha se desactiva
         End Try
 
         updateLibro()
@@ -81,11 +82,11 @@ Public Class frmPrestamos
         Dim frmDevolver As frmAccionLibro
         frmDevolver = New frmAccionLibro(ID, True, planilla.SelectedItems.Item(0).SubItems(0).Text)
         frmDevolver.ShowDialog(Me)
-        ID = Nothing
-        btnLibroDevuelto.Enabled = False
-        btnCambiarFecha.Enabled = False
+        ID = Nothing 'Si no hay un préstamo en curso seleccionado,
+        btnLibroDevuelto.Enabled = False 'Se desactiva el btnLibroDevuelto
+        btnCambiarFecha.Enabled = False 'Se desactiva el btnCambiarFecha
         updateLibro()
-        actualizarDatos()
+        actualizarDatos() 'Se actualizan los datos
     End Sub
 
     Private Sub btnCambiarFecha_Click(sender As Object, e As EventArgs) Handles btnCambiarFecha.Click
@@ -99,12 +100,12 @@ Public Class frmPrestamos
         actualizarDatos()
     End Sub
 
-    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click 'Crea un archivo imprimible llamado "Préstamos"
         Dim archivo As String = "Préstamos" & vbCrLf &
 "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
 
         sentencia = "SELECT prestamo.*, libro.Titulo FROM prestamo, libro where libro.ID=prestamo.ID;"
-        Dim conexion As New DB()
+        Dim conexion As New DB() 'Establece conexión con la DB
         Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn)
         Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
@@ -118,7 +119,7 @@ Public Class frmPrestamos
                        "----------------------------------------------------------------------------------------------------------------------------------" & vbCrLf
         End While
         reader.Close()
-        conexion.Close()
+        conexion.Close() 'Cierra la conexión
 
         Dim path As String = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".txt"
         Using sw As StreamWriter = File.CreateText(path)
@@ -130,7 +131,7 @@ Public Class frmPrestamos
         Try
             impresora.Print()
             archivoImprimir.Close()
-        Catch ex As Exception
+        Catch ex As Exception 'Si no se puede imprimir muestra error
             MsgBox("Error al imprimir")
         End Try
 
@@ -139,6 +140,7 @@ Public Class frmPrestamos
     Private Sub impresora_PrintPage(sender As Object, e As  _
        System.Drawing.Printing.PrintPageEventArgs) Handles _
        impresora.PrintPage
+        ' Esto es manejado por la impresora. Escribe los datos a la "hoja"
 
         Dim linesPerPage As Single = 0
         Dim yPos As Single = 0
