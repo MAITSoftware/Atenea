@@ -1,6 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient  ' Importa el módulo de MySQL
 Public Class frmMain
 
+    ' frmMain: Form principal donde se encuentran los libros.
+
     ' Define las variables:
     ' interfazFuncionario: ¿mostrar interfaz de funcionario?
     ' buscando: ¿Se está haciendo una busqueda?
@@ -25,7 +27,6 @@ Public Class frmMain
     Private Sub mainLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Al cargar el form, cargar los libros
         cargarLibros()
-        ' Setear la selección de cboxGenero a la principal'
         cboxGenero.SelectedIndex = 0
  
         If pedirNick Then 
@@ -284,9 +285,5 @@ Public Class frmMain
         ' Al clickear en agregar libro, llamar al form para AgregarLibro
         Dim frm As New frmAgregarLibro()
         frm.ShowDialog(Me)
-    End Sub
-
-    Private Sub lvwLibros_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvwLibros.SelectedIndexChanged
-
     End Sub
 End Class

@@ -4,6 +4,8 @@ Imports System.Drawing.Printing
 Imports System.IO 
 Public Class frmPrestamos
 
+    ' frmPrestamos: form donde se encuentran los préstamos activos
+
     Dim sentencia As String
     Dim libro As Libro
 
@@ -140,7 +142,7 @@ Public Class frmPrestamos
     Private Sub impresora_PrintPage(sender As Object, e As  _
        System.Drawing.Printing.PrintPageEventArgs) Handles _
        impresora.PrintPage
-        ' Esto es manejado por la impresora. Escribe los datos a la "hoja"
+        ' Esto es manejado por la impresora. "Escribe los datos a la hoja"
 
         Dim linesPerPage As Single = 0
         Dim yPos As Single = 0

@@ -1,27 +1,15 @@
 ﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
 Public Class frmConfPrestamo
 
-    ' Define las variables:
-    ' llaveLibro: ID del libro en la base de datos
-    ' ciUsuario: ID del usuario en la base de datos
-    ' fechaActual: fecha de entrega actual
-    ' fechaPrestamo: fecha en la que se realizó el prestamo
-    ' interfazEdicion: indica si se debe utilizar la ventana en modo de edición de préstamo
-    ' fechaActual, fechaPrestamo, ciUsuario, van de la mano con interfazEdicion
+    ' frmConfPrestamo: permite asignar / modificar los préstamos
 
     Dim llaveLibro, ciUsuario, fechaActual, fechaPrestamo As String
     Dim interfazEdicion As Boolean
 
     Public Sub New(ByVal llave As String, Optional ByVal editar As Boolean = False, Optional ByVal usuario As String = Nothing, Optional ByVal fechaEntrega As String = Nothing, Optional ByVal fechaPrestado As String = Nothing)
-        ' Al generar un nuevo frmConfPrestamo pedir como valores:
-        ' llave (obligatorio) -- String: el ID del libro en la base de datos
-        ' editar (opcional) -- Boolean: ¿activar interfaz de edición? 
-        '  --> fechaEntrega (opcional) -- String: fecha de entrega supuesta antes de editar
-        '  --> fechaPrestamo (opcional) -- String: fecha en la cual se realizó el préstamo
-
+        ' Al generar un nuevo frmConfPrestamo pedir valores opcionales/obligatorios y setear los de
+        ' variables locales a los valores especificados en la creación
         InitializeComponent()
-
-        ' Setea los valores de las variables locales a los valores especificados en la creación
         llaveLibro = llave
         interfazEdicion = editar
         ciUsuario = usuario
@@ -32,88 +20,70 @@ Public Class frmConfPrestamo
     Private Sub frmConfPrestamo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Al cargar, si se está editando muestra/setea valores adicionales del Libro -- Interfaz
 
-        ' Define un libro
         Dim libro As Libro
-        ' Construye el libro a partir de la llaveLibro, el booleano True indica que es un preview intocable
         libro = New Libro(llaveLibro, True)
-        libro.Location = New Point(58, 50) ' Lo ubica
-        libro.Parent = pnlPreview ' Setea el padre
-        libro.actualizarDatos() ' actualiza los datos del libro
+        libro.Location = New Point(58, 50)
+        libro.Parent = pnlPreview
+        libro.actualizarDatos()
 
-        ' Setea los valores de los labels locales a los datos del libro
         lblAutor.Text = "Autor: " + libro.Autor
         lblGenero.Text = "Genero: " + libro.Genero
         lblID.Text = "ID: " + libro.ID
         lblCondicion.Text = "Condición: " + libro.Condicion
 
-        ' En caso de que se esté editando
         If interfazEdicion Then
-            ' Setear la fecha mínima a la fecha en la que se realizó el préstamo
-            ' Setear la fecha máxima a: fechaMínima en la que se realizó el préstamo + 21 días'
-            ' Oscurece el día de hoy, y la fecha de préstamo actual
-            ' Setea la fecha del calendario a la fecha de préstamo actual
             calPrestamo.MinDate = Convert.ToDateTime(fechaPrestamo)
             calPrestamo.MaxDate = calPrestamo.MinDate.AddDays(21)
             calPrestamo.BoldedDates = New System.DateTime() {calPrestamo.MinDate, DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
             calPrestamo.SetDate(Convert.ToDateTime(fechaActual))
 
-
-            Me.Text = "Actualizar datos de préstamo · Atenea" ' Cambia el nombre de la ventana'
-            cboxUsuario.Enabled = False ' Desactiva la selecion de usuario
-            btnPrestar.Enabled = True ' Activa el botón de prestamo/cambiar que por defecto está desactivado'
-            btnPrestar.Text = "Cambiar" ' Setea el texto del botón a Cambiar.
+            Me.Text = "Actualizar datos de préstamo · Atenea"
+            cboxUsuario.Enabled = False
+            btnPrestar.Enabled = True
+            btnPrestar.Text = "Cambiar"
         Else
-            ' Setear la fecha mínima a la fecha de hoy
-            ' Setear la fecha máxima a: fecha de hoy + 21 días'
-            ' Oscurece el día de hoy, y la fecha máxima (hoy + 21 días)
-            ' Setea la fecha del calendario a la fecha máxima (hoy + 21 días)
             calPrestamo.MinDate = System.DateTime.Now().AddDays(1)
             calPrestamo.MaxDate = System.DateTime.Now().AddDays(21)
             calPrestamo.BoldedDates = New System.DateTime() {System.DateTime.Now(), calPrestamo.MaxDate}
             calPrestamo.SetDate(calPrestamo.MaxDate)
         End If
 
-        ' Agrega los usuarios al combobox
         cargarUsuarios()
-
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
-        ' Al clickear cancelar
-        Me.Dispose() ' Destruir ventana
+        ' Al clickear cancelar, destruir Ventana
+        Me.Dispose()
     End Sub
 
     Private Sub btnPrestar_Click(sender As Object, e As EventArgs) Handles btnPrestar.Click
-        ' Al clickear el botón prestar/cambiar
-        Dim conexion As New DB() ' Define la conexión a la DB
+        ' Al clickear el botón prestar/cambiar se actualizan, insertan, los datos del prestamo en la base de datos.
+        Dim conexion As New DB()
 
-        Dim sentencia As String ' Define la sentencia
-        sentencia = "INSERT INTO `prestamo` VALUES (@id, @ciUsuario, @ciFuncionario, @fechaPrestamo, @fechaEntrega);" ' Toma un valor por defecto
+        Dim sentencia As String 
+        sentencia = "INSERT INTO `prestamo` VALUES (@id, @ciUsuario, @ciFuncionario, @fechaPrestamo, @fechaEntrega);"
         If interfazEdicion Then
-            ' El valor cambia en caso de que se esté editando un préstamo
             sentencia = "UPDATE `prestamo` SET `Fecha entrega`=@fechaEntrega WHERE `ID`=@id;"
         End If
 
-        Dim cmd As New MySqlCommand(sentencia, conexion.Conn) ' Define un comando sql
+        Dim cmd As New MySqlCommand(sentencia, conexion.Conn)
 
         If interfazEdicion Then
-            ' En caso de edición, agregar solo estos dos valores
-            cmd.Parameters.AddWithValue("@id", llaveLibro) ' llave del libro
-            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
+            cmd.Parameters.AddWithValue("@id", llaveLibro) 
+            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd"))
         Else
-            cmd.Parameters.AddWithValue("@id", llaveLibro) ' llave del libro
-            cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario) ' ci del usuario
-            cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.CI) ' ci del funcionario'
-            cmd.Parameters.AddWithValue("@fechaPrestamo", DateTime.Now.ToString("yyyy-MM-dd")) ' fecha actual
-            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd")) ' fecha seleccionada en el calendario
+            cmd.Parameters.AddWithValue("@id", llaveLibro) 
+            cmd.Parameters.AddWithValue("@ciUsuario", ciUsuario)
+            cmd.Parameters.AddWithValue("@ciFuncionario", Atenea.CI) 
+            cmd.Parameters.AddWithValue("@fechaPrestamo", DateTime.Now.ToString("yyyy-MM-dd")) 
+            cmd.Parameters.AddWithValue("@fechaEntrega", calPrestamo.SelectionRange.Start.ToString("yyyy-MM-dd"))
         End If
 
-        ' Ejecuta la secuencia
         cmd.ExecuteNonQuery()
-        Atenea.cargarLibros() ' vuelve a cargar los libros
+        Atenea.cargarLibros()
 
-        conexion.Close() ' cierra la conexión
-        Me.Dispose() ' Destruye la ventana
+        conexion.Close()
+        Me.Dispose()
     End Sub
 
     Private Sub comboUsuario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxUsuario.SelectedIndexChanged
@@ -123,44 +93,40 @@ Public Class frmConfPrestamo
             Return ' así que no hacer nada
         End If
 
-        Dim conexion As New DB() ' Define la conexión a la DB
-        Dim user As String = cboxUsuario.SelectedItem.ToString() ' Convierte la selecciónn a String
+        Dim conexion As New DB()
+        Dim user As String = cboxUsuario.SelectedItem.ToString()
         ciUsuario = user.Substring(0, user.IndexOf(" -- ")) ' Busca la posición de " -- " (el separador) y obtiene el texto anterior a éste
-        Dim cmd As MySqlCommand = New MySqlCommand("select * from prestamo where `CI_Usuario`=@id;", conexion.Conn) ' crea el comando
-        cmd.Parameters.AddWithValue("@id", ciUsuario) ' agregar la ci del usuario a la sentencia
+        Dim cmd As MySqlCommand = New MySqlCommand("select * from prestamo where `CI_Usuario`=@id;", conexion.Conn) 
+        cmd.Parameters.AddWithValue("@id", ciUsuario) 
 
-        Dim reader As MySqlDataReader = cmd.ExecuteReader() ' Ejecuta el comando y obtiene los valores devueltos
+        Dim reader As MySqlDataReader = cmd.ExecuteReader() 
 
-        lblInfo.Visible = False ' Oculta el lblInfo
-        btnPrestar.Enabled = True ' Y activa el btn de Prestar
+        lblInfo.Visible = False 
+        btnPrestar.Enabled = True 
 
-        ' Mientras haya algun valor para leer
         While reader.Read()
-            lblInfo.Visible = True ' En caso de que haya un valor en la tabla, muestra el lblInfo
-            btnPrestar.Enabled = False ' Desactiva el btn de prestar
+            lblInfo.Visible = True 
+            btnPrestar.Enabled = False 
         End While
 
-        reader.close() ' cierra el reader
-        conexion.Close() ' cierra la conexión
+        reader.close() 
+        conexion.Close() 
     End Sub
 
     Private Sub cargarUsuarios()
-        ' Carga los usuarios desde la DB a un comboBox
+        ' Carga los usuarios desde la DB a cboxUsuario
 
-        Dim conexion As DB = New DB() ' Establece la conexión
+        Dim conexion As DB = New DB() 
 
-        ' Crea un nuevo comando (mysqlCommand) y lo pone en uso
         Using cmd As New MySqlCommand()
             With cmd
-                ' Establece los valores necesarios para la sentencia / comando.
                 .Connection = conexion.Conn
                 .CommandText = "select * from usuario where tipo='usuario' order by CI;"
                 .CommandType = CommandType.Text
             End With
 
-            Dim reader As MySqlDataReader = cmd.ExecuteReader() ' Ejecuta el comando y obtiene los valores devueltos
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-            ' Mientras haya algun valor para leer
             While reader.Read()
                 Dim Nombre, ID ' Defino el nombre, y la ID'
                 ID = reader("CI") ' obtengo el ID (CI) desde la base de datos y lo guardo
@@ -179,8 +145,8 @@ Public Class frmConfPrestamo
                 End If
             End While
 
-            reader.Close() ' cierra el reader
-            conexion.Close() ' cierra la conexión
+            reader.Close() 
+            conexion.Close() 
         End Using
     End Sub
 

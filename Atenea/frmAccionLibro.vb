@@ -1,9 +1,13 @@
 ﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
 Public Class frmAccionLibro
+
+    ' frmAccionLibro: form que permite alternar entre eliminar / devolver libro.
+
     Dim llaveLibro, CIUsuario As String
     Dim interfazDevolver As Boolean
 
     Public Sub New(ByVal llave As String, Optional ByVal devolver As Boolean = False, Optional ByVal CI As String = Nothing)
+        ' Al crear el form, setear los valores.
         InitializeComponent()
         llaveLibro = llave
         interfazDevolver = devolver
@@ -20,13 +24,11 @@ Public Class frmAccionLibro
         libro.Location = New Point(25, 60)
         libro.actualizarDatos()
 
-        'Muestra la info del libro que se va a borrar/devolver
         lblAutor.Text = "Autor: " + libro.Autor
         lblGenero.Text = "Genero: " + libro.Genero
         lblID.Text = "ID: " + libro.ID
         lblCondicion.Text = "Condición: " + libro.Condicion
 
-        'Si es una devolución del libro... idk
         If interfazDevolver Then
             Me.Text = "Devolución de libro · Atenea"
             lblAccion.Text = "¿Seguro que quiere devolver este libro?"
@@ -35,15 +37,16 @@ Public Class frmAccionLibro
         End If
     End Sub
 
-    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click 'Al clickear el boton eliminar...
-        Dim conexion As DB = New DB() 'Se conecta con la base de datos
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        'Al clickear el boton eliminar: elimina o actualiza dependiendo de la función del form.
+        Dim conexion As DB = New DB()
 
         Using cmd As New MySqlCommand()
             With cmd
                 .Connection = conexion.Conn
-                .CommandText = "DELETE FROM `libro` WHERE ID=@id;" 'Si el libro va a ser borrado, lo borra de la tabla libro según su ID
+                .CommandText = "DELETE FROM `libro` WHERE ID=@id;"
                 If interfazDevolver Then
-                    .CommandText = "DELETE FROM `prestamo` WHERE ID=@id;" 'Si el libro va a ser devuelto lo borra de la tabla préstamo según su ID
+                    .CommandText = "DELETE FROM `prestamo` WHERE ID=@id;" 
                 End If
                 .CommandType = CommandType.Text
                 .Parameters.AddWithValue("@id", llaveLibro)
@@ -58,6 +61,7 @@ Public Class frmAccionLibro
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        ' Destruye la ventana
         Me.Dispose()
     End Sub
 End Class

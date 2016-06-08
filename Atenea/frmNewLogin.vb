@@ -109,8 +109,4 @@ Public Class frmNewLogin
             btnEntrar.PerformClick()
         End If
     End Sub
-
-    Private Sub frmNewLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

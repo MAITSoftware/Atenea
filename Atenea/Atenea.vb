@@ -1,10 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
 Public Class Atenea
 
-    ' atenea, funcionario y CI son variables globales
-    ' Funcionario indica si el usuario en el sistema es funcionario
-    ' Atenea es la instancia de frmMain, la cual continene las funciones para actualizar la vista de libros
-    ' CI es la cédula del usuario actual
+    ' Clase principal del programa
     
     Friend atenea As frmMain
     Friend funcionario As Boolean = False
@@ -43,7 +40,6 @@ Public Class Atenea
 
     Public Sub agregarAtenea(ByVal CI As String, Optional ByVal firstLogin As Boolean = False, Optional ByVal esFuncionario As Boolean = False)
         ' Agrega el userControlForm de Atenea a la ventana principal.
-        ' Parámetros: Obligatorio CI del Usuario, adicionales: firstLogin -- primer login, y esFuncionario.
 
         Me.Controls.Clear()
         Me.Text = "Atenea"
