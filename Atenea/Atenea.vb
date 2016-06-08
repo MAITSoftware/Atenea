@@ -45,7 +45,6 @@ Public Class Atenea
         ' Agrega el userControlForm de Atenea a la ventana principal.
         ' Parámetros: Obligatorio CI del Usuario, adicionales: firstLogin -- primer login, y esFuncionario.
 
-        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.Controls.Clear()
         Me.Text = "Atenea"
         Me.Width = 1280
@@ -58,9 +57,6 @@ Public Class Atenea
         atenea = New frmMain(CI, firstLogin, esFuncionario)
 
         Me.Controls.Add(atenea)
-
-        Me.Cursor = System.Windows.Forms.Cursors.Arrow
-
     End Sub
 
     Public Sub cargarLibros()

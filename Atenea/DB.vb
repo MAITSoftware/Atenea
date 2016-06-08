@@ -16,7 +16,7 @@ Public Class DB
         End Try
     End Sub
 
-    Private Sub Close()
+    Public Sub Close()
         ' Cierra la conexión
         Conn.Close()
     End Sub

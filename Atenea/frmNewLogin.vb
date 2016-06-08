@@ -1,8 +1,10 @@
-﻿Imports MySql.Data.MySqlClient 'Importa MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient ' Importa el módulo de MySQL
 Public Class frmNewLogin
 
+    ' Ventana de logueo
+
     Private Sub rbtnFuncionario_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnFuncionario.CheckedChanged
-        If rbtnFuncionario.Checked Then 'Si rbtn fue seleccionado
+        If rbtnFuncionario.Checked Then 'Si rbtn fue seleccionado (funcionario seleccionado)
             txtContrasenia.Text = ""
             lblContrasenia.Visible = True 'Muestra lblContrasenia
             txtContrasenia.Visible = True 'Muestra txtContrasenia
@@ -27,20 +29,22 @@ Public Class frmNewLogin
         End If
     End Sub
 
-    Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click 'Al hacer click en btnRegistrarse
+    Private Sub btnRegistrarse_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
+        ' Al hacer click en btnRegistrarse, agregar Registro
         Atenea.agregarRegistro()
     End Sub
 
-    Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click 'Al hacer click en btnEntrar
+    Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
+        'Al hacer click en btnEntrar
         Dim precisaNick As Boolean = True 'Define precisaNick como Boolean
         Dim datosCorrectos As Boolean = False 'Define datosCorrectos como Boolean
-        Dim sentencia As String 'Define sentencia como String
 
         Dim conexion As DB = New DB()
 
         If rbtnFuncionario.Checked Then 'Si rbtnFuncionario es seleccionado
-            sentencia = String.Format("SELECT * FROM `usuario` WHERE CI='{0}' AND Contrasenia='{1}' AND Tipo='Funcionario';", txtICI.Text, txtContrasenia.Text)
-            Dim cmd As MySqlCommand = New MySqlCommand(sentencia, conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            Dim cmd As MySqlCommand = New MySqlCommand("SELECT * FROM `usuario` WHERE CI='@ID' AND Contrasenia='@Contra' AND Tipo='Funcionario';", conexion.Conn) 'Define cmd como MySqlCommand con los parámetros sentencia y Atenea.DB.Conn
+            cmd.Parameters.AddWithValue("@ID", txtICI.Text)
+            cmd.Parameters.AddWithValue("@Contra", txtContrasenia.Text)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
             While reader.Read()
@@ -83,6 +87,7 @@ Public Class frmNewLogin
     End Sub
 
     Private Sub checkEscrito(sender As Object, e As EventArgs) Handles txtICI.TextChanged, txtContrasenia.TextChanged
+        ' Comprueba que haya algo realmente escrito en los campos'
         btnEntrar.Enabled = Not (String.IsNullOrWhiteSpace(txtICI.Text)) 'btnEntrar se activará si txtICI no está vacío
         If rbtnFuncionario.Checked Then 'Si rbtn fue seleccionado
             btnEntrar.Enabled = Not (String.IsNullOrWhiteSpace(txtICI.Text) Or String.IsNullOrEmpty(txtContrasenia.Text)) 'btnEntrar se activará si txtICI o txtContrasenia no están vacíos

@@ -34,9 +34,8 @@ Public Class frmConfPrestamo
 
         ' Define un libro
         Dim libro As Libro
-        ' Construye el libro a partir de la llaveLibro, el booleano False indica que es un preview no editable
-        ' el booleano True indica que es un preview intocable'
-        libro = New Libro(llaveLibro, False, True)
+        ' Construye el libro a partir de la llaveLibro, el booleano True indica que es un preview intocable
+        libro = New Libro(llaveLibro, True)
         libro.Location = New Point(58, 50) ' Lo ubica
         libro.Parent = Panel1 ' Setea el padre
         libro.actualizarDatos() ' actualiza los datos del libro
@@ -55,7 +54,7 @@ Public Class frmConfPrestamo
             ' Setea la fecha del calendario a la fecha de préstamo actual
             calendario.MinDate = Convert.ToDateTime(fechaPrestamo)
             calendario.MaxDate = calendario.MinDate.AddDays(21)
-            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
+            calendario.BoldedDates = New System.DateTime() {calendario.MinDate, DateTime.Parse(Convert.ToDateTime(fechaActual).ToString("yyyy-MM-dd"))}
             calendario.SetDate(Convert.ToDateTime(fechaActual))
 
 
@@ -135,6 +134,7 @@ Public Class frmConfPrestamo
         lblInfo.Visible = False ' Oculta el lblInfo
         btnPrestar.Enabled = True ' Y activa el btn de Prestar
 
+        ' Mientras haya algun valor para leer
         While reader.Read()
             lblInfo.Visible = True ' En caso de que haya un valor en la tabla, muestra el lblInfo
             btnPrestar.Enabled = False ' Desactiva el btn de prestar
@@ -145,40 +145,53 @@ Public Class frmConfPrestamo
     End Sub
 
     Private Sub cargarUsuarios()
-        Dim conexion As DB = New DB()
+        ' Carga los usuarios desde la DB a un comboBox
 
+        Dim conexion As DB = New DB() ' Establece la conexión
+
+       ' Crea un nuevo comando (mysqlCommand) y lo pone en uso
         Using cmd As New MySqlCommand()
             With cmd
+                ' Establece los valores necesarios para la sentencia / comando.
                 .Connection = conexion.Conn
                 .CommandText = "select * from usuario where tipo='usuario' order by CI;"
                 .CommandType = CommandType.Text
             End With
 
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            Dim reader As MySqlDataReader = cmd.ExecuteReader() ' Ejecuta el comando y obtiene los valores devueltos
 
+            ' Mientras haya algun valor para leer
             While reader.Read()
-                Dim Nombre, ID
-                ID = reader("CI")
-                Nombre = reader("Nombre")
+                Dim Nombre, ID ' Defino el nombre, y la ID'
+                ID = reader("CI") ' obtengo el ID (CI) desde la base de datos y lo guardo
+                Nombre = reader("Nombre") ' obtengo el Nombre (nombre) desde la base de datos y lo guardo
                 If interfazEdicion Then
+                    ' Si está editando y el usuario obtenido de la DB no coincide con el usuario del préstamo'
                     If Not Convert.ToInt32(ciUsuario).Equals(ID) Then
-                        Continue While
+                        Continue While ' Seguir buscando
                     End If
                 End If
 
-                comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
-                If interfazEdicion Then
+                If interfazEdicion Then ' En caso de edición setea el valor del combobox
                     comboUsuario.Text = String.Format("{0} -- {1}", ID, Nombre)
+                Else ' En caso de que no sea edición agrega el usuario a la lista
+                    comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
                 End If
             End While
 
-            reader.Close()
-
+            reader.Close() ' cierra el reader
+            conexion.Close() ' cierra la conexión
         End Using
     End Sub
 
     Private Sub calendario_DateChanged(sender As Object, e As DateRangeEventArgs) Handles calendario.DateChanged
-        calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.SelectionRange.Start}
+        ' Cuando cambia la fecha turnarla en negrita
+        if interfazEdicion ' En caso de edición pone en negrita la fecha mínima y la seleccionada
+            calendario.BoldedDates = New System.DateTime() {calendario.MinDate, calendario.SelectionRange.Start}
+        Else ' En caso de préstamo, pone en negrita la fecha de hoy, y la seleccionada
+            calendario.BoldedDates = New System.DateTime() {System.DateTime.Now(), calendario.SelectionRange.Start}
+        End If
+        ' Cambia el texto de lblFecha a la fecha seleccionada
         lblFecha.Text = FormatDateTime(calendario.SelectionRange.Start, DateFormat.ShortDate)
     End Sub
 

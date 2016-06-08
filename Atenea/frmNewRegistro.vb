@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient 'Importa MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient  ' Importa el módulo de MySQL
 Public Class frmNewRegistro
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click 'Al hacer click en btnCancelar
@@ -11,7 +11,7 @@ Public Class frmNewRegistro
 
         Try
             cmd.ExecuteNonQuery()
-            conexion.Conn.Close()
+            conexion.Close()
             Atenea.agregarAtenea(txtCI.Text, False, True)
         Catch ex As Exception
             Console.Write(ex.ToString())
