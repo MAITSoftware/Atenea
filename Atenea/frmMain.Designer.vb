@@ -266,7 +266,7 @@ Partial Class frmMain
         Me.cboxGenero.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cboxGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.cboxGenero.FormattingEnabled = True
-        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Ciencia", "Cuento", "Historia", "Moda", "Novela"})
+        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Científico", "Comedia", "Drama", "Estética", "Guías / Manuales", "Histórico", "Horror", "Literatura nacional", "Revista", "Romance", "Thriller"})
         Me.cboxGenero.Location = New System.Drawing.Point(14, 252)
         Me.cboxGenero.Name = "cboxGenero"
         Me.cboxGenero.Size = New System.Drawing.Size(162, 24)

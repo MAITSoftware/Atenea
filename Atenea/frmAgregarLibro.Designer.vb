@@ -73,7 +73,7 @@ Partial Class frmAgregarLibro
         Me.cboxGenero.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cboxGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboxGenero.FormattingEnabled = True
-        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Ciencia", "Cuento", "Historia", "Moda", "Novela"})
+        Me.cboxGenero.Items.AddRange(New Object() {"Biografía", "Científico", "Comedia", "Drama", "Estética", "Guías / Manuales", "Histórico", "Horror", "Literatura nacional", "Revista", "Romance", "Thriller"})
         Me.cboxGenero.Location = New System.Drawing.Point(268, 179)
         Me.cboxGenero.Name = "cboxGenero"
         Me.cboxGenero.Size = New System.Drawing.Size(194, 28)
