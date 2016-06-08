@@ -130,14 +130,17 @@ Partial Class frmPrestamos
         Me.btnImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.btnImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.btnImprimir.ForeColor = System.Drawing.Color.White
         Me.btnImprimir.Location = New System.Drawing.Point(16, 358)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(230, 32)
         Me.btnImprimir.TabIndex = 18
-        Me.btnImprimir.Text = "Imprimir detalles de préstamo"
+        Me.btnImprimir.Text = "Imprimir detalles de préstamos"
         Me.btnImprimir.UseVisualStyleBackColor = False
+        '
+        'impresora
+        '
         '
         'frmPrestamos
         '
