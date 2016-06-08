@@ -18,7 +18,7 @@ Public Class frmPrestamos
 
         actualizarDatos()
 
-        libro = New Libro(Nothing, False, True)
+        libro = New Libro(Nothing, True)
         libro.Parent = Me
         libro.Location = New Point(56, 56) 'Establece la ¿¿¿locación??? del libro
 
@@ -71,7 +71,7 @@ Public Class frmPrestamos
     Public Sub updateLibro()
         libro.Dispose()
         Me.Controls.Remove(libro)
-        libro = New Libro(ID, False, True)
+        libro = New Libro(ID, True)
         libro.Parent = Me
         libro.Location = New Point(56, 56)
         libro.actualizarDatos()
