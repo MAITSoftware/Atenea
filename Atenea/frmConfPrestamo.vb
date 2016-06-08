@@ -62,6 +62,7 @@ Public Class frmConfPrestamo
             comboUsuario.Enabled = False ' Desactiva la selecion de usuario
             btnPrestar.Enabled = True ' Activa el botón de prestamo/cambiar que por defecto está desactivado'
             btnPrestar.Text = "Cambiar" ' Setea el texto del botón a Cambiar.
+            lblUsuario.Text = "Prestado a: "
         Else
             ' Setear la fecha mínima a la fecha de hoy
             ' Setear la fecha máxima a: fecha de hoy + 21 días'
@@ -172,10 +173,9 @@ Public Class frmConfPrestamo
                     End If
                 End If
 
-                If interfazEdicion Then ' En caso de edición setea el valor del combobox
+                comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
+                If interfazEdicion Then
                     comboUsuario.Text = String.Format("{0} -- {1}", ID, Nombre)
-                Else ' En caso de que no sea edición agrega el usuario a la lista
-                    comboUsuario.Items.Add(String.Format("{0} -- {1}", ID, Nombre))
                 End If
             End While
 
